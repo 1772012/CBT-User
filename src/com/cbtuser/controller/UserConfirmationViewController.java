@@ -14,12 +14,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -28,44 +27,51 @@ import javafx.stage.StageStyle;
 /**
  * FXML Controller class
  *
- * @author Kafka Febianto Agiharta - 1772012
+ * @author Radeon
  */
-public class LoginViewController implements Initializable {
+public class UserConfirmationViewController implements Initializable {
 
     @FXML
-    private GridPane root;
-    @FXML
-    private TextField txtUsername;
-    @FXML
-    private PasswordField txtPassword;
-    @FXML
-    private Button btnLogin;
+    private BorderPane root;
     @FXML
     private Pane pane;
     @FXML
     private ImageView imgCbt;
     @FXML
-    private ImageView imgLogo;
+    private Label lblNameHead;
     @FXML
-    private Pane imgPane;
+    private Label lblTitle;
+    @FXML
+    private Label lblPtcpNo;
+    @FXML
+    private Label lblNo;
+    @FXML
+    private Label lblPtcpName;
+    @FXML
+    private Label lblName;
+    @FXML
+    private Label lblPtcpGen;
+    @FXML
+    private Label lblGen;
+    @FXML
+    private Label lblTkn;
+    @FXML
+    private TextField txtToken;
+    @FXML
+    private Button btnConfirm;
 
-    private Stage confirmStage;
+    private Stage startStage;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
-        //  Lock the imgCbt size to parent container
         imgCbt.fitWidthProperty().bind(pane.widthProperty());
         imgCbt.fitHeightProperty().bind(pane.heightProperty());
-        imgLogo.fitWidthProperty().bind(imgPane.widthProperty());
-        imgLogo.fitHeightProperty().bind(imgPane.heightProperty());
 
-        //  Disable the TextField focus
         final BooleanProperty firstTime = new SimpleBooleanProperty(true);
-        txtUsername.focusedProperty().addListener((observable, oldValue,
+        txtToken.focusedProperty().addListener((observable, oldValue,
                 newValue) -> {
             if (newValue && firstTime.get()) {
                 root.requestFocus();
@@ -75,35 +81,34 @@ public class LoginViewController implements Initializable {
     }
 
     @FXML
-    private void btnLoginClick(ActionEvent event) {
+    private void btnConfirmClick(ActionEvent event) {
         try {
-            confirmStage = new Stage();
-            confirmStage.setTitle("Konfirmasi Peserta");
+            startStage = new Stage();
+            startStage.setTitle("Konfirmasi Tes");
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource(
-                    "view/UserConfirmationView.fxml"));
+                    "view/TestConfirmationView.fxml"));
             BorderPane paneroot = loader.load();
             Scene scene = new Scene(paneroot);
-            confirmStage.setScene(scene);
-            confirmStage.setFullScreen(true);
-            confirmStage.setResizable(false);
-            confirmStage.initStyle(StageStyle.UNDECORATED);
-            confirmStage.initOwner(root.getScene().getWindow());
-            confirmStage.initModality(Modality.APPLICATION_MODAL);
-            confirmStage.setFullScreenExitHint("No Escape :)");
-            confirmStage.
+            startStage.setScene(scene);
+            startStage.setFullScreen(true);
+            startStage.setResizable(false);
+            startStage.initStyle(StageStyle.UNDECORATED);
+            startStage.initOwner(root.getScene().getWindow());
+            startStage.initModality(Modality.APPLICATION_MODAL);
+            startStage.setFullScreenExitHint("No Escape :)");
+            startStage.
                     setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
 
-            if (!confirmStage.isShowing()) {
-                confirmStage.show();
+            if (!startStage.isShowing()) {
+                startStage.show();
             } else {
-                confirmStage.toFront();
+                startStage.toFront();
             }
         } catch (IOException ex) {
-            Logger.getLogger(LoginViewController.class.getName()).
+            Logger.getLogger(UserConfirmationViewController.class.getName()).
                     log(Level.SEVERE, null, ex);
         }
-
     }
 
 }

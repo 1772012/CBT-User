@@ -1,9 +1,5 @@
 .hbox {
-    -fx-background-color: #81d4fa;
-}
-
-.loginHbox {
-    -fx-background-color: #4ba3c7;
+    -fx-background-color: #0068ac;
 }
 
 .text-field {
@@ -16,20 +12,30 @@
 }
 
 .button-login {
-    -fx-background-color:
-        #ecebe9,
-        rgba(0,0,0,0.05),
-        linear-gradient(#81d4fa, #81d4fa),
-        linear-gradient(#81d4fa 0%, #81d4fa 20%, #81d4fa 80%, #81d4fa 100%),
-        linear-gradient(#81d4fa, #81d4fa);
-    -fx-background-insets: 0,9 9 8 9,9,10,11;
-    -fx-background-radius: 50;
-    -fx-padding: 15 30 15 30;
-    -fx-font-family: "Helvetica";
-    -fx-font-size: 18px;
-    -fx-text-fill: #311c09;
-    -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.1) , 2, 0.0 , 0 , 1);
+    -fx-background-color: #0068ac;
 }
-.button-login Text {
-    -fx-effect: dropshadow( one-pass-box , rgba(255,255,255,0.5) , 0, 0.0 , 0 , 1);
+
+.button-login:hover {
+    -fx-background-color: #0087e0;
+}
+
+.button-login:pressed {
+    -fx-background-color: #004573;
+}
+
+.button-start {
+    -fx-background-color: #e35d27;
+}
+
+.button-start:hover {
+    -fx-background-color: #ff692b;
+}
+
+.button-start:pressed {
+    -fx-background-color: #853617;
+}
+
+.table-border {
+    -fx-border-color: #0068ac;
+    -fx-border-width: 1px;
 }
