@@ -25,7 +25,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" styleClass="hbox" stylesheets="@style.css">
+                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" styleClass="hbox-bar" stylesheets="@css/fxmlLayoutStyle.css">
                     <children>
                         <Pane fx:id="pane" prefHeight="100.0" prefWidth="325.0">
                             <children>
@@ -38,30 +38,79 @@
                         </Pane>
                     </children>
                 </HBox>
-                <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" styleClass="hbox" stylesheets="@style.css" GridPane.columnIndex="1">
+                <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" styleClass="hbox-bar" stylesheets="@css/fxmlLayoutStyle.css" GridPane.columnIndex="1">
                     <children>
-                        <Label fx:id="lblNameHead" text="KAFKA FEBIANTO AGIHARTA" textFill="WHITE">
-                            <font>
-                                <Font name="Arial" size="24.0" />
-                            </font>
-                        </Label>
+                  <VBox prefHeight="84.0" prefWidth="350.0" styleClass="vbox-identity" stylesheets="@css/fxmlLayoutStyle.css">
+                     <children>
+                        <GridPane>
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" styleClass="hbox-welcome" stylesheets="@css/fxmlLayoutStyle.css">
+                                 <children>
+                                    <Label fx:id="lblWelcomeHead" text="Selamat Datang" textFill="WHITE">
+                                       <font>
+                                          <Font name="Calibri Bold" size="20.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                                 </padding>
+                              </HBox>
+                              <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1" />
+                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
+                                 <children>
+                                          <Label fx:id="lblNameHead" text="Kafka Febianto Agiharta" textFill="WHITE">
+                                              <font>
+                                                  <Font name="Calibri" size="16.0" />
+                                              </font>
+                                          </Label>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                                 </padding>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="3">
+                                 <children>
+                                    <Label fx:id="lblNrpHead" text="1772012" textFill="WHITE">
+                                       <font>
+                                          <Font name="Calibri" size="16.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                                 </padding>
+                              </HBox>
+                           </children>
+                        </GridPane>
+                     </children>
+                     <padding>
+                        <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                     </padding>
+                  </VBox>
                     </children>
-                    <padding>
-                        <Insets bottom="16.0" left="16.0" right="32.0" top="16.0" />
-                    </padding>
                 </HBox>
             </children>
         </GridPane>
     </top>
     <bottom>
-        <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="1366.0" styleClass="hbox" stylesheets="@style.css" BorderPane.alignment="CENTER">
+        <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="1366.0" styleClass="hbox-bar" stylesheets="@css/fxmlLayoutStyle.css" BorderPane.alignment="CENTER">
             <padding>
                 <Insets left="16.0" />
             </padding>
             <children>
-                <Label text="© 2019 UNIVERSITAS KRISTEN MARANATHA" textFill="WHITE">
+                <Label text="© 2019 Universitas Kristen Maranatha" textFill="WHITE">
                     <font>
-                        <Font name="Arial" size="14.0" />
+                        <Font name="Calibri" size="18.0" />
                     </font>
                 </Label>
             </children>
@@ -70,35 +119,30 @@
     <center>
         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
             <children>
-                <GridPane prefHeight="549.0" prefWidth="1110.0" styleClass="table-border" stylesheets="@style.css">
+                <GridPane prefHeight="549.0" prefWidth="1110.0" styleClass="grid-pane-info" stylesheets="@css/fxmlLayoutStyle.css">
                     <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                     </columnConstraints>
                     <rowConstraints>
                         <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" styleClass="hbox" stylesheets="@style.css">
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" styleClass="hbox-info-header-bar" stylesheets="@css/fxmlLayoutStyle.css">
                             <children>
-                                <Label fx:id="lblTitle" text="KONFIRMASI TES" textFill="WHITE">
+                                <Label fx:id="lblTitle" text="Konfirmasi Tes" textFill="WHITE">
                                     <font>
-                                        <Font name="Arial" size="24.0" />
+                                        <Font name="Calibri Bold" size="24.0" />
                                     </font>
                                 </Label>
                             </children>
@@ -111,9 +155,9 @@
                                 <Insets />
                             </GridPane.margin>
                             <children>
-                                <Label fx:id="lblPtcpNo" text="NAMA TES :">
+                                <Label fx:id="lblPtcpNo" text="Nama Tes">
                                     <font>
-                                        <Font name="Arial Bold" size="16.0" />
+                                        <Font name="Calibri Bold" size="20.0" />
                                     </font>
                                 </Label>
                             </children>
@@ -121,14 +165,14 @@
                                 <Insets left="16.0" right="16.0" />
                             </padding>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" styleClass="hbox-info-border" stylesheets="@css/fxmlLayoutStyle.css" GridPane.rowIndex="2">
                             <GridPane.margin>
                                 <Insets />
                             </GridPane.margin>
                             <children>
                                 <Label fx:id="lblNo" text="Simulasi CBT Maranatha">
                                     <font>
-                                        <Font name="Arial" size="16.0" />
+                                        <Font name="Calibri" size="18.0" />
                                     </font>
                                 </Label>
                             </children>
@@ -136,14 +180,29 @@
                                 <Insets left="16.0" right="16.0" />
                             </padding>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="4">
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="3">
                             <GridPane.margin>
                                 <Insets />
                             </GridPane.margin>
                             <children>
-                                <Label fx:id="lblPtcpName" text="NAMA SUB-TEST :">
+                                <Label fx:id="lblPtcpName" text="Nama Sub-tes">
                                     <font>
-                                        <Font name="Arial Bold" size="16.0" />
+                                        <Font name="Calibri Bold" size="20.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                            <padding>
+                                <Insets left="16.0" right="16.0" />
+                            </padding>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" styleClass="hbox-info-border" stylesheets="@css/fxmlLayoutStyle.css" GridPane.rowIndex="4">
+                            <GridPane.margin>
+                                <Insets />
+                            </GridPane.margin>
+                            <children>
+                                <Label fx:id="lblName" text="Bahasa Inggris 1">
+                                    <font>
+                                        <Font name="Calibri" size="18.0" />
                                     </font>
                                 </Label>
                             </children>
@@ -156,9 +215,9 @@
                                 <Insets />
                             </GridPane.margin>
                             <children>
-                                <Label fx:id="lblName" text="Bahasa Inggris 1">
+                                <Label fx:id="lblPtcpGen" text="Tanggal Tes">
                                     <font>
-                                        <Font name="Arial" size="16.0" />
+                                        <Font name="Calibri Bold" size="20.0" />
                                     </font>
                                 </Label>
                             </children>
@@ -166,29 +225,14 @@
                                 <Insets left="16.0" right="16.0" />
                             </padding>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="7">
-                            <GridPane.margin>
-                                <Insets />
-                            </GridPane.margin>
-                            <children>
-                                <Label fx:id="lblPtcpGen" text="TANGGAL TES :">
-                                    <font>
-                                        <Font name="Arial Bold" size="16.0" />
-                                    </font>
-                                </Label>
-                            </children>
-                            <padding>
-                                <Insets left="16.0" right="16.0" />
-                            </padding>
-                        </HBox>
-                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="8">
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" styleClass="hbox-info-border" stylesheets="@css/fxmlLayoutStyle.css" GridPane.rowIndex="6">
                             <GridPane.margin>
                                 <Insets />
                             </GridPane.margin>
                             <children>
                                 <Label fx:id="lblGen" text="21 September 2019">
                                     <font>
-                                        <Font name="Arial" size="16.0" />
+                                        <Font name="Calibri" size="18.0" />
                                     </font>
                                 </Label>
                             </children>
@@ -196,14 +240,14 @@
                                 <Insets left="16.0" right="16.0" />
                             </padding>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="13">
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="9">
                             <GridPane.margin>
                                 <Insets />
                             </GridPane.margin>
                             <children>
-                                <Label fx:id="lblTkn" text="DURASI :">
+                                <Label fx:id="lblTkn" text="Durasi">
                                     <font>
-                                        <Font name="Arial Bold" size="16.0" />
+                                        <Font name="Calibri Bold" size="20.0" />
                                     </font>
                                 </Label>
                             </children>
@@ -211,7 +255,7 @@
                                 <Insets left="16.0" right="16.0" />
                             </padding>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="14">
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" styleClass="hbox-info-border" stylesheets="@css/fxmlLayoutStyle.css" GridPane.rowIndex="10">
                             <GridPane.margin>
                                 <Insets />
                             </GridPane.margin>
@@ -221,31 +265,31 @@
                      <children>
                         <Label fx:id="lblGen1" text="120 Menit">
                            <font>
-                              <Font name="Arial" size="16.0" />
+                              <Font name="Calibri" size="18.0" />
                            </font>
                         </Label>
                      </children>
                         </HBox>
-                        <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="15">
+                        <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="11">
                             <GridPane.margin>
                                 <Insets />
                             </GridPane.margin>
                             <padding>
-                                <Insets left="16.0" right="16.0" />
+                                <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
                             </padding>
                             <children>
-                                <Button fx:id="btnConfirm" mnemonicParsing="false" onAction="#btnConfirmClick" prefHeight="50.0" prefWidth="150.0" styleClass="button-start" stylesheets="@style.css" text="MULAI" textFill="WHITE">
+                                <Button fx:id="btnConfirm" mnemonicParsing="false" onAction="#btnConfirmClick" prefHeight="50.0" prefWidth="150.0" styleClass="button2" stylesheets="@css/fxmlControlStyle.css" text="Mulai" textFill="WHITE">
                                     <font>
-                                        <Font name="Arial" size="18.0" />
+                                        <Font name="Calibri Bold" size="20.0" />
                                     </font>
                                 </Button>
                             </children>
                         </HBox>
-                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="10">
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="7">
                      <children>
-                        <Label fx:id="lblPtcpGen1" text="WAKTU TES :">
+                        <Label fx:id="lblPtcpGen1" text="Waktu Tes">
                            <font>
-                              <Font name="Arial Bold" size="16.0" />
+                              <Font name="Calibri Bold" size="20.0" />
                            </font>
                         </Label>
                      </children>
@@ -253,11 +297,11 @@
                         <Insets left="16.0" right="16.0" />
                      </padding>
                   </HBox>
-                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="11">
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" styleClass="hbox-info-border" stylesheets="@css/fxmlLayoutStyle.css" GridPane.rowIndex="8">
                      <children>
                         <Label fx:id="lblGen2" text="15.00 WIB - 16.30 WIB">
                            <font>
-                              <Font name="Arial" size="16.0" />
+                              <Font name="Calibri" size="18.0" />
                            </font>
                         </Label>
                      </children>

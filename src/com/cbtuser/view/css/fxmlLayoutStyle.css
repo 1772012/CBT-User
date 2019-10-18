@@ -1,0 +1,52 @@
+
+/*Scaffolding Styling*/
+
+.hbox-bar {
+    -fx-background-color: #0068ac;
+}
+.hbox-bar .label {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-family: 'Calibri';
+    -fx-font-size: 18px;
+}
+
+/*Gridpane Information Styling*/
+
+.hbox-info-header-bar {
+    -fx-background-color: #0068ac;
+}
+.hbox-info-header-bar .label {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-family: 'Calibri';
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+}
+.grid-pane-info {
+    -fx-border-color: #0068ac;
+    -fx-border-width: 2px;
+}
+.hbox-info-border {
+    -fx-border-color: #0068ac;
+    -fx-border-width: 0 0 1 0;
+}
+
+/*Name Placeholder Styling*/
+
+.vbox-identity {
+    -fx-background-color: rgba(30, 30, 30, 0.4);
+}
+.vbox-identity .label {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-family: 'Calibri';
+    -fx-font-size: 18px;
+}
+.hbox-welcome .label {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-family: 'Calibri';
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}

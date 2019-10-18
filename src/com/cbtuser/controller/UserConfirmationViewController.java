@@ -40,6 +40,10 @@ public class UserConfirmationViewController implements Initializable {
     @FXML
     private Label lblNameHead;
     @FXML
+    private TextField txtToken;
+
+    private Stage startStage;
+    @FXML
     private Label lblTitle;
     @FXML
     private Label lblPtcpNo;
@@ -56,11 +60,7 @@ public class UserConfirmationViewController implements Initializable {
     @FXML
     private Label lblTkn;
     @FXML
-    private TextField txtToken;
-    @FXML
     private Button btnConfirm;
-
-    private Stage startStage;
 
     /**
      * Initializes the controller class.

@@ -91,8 +91,6 @@ public class LoginViewController implements Initializable {
             confirmStage.initOwner(root.getScene().getWindow());
             confirmStage.initModality(Modality.APPLICATION_MODAL);
             confirmStage.setFullScreenExitHint("No Escape :)");
-            confirmStage.
-                    setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
 
             if (!confirmStage.isShowing()) {
                 confirmStage.show();
