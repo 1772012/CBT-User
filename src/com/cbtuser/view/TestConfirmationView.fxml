@@ -170,7 +170,7 @@
                                 <Insets />
                             </GridPane.margin>
                             <children>
-                                <Label fx:id="lblNo" text="Simulasi CBT Maranatha">
+                                <Label fx:id="lblTestname" text="Simulasi CBT Maranatha">
                                     <font>
                                         <Font name="Calibri" size="18.0" />
                                     </font>
@@ -230,7 +230,7 @@
                                 <Insets />
                             </GridPane.margin>
                             <children>
-                                <Label fx:id="lblGen" text="21 September 2019">
+                                <Label fx:id="lblTestDate" text="21 September 2019">
                                     <font>
                                         <Font name="Calibri" size="18.0" />
                                     </font>
@@ -263,7 +263,7 @@
                                 <Insets left="16.0" right="16.0" />
                             </padding>
                      <children>
-                        <Label fx:id="lblGen1" text="120 Menit">
+                        <Label fx:id="lblDuration" text="120 Menit">
                            <font>
                               <Font name="Calibri" size="18.0" />
                            </font>
@@ -299,7 +299,7 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" styleClass="hbox-info-border" stylesheets="@css/fxmlLayoutStyle.css" GridPane.rowIndex="8">
                      <children>
-                        <Label fx:id="lblGen2" text="15.00 WIB - 16.30 WIB">
+                        <Label fx:id="lblTestTime" text="15.00 WIB - 16.30 WIB">
                            <font>
                               <Font name="Calibri" size="18.0" />
                            </font>

@@ -45,8 +45,8 @@ Contributor(s):
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/computerbasedtest?zeroDateTimeBehavior=convertToNull</property>
     <property name="hibernate.connection.username">root</property>
-    <property name="hibernate.connection.isolation">2</property>
     <property name="hibernate.connection.autocommit">false</property>
+    <property name="hibernate.connection.isolation">2</property>
     <mapping class="com.cbtuser.entity.VideoquestionId"/>
     <mapping class="com.cbtuser.entity.Administrator"/>
     <mapping class="com.cbtuser.entity.Nrmansquestion"/>

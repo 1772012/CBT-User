@@ -1,5 +1,5 @@
 package com.cbtuser.entity;
-// Generated Oct 18, 2019 8:58:09 AM by Hibernate Tools 4.3.1
+// Generated Oct 19, 2019 10:48:39 AM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -112,8 +112,8 @@ public class Subtest  implements java.io.Serializable {
         this.name = name;
     }
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name="test_date", nullable=false, length=19)
+    @Temporal(TemporalType.DATE)
+    @Column(name="test_date", nullable=false, length=10)
     public Date getTestDate() {
         return this.testDate;
     }
