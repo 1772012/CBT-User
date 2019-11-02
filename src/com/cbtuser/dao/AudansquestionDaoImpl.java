@@ -28,5 +28,10 @@ public class AudansquestionDaoImpl implements DaoService<Audansquestion>{
     public List<Audansquestion> getAllData() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public Audansquestion getOneData(Audansquestion object) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

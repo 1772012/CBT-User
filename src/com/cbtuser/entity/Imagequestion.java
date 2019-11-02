@@ -1,5 +1,5 @@
 package com.cbtuser.entity;
-// Generated Oct 19, 2019 10:48:39 AM by Hibernate Tools 4.3.1
+// Generated Nov 2, 2019 11:33:03 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -30,30 +30,27 @@ public class Imagequestion  implements java.io.Serializable {
      private ImagequestionId id;
      private Questiondb questiondb;
      private Subtest subtest;
-     private String image;
+     private byte[] image;
      private String content;
-     private String trueAnswer;
      private Set<Imgansquestion> imgansquestions = new HashSet<Imgansquestion>(0);
 
     public Imagequestion() {
     }
 
 	
-    public Imagequestion(ImagequestionId id, Questiondb questiondb, Subtest subtest, String image, String content, String trueAnswer) {
+    public Imagequestion(ImagequestionId id, Questiondb questiondb, Subtest subtest, byte[] image, String content) {
         this.id = id;
         this.questiondb = questiondb;
         this.subtest = subtest;
         this.image = image;
         this.content = content;
-        this.trueAnswer = trueAnswer;
     }
-    public Imagequestion(ImagequestionId id, Questiondb questiondb, Subtest subtest, String image, String content, String trueAnswer, Set<Imgansquestion> imgansquestions) {
+    public Imagequestion(ImagequestionId id, Questiondb questiondb, Subtest subtest, byte[] image, String content, Set<Imgansquestion> imgansquestions) {
        this.id = id;
        this.questiondb = questiondb;
        this.subtest = subtest;
        this.image = image;
        this.content = content;
-       this.trueAnswer = trueAnswer;
        this.imgansquestions = imgansquestions;
     }
    
@@ -93,12 +90,12 @@ public class Imagequestion  implements java.io.Serializable {
     }
 
     
-    @Column(name="image", nullable=false, length=16777215)
-    public String getImage() {
+    @Column(name="image", nullable=false)
+    public byte[] getImage() {
         return this.image;
     }
     
-    public void setImage(String image) {
+    public void setImage(byte[] image) {
         this.image = image;
     }
 
@@ -110,16 +107,6 @@ public class Imagequestion  implements java.io.Serializable {
     
     public void setContent(String content) {
         this.content = content;
-    }
-
-    
-    @Column(name="true_answer", nullable=false, length=500)
-    public String getTrueAnswer() {
-        return this.trueAnswer;
-    }
-    
-    public void setTrueAnswer(String trueAnswer) {
-        this.trueAnswer = trueAnswer;
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="imagequestion")

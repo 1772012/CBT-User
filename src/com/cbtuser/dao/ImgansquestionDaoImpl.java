@@ -28,5 +28,10 @@ public class ImgansquestionDaoImpl implements DaoService<Imgansquestion>{
     public List<Imgansquestion> getAllData() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public Imgansquestion getOneData(Imgansquestion object) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

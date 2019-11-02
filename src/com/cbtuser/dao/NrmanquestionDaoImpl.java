@@ -28,5 +28,10 @@ public class NrmanquestionDaoImpl implements DaoService<Nrmansquestion>{
     public List<Nrmansquestion> getAllData() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public Nrmansquestion getOneData(Nrmansquestion object) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

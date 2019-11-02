@@ -1,5 +1,5 @@
 package com.cbtuser.entity;
-// Generated Oct 19, 2019 10:48:39 AM by Hibernate Tools 4.3.1
+// Generated Nov 2, 2019 11:33:03 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -8,6 +8,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -22,6 +24,7 @@ public class Participant  implements java.io.Serializable {
 
 
      private String id;
+     private Institute institute;
      private String username;
      private String password;
      private String name;
@@ -33,16 +36,18 @@ public class Participant  implements java.io.Serializable {
     }
 
 	
-    public Participant(String id, String username, String password, String name, String email, String gender) {
+    public Participant(String id, Institute institute, String username, String password, String name, String email, String gender) {
         this.id = id;
+        this.institute = institute;
         this.username = username;
         this.password = password;
         this.name = name;
         this.email = email;
         this.gender = gender;
     }
-    public Participant(String id, String username, String password, String name, String email, String gender, Set<Score> scores) {
+    public Participant(String id, Institute institute, String username, String password, String name, String email, String gender, Set<Score> scores) {
        this.id = id;
+       this.institute = institute;
        this.username = username;
        this.password = password;
        this.name = name;
@@ -61,6 +66,16 @@ public class Participant  implements java.io.Serializable {
     
     public void setId(String id) {
         this.id = id;
+    }
+
+@ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="Institute_id", nullable=false)
+    public Institute getInstitute() {
+        return this.institute;
+    }
+    
+    public void setInstitute(Institute institute) {
+        this.institute = institute;
     }
 
     

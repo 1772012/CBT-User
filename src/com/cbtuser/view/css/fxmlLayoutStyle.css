@@ -50,3 +50,7 @@
     -fx-font-size: 20px;
     -fx-font-weight: bold;
 }
+
+.out-border{
+    -fx-border-color: #0068ac;
+}

@@ -1,8 +1,10 @@
 package com.cbtuser.controller;
 
 import com.cbtuser.MainApp;
+import com.cbtuser.dao.SubtestDaoImpl;
 import com.cbtuser.entity.Participant;
 import com.cbtuser.entity.Subtest;
+import com.cbtuser.entity.Test;
 import java.io.IOException;
 import java.net.URL;
 import java.text.ParseException;
@@ -11,6 +13,8 @@ import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,6 +25,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -49,8 +54,6 @@ public class TestConfirmationViewController implements Initializable {
     @FXML
     private Label lblPtcpName;
     @FXML
-    private Label lblName;
-    @FXML
     private Label lblPtcpGen;
     @FXML
     private Label lblTkn;
@@ -70,16 +73,21 @@ public class TestConfirmationViewController implements Initializable {
     private Label lblDuration;
     @FXML
     private Label lblTestTime;
-    
+
     //  Create window stage
     private Stage testStage;
-    
+    private Stage subtestStage;
+
     //  Create main controller
     private UserConfirmationViewController mainController;
-    
+
     //  Create temp object
     private Participant loginParticipant;
-    private Subtest subtest;
+    private Test test;
+    private ObservableList<Subtest> subtests;
+
+    //  Create dao controller
+    private SubtestDaoImpl subtestDao;
 
     /**
      * Initializes the controller class.
@@ -87,22 +95,23 @@ public class TestConfirmationViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         initFxmlControls();
+        subtestDao = new SubtestDaoImpl();
+        subtests = FXCollections.observableArrayList();
     }
-    
+
     /*
     *   Main controller initialize
      */
     public void setMainController(UserConfirmationViewController mainController) throws ParseException {
         this.mainController = mainController;
         loginParticipant = this.mainController.getLoginParticipant();
-        subtest = this.mainController.getSubtest();
+        test = this.mainController.getTest();
         lblNameHead.setText(loginParticipant.getName());
         lblNrpHead.setText(loginParticipant.getId());
-        lblTestname.setText(subtest.getTest().getName());
-        lblName.setText(subtest.getName());
-        lblTestDate.setText(String.valueOf(dateFormatter(String.valueOf(subtest.getTestDate()))));
-        lblTestTime.setText(String.valueOf(subtest.getDateStart()) + " - " + String.valueOf(subtest.getDateFinish()));
-        lblDuration.setText(String.valueOf(subtest.getTime() + " menit"));
+        lblTestname.setText(test.getName());
+        lblTestDate.setText(String.valueOf(dateFormatter(String.valueOf(test.getDate()))));
+        lblTestTime.setText(String.valueOf(test.getStartTime()) + " - " + String.valueOf(test.getFinishTime()));
+        lblDuration.setText(String.valueOf(test.getTime() + " menit"));
     }
 
     @FXML
@@ -114,6 +123,8 @@ public class TestConfirmationViewController implements Initializable {
             loader.setLocation(MainApp.class.getResource(
                     "view/QuestionContainerView.fxml"));
             BorderPane paneroot = loader.load();
+            QuestionContainerViewController controller = loader.getController();
+            controller.setMainController(this);
             Scene scene = new Scene(paneroot);
             testStage.setScene(scene);
             testStage.setFullScreen(true);
@@ -129,29 +140,83 @@ public class TestConfirmationViewController implements Initializable {
                 testStage.show();
             } else {
                 testStage.toFront();
+                root.getScene().getWindow().hide();
             }
+
         } catch (IOException ex) {
             Logger.getLogger(TestConfirmationViewController.class.getName()).
                     log(Level.SEVERE, null, ex);
         }
     }
     
+    @FXML
+    private void btnCekSubtes(ActionEvent event) {
+        try {
+            subtestStage = new Stage();
+            subtestStage.setTitle("Cek Subtest");
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource(
+                    "view/TestCheckView.fxml"));
+            GridPane paneroot = loader.load();
+            TestCheckViewController controller = loader.getController();
+            controller.setMainController(this);
+            Scene scene = new Scene(paneroot);
+            subtestStage.setScene(scene);
+            subtestStage.setResizable(false);
+            subtestStage.initStyle(StageStyle.UNDECORATED);
+            subtestStage.initOwner(root.getScene().getWindow());
+            subtestStage.initModality(Modality.APPLICATION_MODAL);
+            subtestStage.setFullScreenExitHint("");
+            if (!subtestStage.isShowing()) {
+                subtestStage.show();
+            } else {
+                subtestStage.toFront();
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(TestConfirmationViewController.class.getName()).
+                    log(Level.SEVERE, null, ex);
+        }
+    }
+
     /*
     *   Function for initialization
-    */
+     */
     public void initFxmlControls() {
         imgCbt.fitWidthProperty().bind(pane.widthProperty());
         imgCbt.fitHeightProperty().bind(pane.heightProperty());
     }
-    
+
     /*
     *   Usable functions
-    */
+     */
     private Date dateFormatter(String dateInput) throws ParseException {
         String pattern = "dd-MM-yyyy";
         SimpleDateFormat dateFormat = new SimpleDateFormat(pattern);
         Date date = dateFormat.parse(dateInput);
         return date;
     }
+
+    /*
+    *   Getter / Setter
+     */
+    public Participant getLoginParticipant() {
+        return loginParticipant;
+    }
+
+    public Test getTest() {
+        return test;
+    }
+    
+    public SubtestDaoImpl getSubtestDaoImpl() {
+        return subtestDao;
+    }
+
+    public ObservableList<Subtest> getSubtest() {
+        return subtests;
+    }
+
+    
+
+    
 
 }

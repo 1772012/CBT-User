@@ -16,4 +16,6 @@ public interface DaoService <T> {
     
     List<T> getAllData();
     
+    T getOneData(T object);
+    
 }

@@ -1,7 +1,6 @@
 package com.cbtuser.dao;
 
 import com.cbtuser.entity.Audioquestion;
-import com.cbtuser.entity.Normalquestion;
 import com.cbtuser.util.HibernateUtil;
 import java.util.List;
 import org.hibernate.Criteria;
@@ -36,6 +35,11 @@ public class AudioquestionDaoImpl implements DaoService<Audioquestion> {
         List<Audioquestion> audioquestions = criteria.list();
         session.close();
         return audioquestions;
+    }
+
+    @Override
+    public Audioquestion getOneData(Audioquestion object) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

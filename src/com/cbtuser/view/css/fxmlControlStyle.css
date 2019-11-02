@@ -102,3 +102,22 @@
     -fx-background-radius: 0px;
     -fx-padding: 8 8 8 8;
 }
+
+.table-view {
+    -fx-border-color: #0068ac;
+}
+
+.table-view .column-header {
+    -fx-background-color: #0068ac
+}
+
+.table-view .column-header .label {
+    -fx-font-family: 'Calibri';
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.table-view .filler {
+    -fx-background-color: transparent;
+}

@@ -28,5 +28,10 @@ public class VidansquestionDaoImpl implements DaoService<Vidansquestion>{
     public List<Vidansquestion> getAllData() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public Vidansquestion getOneData(Vidansquestion object) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

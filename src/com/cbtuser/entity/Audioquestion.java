@@ -1,5 +1,5 @@
 package com.cbtuser.entity;
-// Generated Oct 19, 2019 10:48:39 AM by Hibernate Tools 4.3.1
+// Generated Nov 2, 2019 11:33:03 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -30,30 +30,27 @@ public class Audioquestion  implements java.io.Serializable {
      private AudioquestionId id;
      private Questiondb questiondb;
      private Subtest subtest;
-     private String audio;
+     private byte[] audio;
      private String content;
-     private String trueAnswer;
      private Set<Audansquestion> audansquestions = new HashSet<Audansquestion>(0);
 
     public Audioquestion() {
     }
 
 	
-    public Audioquestion(AudioquestionId id, Questiondb questiondb, Subtest subtest, String audio, String content, String trueAnswer) {
+    public Audioquestion(AudioquestionId id, Questiondb questiondb, Subtest subtest, byte[] audio, String content) {
         this.id = id;
         this.questiondb = questiondb;
         this.subtest = subtest;
         this.audio = audio;
         this.content = content;
-        this.trueAnswer = trueAnswer;
     }
-    public Audioquestion(AudioquestionId id, Questiondb questiondb, Subtest subtest, String audio, String content, String trueAnswer, Set<Audansquestion> audansquestions) {
+    public Audioquestion(AudioquestionId id, Questiondb questiondb, Subtest subtest, byte[] audio, String content, Set<Audansquestion> audansquestions) {
        this.id = id;
        this.questiondb = questiondb;
        this.subtest = subtest;
        this.audio = audio;
        this.content = content;
-       this.trueAnswer = trueAnswer;
        this.audansquestions = audansquestions;
     }
    
@@ -93,12 +90,12 @@ public class Audioquestion  implements java.io.Serializable {
     }
 
     
-    @Column(name="audio", nullable=false, length=16777215)
-    public String getAudio() {
+    @Column(name="audio", nullable=false)
+    public byte[] getAudio() {
         return this.audio;
     }
     
-    public void setAudio(String audio) {
+    public void setAudio(byte[] audio) {
         this.audio = audio;
     }
 
@@ -110,16 +107,6 @@ public class Audioquestion  implements java.io.Serializable {
     
     public void setContent(String content) {
         this.content = content;
-    }
-
-    
-    @Column(name="true_answer", nullable=false, length=500)
-    public String getTrueAnswer() {
-        return this.trueAnswer;
-    }
-    
-    public void setTrueAnswer(String trueAnswer) {
-        this.trueAnswer = trueAnswer;
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="audioquestion")

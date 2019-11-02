@@ -1,5 +1,5 @@
 package com.cbtuser.entity;
-// Generated Oct 19, 2019 10:48:39 AM by Hibernate Tools 4.3.1
+// Generated Nov 2, 2019 11:33:03 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -28,30 +28,27 @@ public class Videoquestion  implements java.io.Serializable {
      private VideoquestionId id;
      private Questiondb questiondb;
      private Subtest subtest;
-     private String video;
+     private byte[] video;
      private String content;
-     private String trueAnswer;
      private Set<Vidansquestion> vidansquestions = new HashSet<Vidansquestion>(0);
 
     public Videoquestion() {
     }
 
 	
-    public Videoquestion(VideoquestionId id, Questiondb questiondb, Subtest subtest, String video, String content, String trueAnswer) {
+    public Videoquestion(VideoquestionId id, Questiondb questiondb, Subtest subtest, byte[] video, String content) {
         this.id = id;
         this.questiondb = questiondb;
         this.subtest = subtest;
         this.video = video;
         this.content = content;
-        this.trueAnswer = trueAnswer;
     }
-    public Videoquestion(VideoquestionId id, Questiondb questiondb, Subtest subtest, String video, String content, String trueAnswer, Set<Vidansquestion> vidansquestions) {
+    public Videoquestion(VideoquestionId id, Questiondb questiondb, Subtest subtest, byte[] video, String content, Set<Vidansquestion> vidansquestions) {
        this.id = id;
        this.questiondb = questiondb;
        this.subtest = subtest;
        this.video = video;
        this.content = content;
-       this.trueAnswer = trueAnswer;
        this.vidansquestions = vidansquestions;
     }
    
@@ -92,11 +89,11 @@ public class Videoquestion  implements java.io.Serializable {
 
     
     @Column(name="video", nullable=false)
-    public String getVideo() {
+    public byte[] getVideo() {
         return this.video;
     }
     
-    public void setVideo(String video) {
+    public void setVideo(byte[] video) {
         this.video = video;
     }
 
@@ -108,16 +105,6 @@ public class Videoquestion  implements java.io.Serializable {
     
     public void setContent(String content) {
         this.content = content;
-    }
-
-    
-    @Column(name="true_answer", nullable=false, length=500)
-    public String getTrueAnswer() {
-        return this.trueAnswer;
-    }
-    
-    public void setTrueAnswer(String trueAnswer) {
-        this.trueAnswer = trueAnswer;
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="videoquestion")

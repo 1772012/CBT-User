@@ -1,5 +1,5 @@
 package com.cbtuser.entity;
-// Generated Oct 19, 2019 10:48:39 AM by Hibernate Tools 4.3.1
+// Generated Nov 2, 2019 11:33:03 PM by Hibernate Tools 4.3.1
 
 
 import javax.persistence.AttributeOverride;
@@ -27,14 +27,16 @@ public class Nrmansquestion  implements java.io.Serializable {
 
      private NrmansquestionId id;
      private Normalquestion normalquestion;
+     private byte trueAnswer;
      private String content;
 
     public Nrmansquestion() {
     }
 
-    public Nrmansquestion(NrmansquestionId id, Normalquestion normalquestion, String content) {
+    public Nrmansquestion(NrmansquestionId id, Normalquestion normalquestion, byte trueAnswer, String content) {
        this.id = id;
        this.normalquestion = normalquestion;
+       this.trueAnswer = trueAnswer;
        this.content = content;
     }
    
@@ -65,6 +67,16 @@ public class Nrmansquestion  implements java.io.Serializable {
     
     public void setNormalquestion(Normalquestion normalquestion) {
         this.normalquestion = normalquestion;
+    }
+
+    
+    @Column(name="true_answer", nullable=false)
+    public byte getTrueAnswer() {
+        return this.trueAnswer;
+    }
+    
+    public void setTrueAnswer(byte trueAnswer) {
+        this.trueAnswer = trueAnswer;
     }
 
     

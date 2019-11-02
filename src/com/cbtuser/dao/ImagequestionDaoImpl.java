@@ -1,6 +1,5 @@
 package com.cbtuser.dao;
 
-import com.cbtuser.entity.Audioquestion;
 import com.cbtuser.entity.Imagequestion;
 import com.cbtuser.util.HibernateUtil;
 import java.util.List;
@@ -36,6 +35,11 @@ public class ImagequestionDaoImpl implements DaoService<Imagequestion> {
         List<Imagequestion> imagequestions = criteria.list();
         session.close();
         return imagequestions;
+    }
+
+    @Override
+    public Imagequestion getOneData(Imagequestion object) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

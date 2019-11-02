@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 2, 2019 11:33:04 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.cbtuser.entity.Vidansquestion" table="vidansquestion" catalog="computerbasedtest" optimistic-lock="version">
+        <composite-id name="id" class="com.cbtuser.entity.VidansquestionId">
+            <key-property name="id" type="int">
+                <column name="id" />
+            </key-property>
+            <key-property name="videoQuestionId" type="int">
+                <column name="VideoQuestion_id" />
+            </key-property>
+            <key-property name="videoQuestionQuestionDbId" type="string">
+                <column name="VideoQuestion_QuestionDB_id" length="10" />
+            </key-property>
+            <key-property name="videoQuestionSubTestId" type="string">
+                <column name="VideoQuestion_SubTest_id" length="10" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="videoquestion" class="com.cbtuser.entity.Videoquestion" update="false" insert="false" fetch="select">
+            <column name="VideoQuestion_id" not-null="true" />
+            <column name="VideoQuestion_QuestionDB_id" length="10" not-null="true" />
+            <column name="VideoQuestion_SubTest_id" length="10" not-null="true" />
+        </many-to-one>
+        <property name="trueAnswer" type="string">
+            <column name="true_answer" length="45" not-null="true" />
+        </property>
+        <property name="content" type="string">
+            <column name="content" length="500" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

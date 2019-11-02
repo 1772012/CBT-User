@@ -1,6 +1,5 @@
 package com.cbtuser.dao;
 
-import com.cbtuser.entity.Normalquestion;
 import com.cbtuser.entity.Videoquestion;
 import com.cbtuser.util.HibernateUtil;
 import java.util.List;
@@ -36,6 +35,11 @@ public class VideoquestionDaoImpl implements DaoService<Videoquestion>{
         List<Videoquestion> videoquestions = criteria.list();
         session.close();
         return videoquestions;
+    }
+
+    @Override
+    public Videoquestion getOneData(Videoquestion object) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

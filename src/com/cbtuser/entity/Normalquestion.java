@@ -1,5 +1,5 @@
 package com.cbtuser.entity;
-// Generated Oct 19, 2019 10:48:39 AM by Hibernate Tools 4.3.1
+// Generated Nov 2, 2019 11:33:03 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -29,26 +29,23 @@ public class Normalquestion  implements java.io.Serializable {
      private Questiondb questiondb;
      private Subtest subtest;
      private String content;
-     private String trueAnswer;
      private Set<Nrmansquestion> nrmansquestions = new HashSet<Nrmansquestion>(0);
 
     public Normalquestion() {
     }
 
 	
-    public Normalquestion(NormalquestionId id, Questiondb questiondb, Subtest subtest, String content, String trueAnswer) {
+    public Normalquestion(NormalquestionId id, Questiondb questiondb, Subtest subtest, String content) {
         this.id = id;
         this.questiondb = questiondb;
         this.subtest = subtest;
         this.content = content;
-        this.trueAnswer = trueAnswer;
     }
-    public Normalquestion(NormalquestionId id, Questiondb questiondb, Subtest subtest, String content, String trueAnswer, Set<Nrmansquestion> nrmansquestions) {
+    public Normalquestion(NormalquestionId id, Questiondb questiondb, Subtest subtest, String content, Set<Nrmansquestion> nrmansquestions) {
        this.id = id;
        this.questiondb = questiondb;
        this.subtest = subtest;
        this.content = content;
-       this.trueAnswer = trueAnswer;
        this.nrmansquestions = nrmansquestions;
     }
    
@@ -95,16 +92,6 @@ public class Normalquestion  implements java.io.Serializable {
     
     public void setContent(String content) {
         this.content = content;
-    }
-
-    
-    @Column(name="true_answer", nullable=false, length=500)
-    public String getTrueAnswer() {
-        return this.trueAnswer;
-    }
-    
-    public void setTrueAnswer(String trueAnswer) {
-        this.trueAnswer = trueAnswer;
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="normalquestion")

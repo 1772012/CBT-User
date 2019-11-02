@@ -1,7 +1,6 @@
 package com.cbtuser.dao;
 
 import com.cbtuser.entity.Normalquestion;
-import com.cbtuser.entity.Test;
 import com.cbtuser.util.HibernateUtil;
 import java.util.List;
 import org.hibernate.Criteria;
@@ -36,6 +35,11 @@ public class NormalquestionDaoImpl implements DaoService<Normalquestion>{
         List<Normalquestion> normalquestions = criteria.list();
         session.close();
         return normalquestions;
+    }
+
+    @Override
+    public Normalquestion getOneData(Normalquestion object) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

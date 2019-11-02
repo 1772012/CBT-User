@@ -1,5 +1,5 @@
 package com.cbtuser.entity;
-// Generated Oct 19, 2019 10:48:39 AM by Hibernate Tools 4.3.1
+// Generated Nov 2, 2019 11:33:03 PM by Hibernate Tools 4.3.1
 
 
 import javax.persistence.AttributeOverride;
@@ -27,14 +27,16 @@ public class Vidansquestion  implements java.io.Serializable {
 
      private VidansquestionId id;
      private Videoquestion videoquestion;
+     private String trueAnswer;
      private String content;
 
     public Vidansquestion() {
     }
 
-    public Vidansquestion(VidansquestionId id, Videoquestion videoquestion, String content) {
+    public Vidansquestion(VidansquestionId id, Videoquestion videoquestion, String trueAnswer, String content) {
        this.id = id;
        this.videoquestion = videoquestion;
+       this.trueAnswer = trueAnswer;
        this.content = content;
     }
    
@@ -65,6 +67,16 @@ public class Vidansquestion  implements java.io.Serializable {
     
     public void setVideoquestion(Videoquestion videoquestion) {
         this.videoquestion = videoquestion;
+    }
+
+    
+    @Column(name="true_answer", nullable=false, length=45)
+    public String getTrueAnswer() {
+        return this.trueAnswer;
+    }
+    
+    public void setTrueAnswer(String trueAnswer) {
+        this.trueAnswer = trueAnswer;
     }
 
     

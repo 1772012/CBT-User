@@ -10,8 +10,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -61,9 +59,6 @@ public class LoginViewController implements Initializable {
     //  Create dao controller
     private ParticipantDaoImpl participantDao;
     
-    //  Create list of objects
-    private ObservableList<Participant> participants;
-    
     //  Create temp object
     private Participant loginParticipant;
 
@@ -73,7 +68,7 @@ public class LoginViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         initFxmlControls();
-        databaseControls();
+        participantDao = new ParticipantDaoImpl();
     }
     
     /*
@@ -97,31 +92,19 @@ public class LoginViewController implements Initializable {
         });
     }
 
-    private void databaseControls() {
-        participantDao = new ParticipantDaoImpl();
-        participants = FXCollections.observableArrayList();
-        participants.addAll(participantDao.getAllData());
-    }
-
-    private boolean login(String username, String password) {
-        boolean valid = false;
-        for (int i = 0; i < participants.size(); i++) {
-            if (username.equals(participants.get(i).getUsername())
-                    && password.equals(participants.get(i).getPassword())) {
-                valid = true;
-                loginParticipant = new Participant();
-                loginParticipant = participants.get(i);
-                break;
-            } else {
-                valid = false;
-            }
-        }
+    private boolean login() {
+        boolean valid;
+        Participant participant = new Participant();
+        participant.setUsername(txtUsername.getText());
+        participant.setPassword(txtPassword.getText());
+        loginParticipant = participantDao.getOneData(participant);
+        valid = (loginParticipant != null);
         return valid;
     }
 
     @FXML
     private void btnLoginClick(ActionEvent event) {
-        if (login(txtUsername.getText(), txtPassword.getText())) {
+        if (login()) {
             try {
                 confirmStage = new Stage();
                 confirmStage.setTitle("Konfirmasi Peserta");
@@ -141,11 +124,14 @@ public class LoginViewController implements Initializable {
                 confirmStage.setFullScreenExitHint("");
                 confirmStage.
                     setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
+                
                 if (!confirmStage.isShowing()) {
                     confirmStage.show();
                 } else {
                     confirmStage.toFront();
+                    root.getScene().getWindow().hide();
                 }
+                
             } catch (IOException ex) {
                 Logger.getLogger(LoginViewController.class.getName()).
                         log(Level.SEVERE, null, ex);

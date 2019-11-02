@@ -5,13 +5,14 @@ import com.cbtuser.util.HibernateUtil;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.FetchMode;
+import org.hibernate.Query;
 import org.hibernate.Session;
 
 /**
  *
  * @author Redwolfer
  */
-public class TestDaoImpl implements DaoService<Test>{
+public class TestDaoImpl implements DaoService<Test> {
 
     @Override
     public int addData(Test object) {
@@ -30,11 +31,17 @@ public class TestDaoImpl implements DaoService<Test>{
 
     @Override
     public List<Test> getAllData() {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Criteria criteria = session.createCriteria(Test.class).setFetchMode("questionmaker", FetchMode.JOIN);
-        List<Test> tests = criteria.list();
-        session.close();
-        return tests;
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
+    @Override
+    public Test getOneData(Test object) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query query = session.createQuery("FROM Test WHERE token= :tkn");
+        query.setParameter("tkn", object.getToken());
+        Test result = (Test) query.uniqueResult();
+        return result;
+    }
+
 }

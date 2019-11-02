@@ -1,9 +1,9 @@
 package com.cbtuser.controller;
 
 import com.cbtuser.MainApp;
-import com.cbtuser.dao.SubtestDaoImpl;
+import com.cbtuser.dao.TestDaoImpl;
 import com.cbtuser.entity.Participant;
-import com.cbtuser.entity.Subtest;
+import com.cbtuser.entity.Test;
 import java.io.IOException;
 import java.net.URL;
 import java.text.ParseException;
@@ -12,8 +12,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -71,19 +69,18 @@ public class UserConfirmationViewController implements Initializable {
     private Label lblWelcomeHead;
     @FXML
     private Label lblNrpHead;
+    @FXML
+    private Label lblInstitute;
 
     //  Create main controller
     private LoginViewController mainController;
 
     //  Create temp objects
     private Participant loginParticipant;
-    private Subtest subtest;
-
-    //  Create list of objects
-    private ObservableList<Subtest> subtests;
+    private Test test;
 
     //  Create dao controller
-    private SubtestDaoImpl subtestDao;
+    private TestDaoImpl testDao;
 
     //  Create window stage
     private Stage startStage;
@@ -94,7 +91,7 @@ public class UserConfirmationViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         initFxmlControls();
-        databaseControls();
+        testDao = new TestDaoImpl();
     }
 
     /*
@@ -115,25 +112,13 @@ public class UserConfirmationViewController implements Initializable {
             }
         });
     }
-
-    private void databaseControls() {
-        subtests = FXCollections.observableArrayList();
-        subtestDao = new SubtestDaoImpl();
-        subtests.addAll(subtestDao.getAllData());
-    }
     
-    private boolean checkToken(String token) {
-        boolean valid = false;
-        for (int i = 0; i < subtests.size(); i++) {
-            if (token.equals(subtests.get(i).getToken())) {
-                valid = true;
-                subtest = new Subtest();
-                subtest = subtests.get(i);
-                break;
-            } else {
-                valid = false;
-            }
-        }
+    private boolean checkToken() {
+        boolean valid;
+        Test tempTest = new Test();
+        tempTest.setToken(txtToken.getText());
+        test = testDao.getOneData(tempTest);
+        valid = (test != null);
         return valid;
     }
     
@@ -148,11 +133,12 @@ public class UserConfirmationViewController implements Initializable {
         lblNameHead.setText(loginParticipant.getName());
         lblNrpHead.setText(loginParticipant.getId());
         lblGen.setText(loginParticipant.getGender());
+        lblInstitute.setText(String.valueOf(loginParticipant.getInstitute().getName()));
     }
 
     @FXML
     private void btnConfirmClick(ActionEvent event) throws ParseException {
-        if (checkToken(txtToken.getText())) {
+        if (checkToken()) {
             try {
                 startStage = new Stage();
                 startStage.setTitle("Konfirmasi Tes");
@@ -176,6 +162,7 @@ public class UserConfirmationViewController implements Initializable {
                     startStage.show();
                 } else {
                     startStage.toFront();
+                    root.getScene().getWindow().hide();
                 }
             } catch (IOException ex) {
                 Logger.getLogger(UserConfirmationViewController.class.getName()).
@@ -198,9 +185,7 @@ public class UserConfirmationViewController implements Initializable {
         return loginParticipant;
     }
 
-    public Subtest getSubtest() {
-        return subtest;
+    public Test getTest() {
+        return test;
     }
-
-
 }

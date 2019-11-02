@@ -42,5 +42,10 @@ public class ScoreDaoImpl implements DaoService<Score>{
     public List<Score> getAllData() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public Score getOneData(Score object) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
