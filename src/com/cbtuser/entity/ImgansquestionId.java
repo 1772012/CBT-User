@@ -1,5 +1,5 @@
 package com.cbtuser.entity;
-// Generated Nov 2, 2019 11:33:03 PM by Hibernate Tools 4.3.1
+// Generated Nov 6, 2019 10:33:04 PM by Hibernate Tools 4.3.1
 
 
 import javax.persistence.Column;
@@ -13,18 +13,16 @@ public class ImgansquestionId  implements java.io.Serializable {
 
 
      private int id;
-     private int imageQuestionId;
-     private String imageQuestionQuestionDbId;
-     private String imageQuestionSubTestId;
+     private String imageQuestionId;
+     private String imageQuestionSubTestDatabaseId;
 
     public ImgansquestionId() {
     }
 
-    public ImgansquestionId(int id, int imageQuestionId, String imageQuestionQuestionDbId, String imageQuestionSubTestId) {
+    public ImgansquestionId(int id, String imageQuestionId, String imageQuestionSubTestDatabaseId) {
        this.id = id;
        this.imageQuestionId = imageQuestionId;
-       this.imageQuestionQuestionDbId = imageQuestionQuestionDbId;
-       this.imageQuestionSubTestId = imageQuestionSubTestId;
+       this.imageQuestionSubTestDatabaseId = imageQuestionSubTestDatabaseId;
     }
    
 
@@ -39,33 +37,23 @@ public class ImgansquestionId  implements java.io.Serializable {
     }
 
 
-    @Column(name="ImageQuestion_id", nullable=false)
-    public int getImageQuestionId() {
+    @Column(name="ImageQuestion_id", nullable=false, length=10)
+    public String getImageQuestionId() {
         return this.imageQuestionId;
     }
     
-    public void setImageQuestionId(int imageQuestionId) {
+    public void setImageQuestionId(String imageQuestionId) {
         this.imageQuestionId = imageQuestionId;
     }
 
 
-    @Column(name="ImageQuestion_QuestionDB_id", nullable=false, length=10)
-    public String getImageQuestionQuestionDbId() {
-        return this.imageQuestionQuestionDbId;
+    @Column(name="ImageQuestion_SubTestDatabase_id", nullable=false, length=8)
+    public String getImageQuestionSubTestDatabaseId() {
+        return this.imageQuestionSubTestDatabaseId;
     }
     
-    public void setImageQuestionQuestionDbId(String imageQuestionQuestionDbId) {
-        this.imageQuestionQuestionDbId = imageQuestionQuestionDbId;
-    }
-
-
-    @Column(name="ImageQuestion_SubTest_id", nullable=false, length=10)
-    public String getImageQuestionSubTestId() {
-        return this.imageQuestionSubTestId;
-    }
-    
-    public void setImageQuestionSubTestId(String imageQuestionSubTestId) {
-        this.imageQuestionSubTestId = imageQuestionSubTestId;
+    public void setImageQuestionSubTestDatabaseId(String imageQuestionSubTestDatabaseId) {
+        this.imageQuestionSubTestDatabaseId = imageQuestionSubTestDatabaseId;
     }
 
 
@@ -76,18 +64,16 @@ public class ImgansquestionId  implements java.io.Serializable {
 		 ImgansquestionId castOther = ( ImgansquestionId ) other; 
          
 		 return (this.getId()==castOther.getId())
- && (this.getImageQuestionId()==castOther.getImageQuestionId())
- && ( (this.getImageQuestionQuestionDbId()==castOther.getImageQuestionQuestionDbId()) || ( this.getImageQuestionQuestionDbId()!=null && castOther.getImageQuestionQuestionDbId()!=null && this.getImageQuestionQuestionDbId().equals(castOther.getImageQuestionQuestionDbId()) ) )
- && ( (this.getImageQuestionSubTestId()==castOther.getImageQuestionSubTestId()) || ( this.getImageQuestionSubTestId()!=null && castOther.getImageQuestionSubTestId()!=null && this.getImageQuestionSubTestId().equals(castOther.getImageQuestionSubTestId()) ) );
+ && ( (this.getImageQuestionId()==castOther.getImageQuestionId()) || ( this.getImageQuestionId()!=null && castOther.getImageQuestionId()!=null && this.getImageQuestionId().equals(castOther.getImageQuestionId()) ) )
+ && ( (this.getImageQuestionSubTestDatabaseId()==castOther.getImageQuestionSubTestDatabaseId()) || ( this.getImageQuestionSubTestDatabaseId()!=null && castOther.getImageQuestionSubTestDatabaseId()!=null && this.getImageQuestionSubTestDatabaseId().equals(castOther.getImageQuestionSubTestDatabaseId()) ) );
    }
    
    public int hashCode() {
          int result = 17;
          
          result = 37 * result + this.getId();
-         result = 37 * result + this.getImageQuestionId();
-         result = 37 * result + ( getImageQuestionQuestionDbId() == null ? 0 : this.getImageQuestionQuestionDbId().hashCode() );
-         result = 37 * result + ( getImageQuestionSubTestId() == null ? 0 : this.getImageQuestionSubTestId().hashCode() );
+         result = 37 * result + ( getImageQuestionId() == null ? 0 : this.getImageQuestionId().hashCode() );
+         result = 37 * result + ( getImageQuestionSubTestDatabaseId() == null ? 0 : this.getImageQuestionSubTestDatabaseId().hashCode() );
          return result;
    }   
 

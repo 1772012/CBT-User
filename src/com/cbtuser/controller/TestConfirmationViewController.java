@@ -24,6 +24,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCombination;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -89,6 +90,10 @@ public class TestConfirmationViewController implements Initializable {
     //  Create dao controller
     private SubtestDaoImpl subtestDao;
 
+    //  Create coordinate config
+    private double xOffset;
+    private double yOffset;
+
     /**
      * Initializes the controller class.
      */
@@ -148,7 +153,7 @@ public class TestConfirmationViewController implements Initializable {
                     log(Level.SEVERE, null, ex);
         }
     }
-    
+
     @FXML
     private void btnCekSubtes(ActionEvent event) {
         try {
@@ -157,16 +162,27 @@ public class TestConfirmationViewController implements Initializable {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource(
                     "view/TestCheckView.fxml"));
-            GridPane paneroot = loader.load();
+            GridPane gridpane = loader.load();
             TestCheckViewController controller = loader.getController();
             controller.setMainController(this);
-            Scene scene = new Scene(paneroot);
+            Scene scene = new Scene(gridpane);
             subtestStage.setScene(scene);
             subtestStage.setResizable(false);
             subtestStage.initStyle(StageStyle.UNDECORATED);
             subtestStage.initOwner(root.getScene().getWindow());
             subtestStage.initModality(Modality.APPLICATION_MODAL);
             subtestStage.setFullScreenExitHint("");
+            
+            gridpane.setOnMousePressed((MouseEvent event1) -> {
+                xOffset = subtestStage.getX() - event1.getScreenX();
+                yOffset = subtestStage.getY() - event1.getScreenY();
+            });
+
+            gridpane.setOnMouseDragged((MouseEvent event1) -> {
+                subtestStage.setX(event1.getScreenX() + xOffset);
+                subtestStage.setY(event1.getScreenY() + yOffset);
+            });
+            
             if (!subtestStage.isShowing()) {
                 subtestStage.show();
             } else {
@@ -206,7 +222,7 @@ public class TestConfirmationViewController implements Initializable {
     public Test getTest() {
         return test;
     }
-    
+
     public SubtestDaoImpl getSubtestDaoImpl() {
         return subtestDao;
     }
@@ -214,9 +230,5 @@ public class TestConfirmationViewController implements Initializable {
     public ObservableList<Subtest> getSubtest() {
         return subtests;
     }
-
-    
-
-    
 
 }

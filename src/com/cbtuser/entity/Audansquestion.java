@@ -1,5 +1,5 @@
 package com.cbtuser.entity;
-// Generated Nov 2, 2019 11:33:03 PM by Hibernate Tools 4.3.1
+// Generated Nov 6, 2019 10:33:04 PM by Hibernate Tools 4.3.1
 
 
 import javax.persistence.AttributeOverride;
@@ -45,9 +45,8 @@ public class Audansquestion  implements java.io.Serializable {
     
     @AttributeOverrides( {
         @AttributeOverride(name="id", column=@Column(name="id", unique=true, nullable=false) ), 
-        @AttributeOverride(name="audioQuestionId", column=@Column(name="AudioQuestion_id", nullable=false) ), 
-        @AttributeOverride(name="audioQuestionQuestionDbId", column=@Column(name="AudioQuestion_QuestionDB_id", nullable=false, length=10) ), 
-        @AttributeOverride(name="audioQuestionSubTestId", column=@Column(name="AudioQuestion_SubTest_id", nullable=false, length=10) ) } )
+        @AttributeOverride(name="audioQuestionId", column=@Column(name="AudioQuestion_id", nullable=false, length=10) ), 
+        @AttributeOverride(name="audioQuestionSubTestDatabaseId", column=@Column(name="AudioQuestion_SubTestDatabase_id", nullable=false, length=10) ) } )
     public AudansquestionId getId() {
         return this.id;
     }
@@ -59,8 +58,7 @@ public class Audansquestion  implements java.io.Serializable {
 @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumns( { 
         @JoinColumn(name="AudioQuestion_id", referencedColumnName="id", nullable=false, insertable=false, updatable=false), 
-        @JoinColumn(name="AudioQuestion_QuestionDB_id", referencedColumnName="QuestionDB_id", nullable=false, insertable=false, updatable=false), 
-        @JoinColumn(name="AudioQuestion_SubTest_id", referencedColumnName="SubTest_id", nullable=false, insertable=false, updatable=false) } )
+        @JoinColumn(name="AudioQuestion_SubTestDatabase_id", referencedColumnName="SubTestDatabase_id", nullable=false, insertable=false, updatable=false) } )
     public Audioquestion getAudioquestion() {
         return this.audioquestion;
     }

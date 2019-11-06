@@ -1,5 +1,5 @@
 package com.cbtuser.entity;
-// Generated Nov 2, 2019 11:33:03 PM by Hibernate Tools 4.3.1
+// Generated Nov 6, 2019 10:33:04 PM by Hibernate Tools 4.3.1
 
 
 import javax.persistence.AttributeOverride;
@@ -47,8 +47,8 @@ public class Score  implements java.io.Serializable {
 
     
     @AttributeOverrides( {
-        @AttributeOverride(name="participantId", column=@Column(name="Participant_id", nullable=false, length=7) ), 
-        @AttributeOverride(name="subTestId", column=@Column(name="SubTest_id", nullable=false, length=10) ) } )
+        @AttributeOverride(name="participantId", column=@Column(name="Participant_id", nullable=false, length=8) ), 
+        @AttributeOverride(name="subTestId", column=@Column(name="SubTest_id", nullable=false, length=8) ) } )
     public ScoreId getId() {
         return this.id;
     }

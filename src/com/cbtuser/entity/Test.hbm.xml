@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Nov 2, 2019 11:33:04 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated Nov 6, 2019 10:33:05 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="com.cbtuser.entity.Test" table="test" catalog="computerbasedtest" optimistic-lock="version">
         <id name="id" type="string">
-            <column name="id" length="10" />
+            <column name="id" length="8" />
             <generator class="assigned" />
         </id>
-        <many-to-one name="questionmaker" class="com.cbtuser.entity.Questionmaker" fetch="select">
-            <column name="QuestionMaker_id" length="5" not-null="true" />
+        <many-to-one name="administrator" class="com.cbtuser.entity.Administrator" fetch="select">
+            <column name="Administrator_id" length="5" not-null="true" />
         </many-to-one>
         <property name="name" type="string">
             <column name="name" length="30" not-null="true" />
@@ -31,7 +31,7 @@
         </property>
         <set name="subtests" table="subtest" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="Test_id" length="10" not-null="true" />
+                <column name="Test_id" length="8" not-null="true" />
             </key>
             <one-to-many class="com.cbtuser.entity.Subtest" />
         </set>

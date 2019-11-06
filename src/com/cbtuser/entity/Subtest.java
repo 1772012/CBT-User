@@ -1,5 +1,5 @@
 package com.cbtuser.entity;
-// Generated Nov 2, 2019 11:33:03 PM by Hibernate Tools 4.3.1
+// Generated Nov 6, 2019 10:33:04 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -24,47 +24,52 @@ public class Subtest  implements java.io.Serializable {
 
 
      private String id;
+     private Subtestdatabase subtestdatabase;
      private Test test;
      private String name;
      private int amount;
-     private Set<Imagequestion> imagequestions = new HashSet<Imagequestion>(0);
-     private Set<Audioquestion> audioquestions = new HashSet<Audioquestion>(0);
-     private Set<Videoquestion> videoquestions = new HashSet<Videoquestion>(0);
-     private Set<Normalquestion> normalquestions = new HashSet<Normalquestion>(0);
      private Set<Score> scores = new HashSet<Score>(0);
 
     public Subtest() {
     }
 
 	
-    public Subtest(String id, Test test, String name, int amount) {
+    public Subtest(String id, Subtestdatabase subtestdatabase, Test test, String name, int amount) {
         this.id = id;
+        this.subtestdatabase = subtestdatabase;
         this.test = test;
         this.name = name;
         this.amount = amount;
     }
-    public Subtest(String id, Test test, String name, int amount, Set<Imagequestion> imagequestions, Set<Audioquestion> audioquestions, Set<Videoquestion> videoquestions, Set<Normalquestion> normalquestions, Set<Score> scores) {
+    public Subtest(String id, Subtestdatabase subtestdatabase, Test test, String name, int amount, Set<Score> scores) {
        this.id = id;
+       this.subtestdatabase = subtestdatabase;
        this.test = test;
        this.name = name;
        this.amount = amount;
-       this.imagequestions = imagequestions;
-       this.audioquestions = audioquestions;
-       this.videoquestions = videoquestions;
-       this.normalquestions = normalquestions;
        this.scores = scores;
     }
    
      @Id 
 
     
-    @Column(name="id", unique=true, nullable=false, length=10)
+    @Column(name="id", unique=true, nullable=false, length=8)
     public String getId() {
         return this.id;
     }
     
     public void setId(String id) {
         this.id = id;
+    }
+
+@ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="SubTestDatabase_id", nullable=false)
+    public Subtestdatabase getSubtestdatabase() {
+        return this.subtestdatabase;
+    }
+    
+    public void setSubtestdatabase(Subtestdatabase subtestdatabase) {
+        this.subtestdatabase = subtestdatabase;
     }
 
 @ManyToOne(fetch=FetchType.LAZY)
@@ -95,42 +100,6 @@ public class Subtest  implements java.io.Serializable {
     
     public void setAmount(int amount) {
         this.amount = amount;
-    }
-
-@OneToMany(fetch=FetchType.LAZY, mappedBy="subtest")
-    public Set<Imagequestion> getImagequestions() {
-        return this.imagequestions;
-    }
-    
-    public void setImagequestions(Set<Imagequestion> imagequestions) {
-        this.imagequestions = imagequestions;
-    }
-
-@OneToMany(fetch=FetchType.LAZY, mappedBy="subtest")
-    public Set<Audioquestion> getAudioquestions() {
-        return this.audioquestions;
-    }
-    
-    public void setAudioquestions(Set<Audioquestion> audioquestions) {
-        this.audioquestions = audioquestions;
-    }
-
-@OneToMany(fetch=FetchType.LAZY, mappedBy="subtest")
-    public Set<Videoquestion> getVideoquestions() {
-        return this.videoquestions;
-    }
-    
-    public void setVideoquestions(Set<Videoquestion> videoquestions) {
-        this.videoquestions = videoquestions;
-    }
-
-@OneToMany(fetch=FetchType.LAZY, mappedBy="subtest")
-    public Set<Normalquestion> getNormalquestions() {
-        return this.normalquestions;
-    }
-    
-    public void setNormalquestions(Set<Normalquestion> normalquestions) {
-        this.normalquestions = normalquestions;
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="subtest")

@@ -1,5 +1,5 @@
 package com.cbtuser.entity;
-// Generated Nov 2, 2019 11:33:03 PM by Hibernate Tools 4.3.1
+// Generated Nov 6, 2019 10:33:04 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -28,6 +28,7 @@ public class Administrator  implements java.io.Serializable {
      private String phoneNumber;
      private String email;
      private Set<Adminlog> adminlogs = new HashSet<Adminlog>(0);
+     private Set<Test> tests = new HashSet<Test>(0);
 
     public Administrator() {
     }
@@ -39,7 +40,7 @@ public class Administrator  implements java.io.Serializable {
         this.password = password;
         this.name = name;
     }
-    public Administrator(String id, String username, String password, String name, String phoneNumber, String email, Set<Adminlog> adminlogs) {
+    public Administrator(String id, String username, String password, String name, String phoneNumber, String email, Set<Adminlog> adminlogs, Set<Test> tests) {
        this.id = id;
        this.username = username;
        this.password = password;
@@ -47,6 +48,7 @@ public class Administrator  implements java.io.Serializable {
        this.phoneNumber = phoneNumber;
        this.email = email;
        this.adminlogs = adminlogs;
+       this.tests = tests;
     }
    
      @Id 
@@ -118,6 +120,15 @@ public class Administrator  implements java.io.Serializable {
     
     public void setAdminlogs(Set<Adminlog> adminlogs) {
         this.adminlogs = adminlogs;
+    }
+
+@OneToMany(fetch=FetchType.LAZY, mappedBy="administrator")
+    public Set<Test> getTests() {
+        return this.tests;
+    }
+    
+    public void setTests(Set<Test> tests) {
+        this.tests = tests;
     }
 
 

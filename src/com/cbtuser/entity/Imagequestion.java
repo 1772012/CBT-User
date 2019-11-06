@@ -1,5 +1,5 @@
 package com.cbtuser.entity;
-// Generated Nov 2, 2019 11:33:03 PM by Hibernate Tools 4.3.1
+// Generated Nov 6, 2019 10:33:04 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -28,8 +28,7 @@ public class Imagequestion  implements java.io.Serializable {
 
 
      private ImagequestionId id;
-     private Questiondb questiondb;
-     private Subtest subtest;
+     private Subtestdatabase subtestdatabase;
      private byte[] image;
      private String content;
      private Set<Imgansquestion> imgansquestions = new HashSet<Imgansquestion>(0);
@@ -38,17 +37,15 @@ public class Imagequestion  implements java.io.Serializable {
     }
 
 	
-    public Imagequestion(ImagequestionId id, Questiondb questiondb, Subtest subtest, byte[] image, String content) {
+    public Imagequestion(ImagequestionId id, Subtestdatabase subtestdatabase, byte[] image, String content) {
         this.id = id;
-        this.questiondb = questiondb;
-        this.subtest = subtest;
+        this.subtestdatabase = subtestdatabase;
         this.image = image;
         this.content = content;
     }
-    public Imagequestion(ImagequestionId id, Questiondb questiondb, Subtest subtest, byte[] image, String content, Set<Imgansquestion> imgansquestions) {
+    public Imagequestion(ImagequestionId id, Subtestdatabase subtestdatabase, byte[] image, String content, Set<Imgansquestion> imgansquestions) {
        this.id = id;
-       this.questiondb = questiondb;
-       this.subtest = subtest;
+       this.subtestdatabase = subtestdatabase;
        this.image = image;
        this.content = content;
        this.imgansquestions = imgansquestions;
@@ -58,9 +55,8 @@ public class Imagequestion  implements java.io.Serializable {
 
     
     @AttributeOverrides( {
-        @AttributeOverride(name="id", column=@Column(name="id", unique=true, nullable=false) ), 
-        @AttributeOverride(name="questionDbId", column=@Column(name="QuestionDB_id", nullable=false, length=10) ), 
-        @AttributeOverride(name="subTestId", column=@Column(name="SubTest_id", nullable=false, length=10) ) } )
+        @AttributeOverride(name="id", column=@Column(name="id", unique=true, nullable=false, length=10) ), 
+        @AttributeOverride(name="subTestDatabaseId", column=@Column(name="SubTestDatabase_id", nullable=false, length=8) ) } )
     public ImagequestionId getId() {
         return this.id;
     }
@@ -70,23 +66,13 @@ public class Imagequestion  implements java.io.Serializable {
     }
 
 @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="QuestionDB_id", nullable=false, insertable=false, updatable=false)
-    public Questiondb getQuestiondb() {
-        return this.questiondb;
+    @JoinColumn(name="SubTestDatabase_id", nullable=false, insertable=false, updatable=false)
+    public Subtestdatabase getSubtestdatabase() {
+        return this.subtestdatabase;
     }
     
-    public void setQuestiondb(Questiondb questiondb) {
-        this.questiondb = questiondb;
-    }
-
-@ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="SubTest_id", nullable=false, insertable=false, updatable=false)
-    public Subtest getSubtest() {
-        return this.subtest;
-    }
-    
-    public void setSubtest(Subtest subtest) {
-        this.subtest = subtest;
+    public void setSubtestdatabase(Subtestdatabase subtestdatabase) {
+        this.subtestdatabase = subtestdatabase;
     }
 
     

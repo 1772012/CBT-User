@@ -1,5 +1,5 @@
 package com.cbtuser.entity;
-// Generated Nov 2, 2019 11:33:03 PM by Hibernate Tools 4.3.1
+// Generated Nov 6, 2019 10:33:04 PM by Hibernate Tools 4.3.1
 
 
 import javax.persistence.Column;
@@ -25,7 +25,7 @@ public class ScoreId  implements java.io.Serializable {
    
 
 
-    @Column(name="Participant_id", nullable=false, length=7)
+    @Column(name="Participant_id", nullable=false, length=8)
     public String getParticipantId() {
         return this.participantId;
     }
@@ -35,7 +35,7 @@ public class ScoreId  implements java.io.Serializable {
     }
 
 
-    @Column(name="SubTest_id", nullable=false, length=10)
+    @Column(name="SubTest_id", nullable=false, length=8)
     public String getSubTestId() {
         return this.subTestId;
     }

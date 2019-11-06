@@ -1,5 +1,5 @@
 package com.cbtuser.entity;
-// Generated Nov 2, 2019 11:33:03 PM by Hibernate Tools 4.3.1
+// Generated Nov 6, 2019 10:33:04 PM by Hibernate Tools 4.3.1
 
 
 import javax.persistence.Column;
@@ -13,18 +13,16 @@ public class VidansquestionId  implements java.io.Serializable {
 
 
      private int id;
-     private int videoQuestionId;
-     private String videoQuestionQuestionDbId;
-     private String videoQuestionSubTestId;
+     private String videoQuestionId;
+     private String videoQuestionSubTestDatabaseId;
 
     public VidansquestionId() {
     }
 
-    public VidansquestionId(int id, int videoQuestionId, String videoQuestionQuestionDbId, String videoQuestionSubTestId) {
+    public VidansquestionId(int id, String videoQuestionId, String videoQuestionSubTestDatabaseId) {
        this.id = id;
        this.videoQuestionId = videoQuestionId;
-       this.videoQuestionQuestionDbId = videoQuestionQuestionDbId;
-       this.videoQuestionSubTestId = videoQuestionSubTestId;
+       this.videoQuestionSubTestDatabaseId = videoQuestionSubTestDatabaseId;
     }
    
 
@@ -39,33 +37,23 @@ public class VidansquestionId  implements java.io.Serializable {
     }
 
 
-    @Column(name="VideoQuestion_id", nullable=false)
-    public int getVideoQuestionId() {
+    @Column(name="VideoQuestion_id", nullable=false, length=10)
+    public String getVideoQuestionId() {
         return this.videoQuestionId;
     }
     
-    public void setVideoQuestionId(int videoQuestionId) {
+    public void setVideoQuestionId(String videoQuestionId) {
         this.videoQuestionId = videoQuestionId;
     }
 
 
-    @Column(name="VideoQuestion_QuestionDB_id", nullable=false, length=10)
-    public String getVideoQuestionQuestionDbId() {
-        return this.videoQuestionQuestionDbId;
+    @Column(name="VideoQuestion_SubTestDatabase_id", nullable=false, length=10)
+    public String getVideoQuestionSubTestDatabaseId() {
+        return this.videoQuestionSubTestDatabaseId;
     }
     
-    public void setVideoQuestionQuestionDbId(String videoQuestionQuestionDbId) {
-        this.videoQuestionQuestionDbId = videoQuestionQuestionDbId;
-    }
-
-
-    @Column(name="VideoQuestion_SubTest_id", nullable=false, length=10)
-    public String getVideoQuestionSubTestId() {
-        return this.videoQuestionSubTestId;
-    }
-    
-    public void setVideoQuestionSubTestId(String videoQuestionSubTestId) {
-        this.videoQuestionSubTestId = videoQuestionSubTestId;
+    public void setVideoQuestionSubTestDatabaseId(String videoQuestionSubTestDatabaseId) {
+        this.videoQuestionSubTestDatabaseId = videoQuestionSubTestDatabaseId;
     }
 
 
@@ -76,18 +64,16 @@ public class VidansquestionId  implements java.io.Serializable {
 		 VidansquestionId castOther = ( VidansquestionId ) other; 
          
 		 return (this.getId()==castOther.getId())
- && (this.getVideoQuestionId()==castOther.getVideoQuestionId())
- && ( (this.getVideoQuestionQuestionDbId()==castOther.getVideoQuestionQuestionDbId()) || ( this.getVideoQuestionQuestionDbId()!=null && castOther.getVideoQuestionQuestionDbId()!=null && this.getVideoQuestionQuestionDbId().equals(castOther.getVideoQuestionQuestionDbId()) ) )
- && ( (this.getVideoQuestionSubTestId()==castOther.getVideoQuestionSubTestId()) || ( this.getVideoQuestionSubTestId()!=null && castOther.getVideoQuestionSubTestId()!=null && this.getVideoQuestionSubTestId().equals(castOther.getVideoQuestionSubTestId()) ) );
+ && ( (this.getVideoQuestionId()==castOther.getVideoQuestionId()) || ( this.getVideoQuestionId()!=null && castOther.getVideoQuestionId()!=null && this.getVideoQuestionId().equals(castOther.getVideoQuestionId()) ) )
+ && ( (this.getVideoQuestionSubTestDatabaseId()==castOther.getVideoQuestionSubTestDatabaseId()) || ( this.getVideoQuestionSubTestDatabaseId()!=null && castOther.getVideoQuestionSubTestDatabaseId()!=null && this.getVideoQuestionSubTestDatabaseId().equals(castOther.getVideoQuestionSubTestDatabaseId()) ) );
    }
    
    public int hashCode() {
          int result = 17;
          
          result = 37 * result + this.getId();
-         result = 37 * result + this.getVideoQuestionId();
-         result = 37 * result + ( getVideoQuestionQuestionDbId() == null ? 0 : this.getVideoQuestionQuestionDbId().hashCode() );
-         result = 37 * result + ( getVideoQuestionSubTestId() == null ? 0 : this.getVideoQuestionSubTestId().hashCode() );
+         result = 37 * result + ( getVideoQuestionId() == null ? 0 : this.getVideoQuestionId().hashCode() );
+         result = 37 * result + ( getVideoQuestionSubTestDatabaseId() == null ? 0 : this.getVideoQuestionSubTestDatabaseId().hashCode() );
          return result;
    }   
 

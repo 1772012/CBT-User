@@ -1,5 +1,5 @@
 package com.cbtuser.entity;
-// Generated Nov 2, 2019 11:33:03 PM by Hibernate Tools 4.3.1
+// Generated Nov 6, 2019 10:33:04 PM by Hibernate Tools 4.3.1
 
 
 import javax.persistence.Column;
@@ -13,18 +13,16 @@ public class AudansquestionId  implements java.io.Serializable {
 
 
      private int id;
-     private int audioQuestionId;
-     private String audioQuestionQuestionDbId;
-     private String audioQuestionSubTestId;
+     private String audioQuestionId;
+     private String audioQuestionSubTestDatabaseId;
 
     public AudansquestionId() {
     }
 
-    public AudansquestionId(int id, int audioQuestionId, String audioQuestionQuestionDbId, String audioQuestionSubTestId) {
+    public AudansquestionId(int id, String audioQuestionId, String audioQuestionSubTestDatabaseId) {
        this.id = id;
        this.audioQuestionId = audioQuestionId;
-       this.audioQuestionQuestionDbId = audioQuestionQuestionDbId;
-       this.audioQuestionSubTestId = audioQuestionSubTestId;
+       this.audioQuestionSubTestDatabaseId = audioQuestionSubTestDatabaseId;
     }
    
 
@@ -39,33 +37,23 @@ public class AudansquestionId  implements java.io.Serializable {
     }
 
 
-    @Column(name="AudioQuestion_id", nullable=false)
-    public int getAudioQuestionId() {
+    @Column(name="AudioQuestion_id", nullable=false, length=10)
+    public String getAudioQuestionId() {
         return this.audioQuestionId;
     }
     
-    public void setAudioQuestionId(int audioQuestionId) {
+    public void setAudioQuestionId(String audioQuestionId) {
         this.audioQuestionId = audioQuestionId;
     }
 
 
-    @Column(name="AudioQuestion_QuestionDB_id", nullable=false, length=10)
-    public String getAudioQuestionQuestionDbId() {
-        return this.audioQuestionQuestionDbId;
+    @Column(name="AudioQuestion_SubTestDatabase_id", nullable=false, length=10)
+    public String getAudioQuestionSubTestDatabaseId() {
+        return this.audioQuestionSubTestDatabaseId;
     }
     
-    public void setAudioQuestionQuestionDbId(String audioQuestionQuestionDbId) {
-        this.audioQuestionQuestionDbId = audioQuestionQuestionDbId;
-    }
-
-
-    @Column(name="AudioQuestion_SubTest_id", nullable=false, length=10)
-    public String getAudioQuestionSubTestId() {
-        return this.audioQuestionSubTestId;
-    }
-    
-    public void setAudioQuestionSubTestId(String audioQuestionSubTestId) {
-        this.audioQuestionSubTestId = audioQuestionSubTestId;
+    public void setAudioQuestionSubTestDatabaseId(String audioQuestionSubTestDatabaseId) {
+        this.audioQuestionSubTestDatabaseId = audioQuestionSubTestDatabaseId;
     }
 
 
@@ -76,18 +64,16 @@ public class AudansquestionId  implements java.io.Serializable {
 		 AudansquestionId castOther = ( AudansquestionId ) other; 
          
 		 return (this.getId()==castOther.getId())
- && (this.getAudioQuestionId()==castOther.getAudioQuestionId())
- && ( (this.getAudioQuestionQuestionDbId()==castOther.getAudioQuestionQuestionDbId()) || ( this.getAudioQuestionQuestionDbId()!=null && castOther.getAudioQuestionQuestionDbId()!=null && this.getAudioQuestionQuestionDbId().equals(castOther.getAudioQuestionQuestionDbId()) ) )
- && ( (this.getAudioQuestionSubTestId()==castOther.getAudioQuestionSubTestId()) || ( this.getAudioQuestionSubTestId()!=null && castOther.getAudioQuestionSubTestId()!=null && this.getAudioQuestionSubTestId().equals(castOther.getAudioQuestionSubTestId()) ) );
+ && ( (this.getAudioQuestionId()==castOther.getAudioQuestionId()) || ( this.getAudioQuestionId()!=null && castOther.getAudioQuestionId()!=null && this.getAudioQuestionId().equals(castOther.getAudioQuestionId()) ) )
+ && ( (this.getAudioQuestionSubTestDatabaseId()==castOther.getAudioQuestionSubTestDatabaseId()) || ( this.getAudioQuestionSubTestDatabaseId()!=null && castOther.getAudioQuestionSubTestDatabaseId()!=null && this.getAudioQuestionSubTestDatabaseId().equals(castOther.getAudioQuestionSubTestDatabaseId()) ) );
    }
    
    public int hashCode() {
          int result = 17;
          
          result = 37 * result + this.getId();
-         result = 37 * result + this.getAudioQuestionId();
-         result = 37 * result + ( getAudioQuestionQuestionDbId() == null ? 0 : this.getAudioQuestionQuestionDbId().hashCode() );
-         result = 37 * result + ( getAudioQuestionSubTestId() == null ? 0 : this.getAudioQuestionSubTestId().hashCode() );
+         result = 37 * result + ( getAudioQuestionId() == null ? 0 : this.getAudioQuestionId().hashCode() );
+         result = 37 * result + ( getAudioQuestionSubTestDatabaseId() == null ? 0 : this.getAudioQuestionSubTestDatabaseId().hashCode() );
          return result;
    }   
 

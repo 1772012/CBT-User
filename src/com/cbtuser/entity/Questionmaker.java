@@ -1,5 +1,5 @@
 package com.cbtuser.entity;
-// Generated Nov 2, 2019 11:33:03 PM by Hibernate Tools 4.3.1
+// Generated Nov 6, 2019 10:33:04 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -27,7 +27,7 @@ public class Questionmaker  implements java.io.Serializable {
      private String name;
      private String phoneNumber;
      private String email;
-     private Set<Test> tests = new HashSet<Test>(0);
+     private Set<Subtestdatabase> subtestdatabases = new HashSet<Subtestdatabase>(0);
      private Set<Questionmakerlog> questionmakerlogs = new HashSet<Questionmakerlog>(0);
 
     public Questionmaker() {
@@ -40,14 +40,14 @@ public class Questionmaker  implements java.io.Serializable {
         this.password = password;
         this.name = name;
     }
-    public Questionmaker(String id, String username, String password, String name, String phoneNumber, String email, Set<Test> tests, Set<Questionmakerlog> questionmakerlogs) {
+    public Questionmaker(String id, String username, String password, String name, String phoneNumber, String email, Set<Subtestdatabase> subtestdatabases, Set<Questionmakerlog> questionmakerlogs) {
        this.id = id;
        this.username = username;
        this.password = password;
        this.name = name;
        this.phoneNumber = phoneNumber;
        this.email = email;
-       this.tests = tests;
+       this.subtestdatabases = subtestdatabases;
        this.questionmakerlogs = questionmakerlogs;
     }
    
@@ -114,12 +114,12 @@ public class Questionmaker  implements java.io.Serializable {
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="questionmaker")
-    public Set<Test> getTests() {
-        return this.tests;
+    public Set<Subtestdatabase> getSubtestdatabases() {
+        return this.subtestdatabases;
     }
     
-    public void setTests(Set<Test> tests) {
-        this.tests = tests;
+    public void setSubtestdatabases(Set<Subtestdatabase> subtestdatabases) {
+        this.subtestdatabases = subtestdatabases;
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="questionmaker")

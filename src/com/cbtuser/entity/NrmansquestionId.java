@@ -1,5 +1,5 @@
 package com.cbtuser.entity;
-// Generated Nov 2, 2019 11:33:03 PM by Hibernate Tools 4.3.1
+// Generated Nov 6, 2019 10:33:04 PM by Hibernate Tools 4.3.1
 
 
 import javax.persistence.Column;
@@ -13,18 +13,16 @@ public class NrmansquestionId  implements java.io.Serializable {
 
 
      private int id;
-     private int normalQuestionId;
-     private String normalQuestionQuestionDbId;
-     private String normalQuestionSubTestId;
+     private String normalQuestionId;
+     private String normalQuestionSubTestDatabaseId;
 
     public NrmansquestionId() {
     }
 
-    public NrmansquestionId(int id, int normalQuestionId, String normalQuestionQuestionDbId, String normalQuestionSubTestId) {
+    public NrmansquestionId(int id, String normalQuestionId, String normalQuestionSubTestDatabaseId) {
        this.id = id;
        this.normalQuestionId = normalQuestionId;
-       this.normalQuestionQuestionDbId = normalQuestionQuestionDbId;
-       this.normalQuestionSubTestId = normalQuestionSubTestId;
+       this.normalQuestionSubTestDatabaseId = normalQuestionSubTestDatabaseId;
     }
    
 
@@ -39,33 +37,23 @@ public class NrmansquestionId  implements java.io.Serializable {
     }
 
 
-    @Column(name="NormalQuestion_id", nullable=false)
-    public int getNormalQuestionId() {
+    @Column(name="NormalQuestion_id", nullable=false, length=10)
+    public String getNormalQuestionId() {
         return this.normalQuestionId;
     }
     
-    public void setNormalQuestionId(int normalQuestionId) {
+    public void setNormalQuestionId(String normalQuestionId) {
         this.normalQuestionId = normalQuestionId;
     }
 
 
-    @Column(name="NormalQuestion_QuestionDB_id", nullable=false, length=10)
-    public String getNormalQuestionQuestionDbId() {
-        return this.normalQuestionQuestionDbId;
+    @Column(name="NormalQuestion_SubTestDatabase_id", nullable=false, length=8)
+    public String getNormalQuestionSubTestDatabaseId() {
+        return this.normalQuestionSubTestDatabaseId;
     }
     
-    public void setNormalQuestionQuestionDbId(String normalQuestionQuestionDbId) {
-        this.normalQuestionQuestionDbId = normalQuestionQuestionDbId;
-    }
-
-
-    @Column(name="NormalQuestion_SubTest_id", nullable=false, length=10)
-    public String getNormalQuestionSubTestId() {
-        return this.normalQuestionSubTestId;
-    }
-    
-    public void setNormalQuestionSubTestId(String normalQuestionSubTestId) {
-        this.normalQuestionSubTestId = normalQuestionSubTestId;
+    public void setNormalQuestionSubTestDatabaseId(String normalQuestionSubTestDatabaseId) {
+        this.normalQuestionSubTestDatabaseId = normalQuestionSubTestDatabaseId;
     }
 
 
@@ -76,18 +64,16 @@ public class NrmansquestionId  implements java.io.Serializable {
 		 NrmansquestionId castOther = ( NrmansquestionId ) other; 
          
 		 return (this.getId()==castOther.getId())
- && (this.getNormalQuestionId()==castOther.getNormalQuestionId())
- && ( (this.getNormalQuestionQuestionDbId()==castOther.getNormalQuestionQuestionDbId()) || ( this.getNormalQuestionQuestionDbId()!=null && castOther.getNormalQuestionQuestionDbId()!=null && this.getNormalQuestionQuestionDbId().equals(castOther.getNormalQuestionQuestionDbId()) ) )
- && ( (this.getNormalQuestionSubTestId()==castOther.getNormalQuestionSubTestId()) || ( this.getNormalQuestionSubTestId()!=null && castOther.getNormalQuestionSubTestId()!=null && this.getNormalQuestionSubTestId().equals(castOther.getNormalQuestionSubTestId()) ) );
+ && ( (this.getNormalQuestionId()==castOther.getNormalQuestionId()) || ( this.getNormalQuestionId()!=null && castOther.getNormalQuestionId()!=null && this.getNormalQuestionId().equals(castOther.getNormalQuestionId()) ) )
+ && ( (this.getNormalQuestionSubTestDatabaseId()==castOther.getNormalQuestionSubTestDatabaseId()) || ( this.getNormalQuestionSubTestDatabaseId()!=null && castOther.getNormalQuestionSubTestDatabaseId()!=null && this.getNormalQuestionSubTestDatabaseId().equals(castOther.getNormalQuestionSubTestDatabaseId()) ) );
    }
    
    public int hashCode() {
          int result = 17;
          
          result = 37 * result + this.getId();
-         result = 37 * result + this.getNormalQuestionId();
-         result = 37 * result + ( getNormalQuestionQuestionDbId() == null ? 0 : this.getNormalQuestionQuestionDbId().hashCode() );
-         result = 37 * result + ( getNormalQuestionSubTestId() == null ? 0 : this.getNormalQuestionSubTestId().hashCode() );
+         result = 37 * result + ( getNormalQuestionId() == null ? 0 : this.getNormalQuestionId().hashCode() );
+         result = 37 * result + ( getNormalQuestionSubTestDatabaseId() == null ? 0 : this.getNormalQuestionSubTestDatabaseId().hashCode() );
          return result;
    }   
 

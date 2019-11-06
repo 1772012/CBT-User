@@ -1,5 +1,5 @@
 package com.cbtuser.entity;
-// Generated Nov 2, 2019 11:33:03 PM by Hibernate Tools 4.3.1
+// Generated Nov 6, 2019 10:33:04 PM by Hibernate Tools 4.3.1
 
 
 import javax.persistence.AttributeOverride;
@@ -45,9 +45,8 @@ public class Nrmansquestion  implements java.io.Serializable {
     
     @AttributeOverrides( {
         @AttributeOverride(name="id", column=@Column(name="id", unique=true, nullable=false) ), 
-        @AttributeOverride(name="normalQuestionId", column=@Column(name="NormalQuestion_id", nullable=false) ), 
-        @AttributeOverride(name="normalQuestionQuestionDbId", column=@Column(name="NormalQuestion_QuestionDB_id", nullable=false, length=10) ), 
-        @AttributeOverride(name="normalQuestionSubTestId", column=@Column(name="NormalQuestion_SubTest_id", nullable=false, length=10) ) } )
+        @AttributeOverride(name="normalQuestionId", column=@Column(name="NormalQuestion_id", nullable=false, length=10) ), 
+        @AttributeOverride(name="normalQuestionSubTestDatabaseId", column=@Column(name="NormalQuestion_SubTestDatabase_id", nullable=false, length=8) ) } )
     public NrmansquestionId getId() {
         return this.id;
     }
@@ -59,8 +58,7 @@ public class Nrmansquestion  implements java.io.Serializable {
 @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumns( { 
         @JoinColumn(name="NormalQuestion_id", referencedColumnName="id", nullable=false, insertable=false, updatable=false), 
-        @JoinColumn(name="NormalQuestion_QuestionDB_id", referencedColumnName="QuestionDB_id", nullable=false, insertable=false, updatable=false), 
-        @JoinColumn(name="NormalQuestion_SubTest_id", referencedColumnName="SubTest_id", nullable=false, insertable=false, updatable=false) } )
+        @JoinColumn(name="NormalQuestion_SubTestDatabase_id", referencedColumnName="SubTestDatabase_id", nullable=false, insertable=false, updatable=false) } )
     public Normalquestion getNormalquestion() {
         return this.normalquestion;
     }

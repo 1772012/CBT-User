@@ -1,27 +1,23 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Nov 2, 2019 11:33:04 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated Nov 6, 2019 10:33:05 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="com.cbtuser.entity.Imgansquestion" table="imgansquestion" catalog="computerbasedtest" optimistic-lock="version">
         <composite-id name="id" class="com.cbtuser.entity.ImgansquestionId">
             <key-property name="id" type="int">
                 <column name="id" />
             </key-property>
-            <key-property name="imageQuestionId" type="int">
-                <column name="ImageQuestion_id" />
+            <key-property name="imageQuestionId" type="string">
+                <column name="ImageQuestion_id" length="10" />
             </key-property>
-            <key-property name="imageQuestionQuestionDbId" type="string">
-                <column name="ImageQuestion_QuestionDB_id" length="10" />
-            </key-property>
-            <key-property name="imageQuestionSubTestId" type="string">
-                <column name="ImageQuestion_SubTest_id" length="10" />
+            <key-property name="imageQuestionSubTestDatabaseId" type="string">
+                <column name="ImageQuestion_SubTestDatabase_id" length="8" />
             </key-property>
         </composite-id>
         <many-to-one name="imagequestion" class="com.cbtuser.entity.Imagequestion" update="false" insert="false" fetch="select">
-            <column name="ImageQuestion_id" not-null="true" />
-            <column name="ImageQuestion_QuestionDB_id" length="10" not-null="true" />
-            <column name="ImageQuestion_SubTest_id" length="10" not-null="true" />
+            <column name="ImageQuestion_id" length="10" not-null="true" />
+            <column name="ImageQuestion_SubTestDatabase_id" length="8" not-null="true" />
         </many-to-one>
         <property name="trueAnswer" type="string">
             <column name="true_answer" length="45" not-null="true" />

@@ -1,25 +1,19 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Nov 2, 2019 11:33:04 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated Nov 6, 2019 10:33:05 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="com.cbtuser.entity.Videoquestion" table="videoquestion" catalog="computerbasedtest" optimistic-lock="version">
         <composite-id name="id" class="com.cbtuser.entity.VideoquestionId">
-            <key-property name="id" type="int">
-                <column name="id" />
+            <key-property name="id" type="string">
+                <column name="id" length="10" />
             </key-property>
-            <key-property name="questionDbId" type="string">
-                <column name="QuestionDB_id" length="10" />
-            </key-property>
-            <key-property name="subTestId" type="string">
-                <column name="SubTest_id" length="10" />
+            <key-property name="subTestDatabaseId" type="string">
+                <column name="SubTestDatabase_id" length="8" />
             </key-property>
         </composite-id>
-        <many-to-one name="questiondb" class="com.cbtuser.entity.Questiondb" update="false" insert="false" fetch="select">
-            <column name="QuestionDB_id" length="10" not-null="true" />
-        </many-to-one>
-        <many-to-one name="subtest" class="com.cbtuser.entity.Subtest" update="false" insert="false" fetch="select">
-            <column name="SubTest_id" length="10" not-null="true" />
+        <many-to-one name="subtestdatabase" class="com.cbtuser.entity.Subtestdatabase" update="false" insert="false" fetch="select">
+            <column name="SubTestDatabase_id" length="8" not-null="true" />
         </many-to-one>
         <property name="video" type="binary">
             <column name="video" not-null="true" />
@@ -29,9 +23,8 @@
         </property>
         <set name="vidansquestions" table="vidansquestion" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="VideoQuestion_id" not-null="true" />
-                <column name="VideoQuestion_QuestionDB_id" length="10" not-null="true" />
-                <column name="VideoQuestion_SubTest_id" length="10" not-null="true" />
+                <column name="VideoQuestion_id" length="10" not-null="true" />
+                <column name="VideoQuestion_SubTestDatabase_id" length="10" not-null="true" />
             </key>
             <one-to-many class="com.cbtuser.entity.Vidansquestion" />
         </set>

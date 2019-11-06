@@ -1,5 +1,5 @@
 package com.cbtuser.entity;
-// Generated Nov 2, 2019 11:33:03 PM by Hibernate Tools 4.3.1
+// Generated Nov 6, 2019 10:33:04 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -27,7 +27,7 @@ public class Test  implements java.io.Serializable {
 
 
      private String id;
-     private Questionmaker questionmaker;
+     private Administrator administrator;
      private String name;
      private String token;
      private Date date;
@@ -40,9 +40,9 @@ public class Test  implements java.io.Serializable {
     }
 
 	
-    public Test(String id, Questionmaker questionmaker, String name, String token, Date date, Date startTime, Date finishTime, int time) {
+    public Test(String id, Administrator administrator, String name, String token, Date date, Date startTime, Date finishTime, int time) {
         this.id = id;
-        this.questionmaker = questionmaker;
+        this.administrator = administrator;
         this.name = name;
         this.token = token;
         this.date = date;
@@ -50,9 +50,9 @@ public class Test  implements java.io.Serializable {
         this.finishTime = finishTime;
         this.time = time;
     }
-    public Test(String id, Questionmaker questionmaker, String name, String token, Date date, Date startTime, Date finishTime, int time, Set<Subtest> subtests) {
+    public Test(String id, Administrator administrator, String name, String token, Date date, Date startTime, Date finishTime, int time, Set<Subtest> subtests) {
        this.id = id;
-       this.questionmaker = questionmaker;
+       this.administrator = administrator;
        this.name = name;
        this.token = token;
        this.date = date;
@@ -65,7 +65,7 @@ public class Test  implements java.io.Serializable {
      @Id 
 
     
-    @Column(name="id", unique=true, nullable=false, length=10)
+    @Column(name="id", unique=true, nullable=false, length=8)
     public String getId() {
         return this.id;
     }
@@ -75,13 +75,13 @@ public class Test  implements java.io.Serializable {
     }
 
 @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="QuestionMaker_id", nullable=false)
-    public Questionmaker getQuestionmaker() {
-        return this.questionmaker;
+    @JoinColumn(name="Administrator_id", nullable=false)
+    public Administrator getAdministrator() {
+        return this.administrator;
     }
     
-    public void setQuestionmaker(Questionmaker questionmaker) {
-        this.questionmaker = questionmaker;
+    public void setAdministrator(Administrator administrator) {
+        this.administrator = administrator;
     }
 
     
