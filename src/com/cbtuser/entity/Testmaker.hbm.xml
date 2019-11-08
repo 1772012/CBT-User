@@ -3,7 +3,7 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated Nov 8, 2019 8:58:58 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="com.cbtuser.entity.Administrator" table="administrator" catalog="computerbasedtest" optimistic-lock="version">
+    <class name="com.cbtuser.entity.Testmaker" table="testmaker" catalog="computerbasedtest" optimistic-lock="version">
         <id name="id" type="string">
             <column name="id" length="6" />
             <generator class="assigned" />
@@ -26,11 +26,17 @@
         <property name="email" type="string">
             <column name="email" length="50" />
         </property>
-        <set name="adminlogs" table="adminlog" inverse="true" lazy="true" fetch="select">
+        <set name="tests" table="test" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="Administrator_id" length="6" not-null="true" />
+                <column name="TestMaker_id" length="6" not-null="true" />
             </key>
-            <one-to-many class="com.cbtuser.entity.Adminlog" />
+            <one-to-many class="com.cbtuser.entity.Test" />
+        </set>
+        <set name="testmakerlogs" table="testmakerlog" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="TestMaker_id" length="6" not-null="true" />
+            </key>
+            <one-to-many class="com.cbtuser.entity.Testmakerlog" />
         </set>
     </class>
 </hibernate-mapping>

@@ -1,5 +1,5 @@
 package com.cbtuser.entity;
-// Generated Nov 6, 2019 10:33:04 PM by Hibernate Tools 4.3.1
+// Generated Nov 8, 2019 8:58:55 AM by Hibernate Tools 4.3.1
 
 
 import javax.persistence.Column;
@@ -27,7 +27,7 @@ public class ImgansquestionId  implements java.io.Serializable {
    
 
 
-    @Column(name="id", unique=true, nullable=false)
+    @Column(name="id", nullable=false)
     public int getId() {
         return this.id;
     }

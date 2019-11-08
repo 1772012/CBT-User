@@ -129,8 +129,8 @@ public class UserConfirmationViewController implements Initializable {
         this.mainController = mainController;
         loginParticipant = this.mainController.getLoginParticipant();
         lblNo.setText(loginParticipant.getId());
-        lblName.setText(loginParticipant.getName());
-        lblNameHead.setText(loginParticipant.getName());
+        lblName.setText(loginParticipant.getFirstName() + " " + loginParticipant.getLastName());
+        lblNameHead.setText(loginParticipant.getFirstName() + " " + loginParticipant.getLastName());
         lblNrpHead.setText(loginParticipant.getId());
         lblGen.setText(loginParticipant.getGender());
         lblInstitute.setText(String.valueOf(loginParticipant.getInstitute().getName()));

@@ -111,7 +111,7 @@ public class TestConfirmationViewController implements Initializable {
         this.mainController = mainController;
         loginParticipant = this.mainController.getLoginParticipant();
         test = this.mainController.getTest();
-        lblNameHead.setText(loginParticipant.getName());
+        lblNameHead.setText(loginParticipant.getFirstName() + " " + loginParticipant.getLastName());
         lblNrpHead.setText(loginParticipant.getId());
         lblTestname.setText(test.getName());
         lblTestDate.setText(String.valueOf(dateFormatter(String.valueOf(test.getDate()))));

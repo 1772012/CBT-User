@@ -100,7 +100,7 @@ public class QuestionContainerViewController implements Initializable {
     public void setMainController(TestConfirmationViewController mainController) {
         this.mainController = mainController;
         loginParticipant = this.mainController.getLoginParticipant();
-        lblNameHead.setText(loginParticipant.getName());
+        lblNameHead.setText(loginParticipant.getFirstName() + " " + loginParticipant.getLastName());
         lblNrpHead.setText(loginParticipant.getId());
     }
     

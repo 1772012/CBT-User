@@ -1,5 +1,5 @@
 package com.cbtuser.entity;
-// Generated Nov 6, 2019 10:33:04 PM by Hibernate Tools 4.3.1
+// Generated Nov 8, 2019 8:58:55 AM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -27,7 +27,7 @@ public class Test  implements java.io.Serializable {
 
 
      private String id;
-     private Administrator administrator;
+     private Testmaker testmaker;
      private String name;
      private String token;
      private Date date;
@@ -40,9 +40,9 @@ public class Test  implements java.io.Serializable {
     }
 
 	
-    public Test(String id, Administrator administrator, String name, String token, Date date, Date startTime, Date finishTime, int time) {
+    public Test(String id, Testmaker testmaker, String name, String token, Date date, Date startTime, Date finishTime, int time) {
         this.id = id;
-        this.administrator = administrator;
+        this.testmaker = testmaker;
         this.name = name;
         this.token = token;
         this.date = date;
@@ -50,9 +50,9 @@ public class Test  implements java.io.Serializable {
         this.finishTime = finishTime;
         this.time = time;
     }
-    public Test(String id, Administrator administrator, String name, String token, Date date, Date startTime, Date finishTime, int time, Set<Subtest> subtests) {
+    public Test(String id, Testmaker testmaker, String name, String token, Date date, Date startTime, Date finishTime, int time, Set<Subtest> subtests) {
        this.id = id;
-       this.administrator = administrator;
+       this.testmaker = testmaker;
        this.name = name;
        this.token = token;
        this.date = date;
@@ -75,13 +75,13 @@ public class Test  implements java.io.Serializable {
     }
 
 @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="Administrator_id", nullable=false)
-    public Administrator getAdministrator() {
-        return this.administrator;
+    @JoinColumn(name="TestMaker_id", nullable=false)
+    public Testmaker getTestmaker() {
+        return this.testmaker;
     }
     
-    public void setAdministrator(Administrator administrator) {
-        this.administrator = administrator;
+    public void setTestmaker(Testmaker testmaker) {
+        this.testmaker = testmaker;
     }
 
     

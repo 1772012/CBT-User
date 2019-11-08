@@ -45,25 +45,27 @@ Contributor(s):
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/computerbasedtest?zeroDateTimeBehavior=convertToNull</property>
     <property name="hibernate.connection.username">root</property>
-    <property name="hibernate.connection.isolation">2</property>
     <property name="hibernate.connection.autocommit">false</property>
+    <property name="hibernate.connection.isolation">2</property>
     <mapping resource="com/cbtuser/entity/Audioquestion.hbm.xml"/>
     <mapping resource="com/cbtuser/entity/Subtestdatabase.hbm.xml"/>
-    <mapping resource="com/cbtuser/entity/Participant.hbm.xml"/>
-    <mapping resource="com/cbtuser/entity/Test.hbm.xml"/>
-    <mapping resource="com/cbtuser/entity/Normalquestion.hbm.xml"/>
     <mapping resource="com/cbtuser/entity/Administrator.hbm.xml"/>
+    <mapping resource="com/cbtuser/entity/Normalquestion.hbm.xml"/>
     <mapping resource="com/cbtuser/entity/Videoquestion.hbm.xml"/>
     <mapping resource="com/cbtuser/entity/Questionmakerlog.hbm.xml"/>
-    <mapping resource="com/cbtuser/entity/Institute.hbm.xml"/>
     <mapping resource="com/cbtuser/entity/Imgansquestion.hbm.xml"/>
     <mapping resource="com/cbtuser/entity/Subtest.hbm.xml"/>
-    <mapping resource="com/cbtuser/entity/Audansquestion.hbm.xml"/>
-    <mapping resource="com/cbtuser/entity/Adminlog.hbm.xml"/>
-    <mapping resource="com/cbtuser/entity/Nrmansquestion.hbm.xml"/>
     <mapping resource="com/cbtuser/entity/Imagequestion.hbm.xml"/>
     <mapping resource="com/cbtuser/entity/Questionmaker.hbm.xml"/>
     <mapping resource="com/cbtuser/entity/Vidansquestion.hbm.xml"/>
     <mapping resource="com/cbtuser/entity/Score.hbm.xml"/>
+    <mapping resource="com/cbtuser/entity/Testmaker.hbm.xml"/>
+    <mapping resource="com/cbtuser/entity/Participant.hbm.xml"/>
+    <mapping resource="com/cbtuser/entity/Test.hbm.xml"/>
+    <mapping resource="com/cbtuser/entity/Institute.hbm.xml"/>
+    <mapping resource="com/cbtuser/entity/Testmakerlog.hbm.xml"/>
+    <mapping resource="com/cbtuser/entity/Audansquestion.hbm.xml"/>
+    <mapping resource="com/cbtuser/entity/Adminlog.hbm.xml"/>
+    <mapping resource="com/cbtuser/entity/Nrmansquestion.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

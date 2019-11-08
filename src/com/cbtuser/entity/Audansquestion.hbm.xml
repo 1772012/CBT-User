@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Nov 6, 2019 10:33:05 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated Nov 8, 2019 8:58:58 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="com.cbtuser.entity.Audansquestion" table="audansquestion" catalog="computerbasedtest" optimistic-lock="version">
         <composite-id name="id" class="com.cbtuser.entity.AudansquestionId">

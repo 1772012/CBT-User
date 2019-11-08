@@ -1,5 +1,5 @@
 package com.cbtuser.entity;
-// Generated Nov 6, 2019 10:33:04 PM by Hibernate Tools 4.3.1
+// Generated Nov 8, 2019 8:58:55 AM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -24,7 +24,8 @@ public class Questionmaker  implements java.io.Serializable {
      private String id;
      private String username;
      private String password;
-     private String name;
+     private String firstName;
+     private String lastName;
      private String phoneNumber;
      private String email;
      private Set<Subtestdatabase> subtestdatabases = new HashSet<Subtestdatabase>(0);
@@ -34,17 +35,18 @@ public class Questionmaker  implements java.io.Serializable {
     }
 
 	
-    public Questionmaker(String id, String username, String password, String name) {
+    public Questionmaker(String id, String username, String password, String firstName) {
         this.id = id;
         this.username = username;
         this.password = password;
-        this.name = name;
+        this.firstName = firstName;
     }
-    public Questionmaker(String id, String username, String password, String name, String phoneNumber, String email, Set<Subtestdatabase> subtestdatabases, Set<Questionmakerlog> questionmakerlogs) {
+    public Questionmaker(String id, String username, String password, String firstName, String lastName, String phoneNumber, String email, Set<Subtestdatabase> subtestdatabases, Set<Questionmakerlog> questionmakerlogs) {
        this.id = id;
        this.username = username;
        this.password = password;
-       this.name = name;
+       this.firstName = firstName;
+       this.lastName = lastName;
        this.phoneNumber = phoneNumber;
        this.email = email;
        this.subtestdatabases = subtestdatabases;
@@ -54,7 +56,7 @@ public class Questionmaker  implements java.io.Serializable {
      @Id 
 
     
-    @Column(name="id", unique=true, nullable=false, length=5)
+    @Column(name="id", unique=true, nullable=false, length=6)
     public String getId() {
         return this.id;
     }
@@ -64,7 +66,7 @@ public class Questionmaker  implements java.io.Serializable {
     }
 
     
-    @Column(name="username", nullable=false, length=24)
+    @Column(name="username", nullable=false, length=30)
     public String getUsername() {
         return this.username;
     }
@@ -74,7 +76,7 @@ public class Questionmaker  implements java.io.Serializable {
     }
 
     
-    @Column(name="password", nullable=false, length=24)
+    @Column(name="password", nullable=false, length=30)
     public String getPassword() {
         return this.password;
     }
@@ -84,13 +86,23 @@ public class Questionmaker  implements java.io.Serializable {
     }
 
     
-    @Column(name="name", nullable=false, length=50)
-    public String getName() {
-        return this.name;
+    @Column(name="first_name", nullable=false, length=75)
+    public String getFirstName() {
+        return this.firstName;
     }
     
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    
+    @Column(name="last_name", length=75)
+    public String getLastName() {
+        return this.lastName;
+    }
+    
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     
@@ -104,7 +116,7 @@ public class Questionmaker  implements java.io.Serializable {
     }
 
     
-    @Column(name="email", length=30)
+    @Column(name="email", length=50)
     public String getEmail() {
         return this.email;
     }

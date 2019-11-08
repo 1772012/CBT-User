@@ -1,5 +1,5 @@
 package com.cbtuser.entity;
-// Generated Nov 6, 2019 10:33:04 PM by Hibernate Tools 4.3.1
+// Generated Nov 8, 2019 8:58:55 AM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -27,7 +27,8 @@ public class Participant  implements java.io.Serializable {
      private Institute institute;
      private String username;
      private String password;
-     private String name;
+     private String firstName;
+     private String lastName;
      private String email;
      private String gender;
      private Set<Score> scores = new HashSet<Score>(0);
@@ -36,21 +37,20 @@ public class Participant  implements java.io.Serializable {
     }
 
 	
-    public Participant(String id, Institute institute, String username, String password, String name, String email, String gender) {
+    public Participant(String id, Institute institute, String username, String password, String firstName) {
         this.id = id;
         this.institute = institute;
         this.username = username;
         this.password = password;
-        this.name = name;
-        this.email = email;
-        this.gender = gender;
+        this.firstName = firstName;
     }
-    public Participant(String id, Institute institute, String username, String password, String name, String email, String gender, Set<Score> scores) {
+    public Participant(String id, Institute institute, String username, String password, String firstName, String lastName, String email, String gender, Set<Score> scores) {
        this.id = id;
        this.institute = institute;
        this.username = username;
        this.password = password;
-       this.name = name;
+       this.firstName = firstName;
+       this.lastName = lastName;
        this.email = email;
        this.gender = gender;
        this.scores = scores;
@@ -99,17 +99,27 @@ public class Participant  implements java.io.Serializable {
     }
 
     
-    @Column(name="name", nullable=false, length=50)
-    public String getName() {
-        return this.name;
+    @Column(name="first_name", nullable=false, length=50)
+    public String getFirstName() {
+        return this.firstName;
     }
     
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     
-    @Column(name="email", nullable=false, length=30)
+    @Column(name="last_name", length=50)
+    public String getLastName() {
+        return this.lastName;
+    }
+    
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    
+    @Column(name="email", length=30)
     public String getEmail() {
         return this.email;
     }
@@ -119,7 +129,7 @@ public class Participant  implements java.io.Serializable {
     }
 
     
-    @Column(name="gender", nullable=false, length=45)
+    @Column(name="gender", length=45)
     public String getGender() {
         return this.gender;
     }

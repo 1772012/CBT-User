@@ -1,5 +1,5 @@
 package com.cbtuser.entity;
-// Generated Nov 6, 2019 10:33:04 PM by Hibernate Tools 4.3.1
+// Generated Nov 8, 2019 8:58:55 AM by Hibernate Tools 4.3.1
 
 
 import javax.persistence.Column;
@@ -22,16 +22,14 @@ public class Questionmakerlog  implements java.io.Serializable {
 
      private String id;
      private Questionmaker questionmaker;
-     private String name;
      private String logname;
 
     public Questionmakerlog() {
     }
 
-    public Questionmakerlog(String id, Questionmaker questionmaker, String name, String logname) {
+    public Questionmakerlog(String id, Questionmaker questionmaker, String logname) {
        this.id = id;
        this.questionmaker = questionmaker;
-       this.name = name;
        this.logname = logname;
     }
    
@@ -55,16 +53,6 @@ public class Questionmakerlog  implements java.io.Serializable {
     
     public void setQuestionmaker(Questionmaker questionmaker) {
         this.questionmaker = questionmaker;
-    }
-
-    
-    @Column(name="name", nullable=false, length=30)
-    public String getName() {
-        return this.name;
-    }
-    
-    public void setName(String name) {
-        this.name = name;
     }
 
     

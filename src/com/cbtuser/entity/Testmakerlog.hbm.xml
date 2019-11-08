@@ -3,13 +3,13 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated Nov 8, 2019 8:58:58 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="com.cbtuser.entity.Adminlog" table="adminlog" catalog="computerbasedtest" optimistic-lock="version">
+    <class name="com.cbtuser.entity.Testmakerlog" table="testmakerlog" catalog="computerbasedtest" optimistic-lock="version">
         <id name="id" type="string">
             <column name="id" length="15" />
             <generator class="assigned" />
         </id>
-        <many-to-one name="administrator" class="com.cbtuser.entity.Administrator" fetch="select">
-            <column name="Administrator_id" length="6" not-null="true" />
+        <many-to-one name="testmaker" class="com.cbtuser.entity.Testmaker" fetch="select">
+            <column name="TestMaker_id" length="6" not-null="true" />
         </many-to-one>
         <property name="logname" type="string">
             <column name="logname" length="100" not-null="true" />
