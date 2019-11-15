@@ -1,5 +1,5 @@
 package com.cbtuser.entity;
-// Generated Nov 11, 2019 11:56:01 AM by Hibernate Tools 4.3.1
+// Generated Nov 15, 2019 8:43:31 AM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;

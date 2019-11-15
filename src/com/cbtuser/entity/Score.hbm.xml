@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Nov 11, 2019 11:56:02 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated Nov 15, 2019 8:43:32 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="com.cbtuser.entity.Score" table="score" catalog="computerbasedtest" optimistic-lock="version">
         <composite-id name="id" class="com.cbtuser.entity.ScoreId">
@@ -18,8 +18,8 @@
         <many-to-one name="subtest" class="com.cbtuser.entity.Subtest" update="false" insert="false" fetch="select">
             <column name="SubTest_id" length="8" not-null="true" />
         </many-to-one>
-        <property name="score" type="java.lang.Double">
-            <column name="score" precision="22" scale="0" />
+        <property name="score" type="double">
+            <column name="score" precision="22" scale="0" not-null="true" />
         </property>
     </class>
 </hibernate-mapping>

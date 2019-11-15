@@ -41,24 +41,17 @@ Contributor(s):
 -->
 <hibernate-reverse-engineering>
   <schema-selection match-catalog="computerbasedtest"/>
-  <table-filter match-name="test"/>
-  <table-filter match-name="nrmansquestion"/>
-  <table-filter match-name="subtestdatabase"/>
-  <table-filter match-name="institute"/>
-  <table-filter match-name="videoquestion"/>
-  <table-filter match-name="imgansquestion"/>
-  <table-filter match-name="administrator"/>
-  <table-filter match-name="questionmakerlog"/>
-  <table-filter match-name="audioquestion"/>
+  <table-filter match-name="user"/>
   <table-filter match-name="score"/>
-  <table-filter match-name="adminlog"/>
-  <table-filter match-name="imagequestion"/>
-  <table-filter match-name="testmaker"/>
-  <table-filter match-name="testmakerlog"/>
-  <table-filter match-name="vidansquestion"/>
-  <table-filter match-name="participant"/>
-  <table-filter match-name="audansquestion"/>
+  <table-filter match-name="institute"/>
+  <table-filter match-name="mediacontent"/>
+  <table-filter match-name="subtestdatabase"/>
+  <table-filter match-name="question"/>
+  <table-filter match-name="media"/>
   <table-filter match-name="subtest"/>
-  <table-filter match-name="questionmaker"/>
-  <table-filter match-name="normalquestion"/>
+  <table-filter match-name="userlog"/>
+  <table-filter match-name="participant"/>
+  <table-filter match-name="test"/>
+  <table-filter match-name="answer"/>
+  <table-filter match-name="role"/>
 </hibernate-reverse-engineering>

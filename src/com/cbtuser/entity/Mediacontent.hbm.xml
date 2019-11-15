@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 15, 2019 8:43:32 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.cbtuser.entity.Mediacontent" table="mediacontent" catalog="computerbasedtest" optimistic-lock="version">
+        <composite-id name="id" class="com.cbtuser.entity.MediacontentId">
+            <key-property name="questionId" type="string">
+                <column name="Question_id" length="12" />
+            </key-property>
+            <key-property name="questionSubTestDatabaseId" type="string">
+                <column name="Question_SubTestDatabase_id" length="8" />
+            </key-property>
+            <key-property name="mediaId" type="int">
+                <column name="Media_id" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="media" class="com.cbtuser.entity.Media" update="false" insert="false" fetch="select">
+            <column name="Media_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="question" class="com.cbtuser.entity.Question" update="false" insert="false" fetch="select">
+            <column name="Question_id" length="12" not-null="true" />
+            <column name="Question_SubTestDatabase_id" length="8" not-null="true" />
+        </many-to-one>
+        <property name="mediaAddress" type="string">
+            <column name="media_address" length="200" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
