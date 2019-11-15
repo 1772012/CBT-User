@@ -41,9 +41,6 @@ public class TestCheckViewController implements Initializable {
     
     public void setMainController(TestConfirmationViewController mainController) {
         this.mainController = mainController;
-        Test test = new Test();
-        test.setId(this.mainController.getTest().getId());   
-        this.mainController.getSubtest().addAll(this.mainController.getSubtestDaoImpl().getSpecificSubtest(test));
         tblSubtest.setItems(this.mainController.getSubtest());
         colSubTestName.setCellValueFactory(data -> {
             Subtest subtest = data.getValue();

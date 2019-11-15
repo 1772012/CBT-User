@@ -262,7 +262,7 @@
                         <Insets />
                      </GridPane.margin>
                      <children>
-                        <TextField fx:id="txtToken" prefHeight="25.0" prefWidth="250.0" promptText="Masukkan Token" stylesheets="@css/fxmlControlStyle.css">
+                        <TextField fx:id="txtToken" prefHeight="25.0" prefWidth="250.0" promptText="Masukkan Token" stylesheets="@css/fxmlControlStyle.css" text="token01">
                            <font>
                               <Font name="Calibri" size="18.0" />
                            </font>

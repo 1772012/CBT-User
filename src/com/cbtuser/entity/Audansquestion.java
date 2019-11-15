@@ -1,5 +1,5 @@
 package com.cbtuser.entity;
-// Generated Nov 8, 2019 8:58:55 AM by Hibernate Tools 4.3.1
+// Generated Nov 11, 2019 11:56:01 AM by Hibernate Tools 4.3.1
 
 
 import javax.persistence.AttributeOverride;
@@ -46,7 +46,7 @@ public class Audansquestion  implements java.io.Serializable {
     @AttributeOverrides( {
         @AttributeOverride(name="id", column=@Column(name="id", unique=true, nullable=false) ), 
         @AttributeOverride(name="audioQuestionId", column=@Column(name="AudioQuestion_id", nullable=false, length=10) ), 
-        @AttributeOverride(name="audioQuestionSubTestDatabaseId", column=@Column(name="AudioQuestion_SubTestDatabase_id", nullable=false, length=10) ) } )
+        @AttributeOverride(name="audioQuestionSubTestDatabaseId", column=@Column(name="AudioQuestion_SubTestDatabase_id", nullable=false, length=8) ) } )
     public AudansquestionId getId() {
         return this.id;
     }

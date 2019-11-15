@@ -102,6 +102,9 @@ public class TestConfirmationViewController implements Initializable {
         initFxmlControls();
         subtestDao = new SubtestDaoImpl();
         subtests = FXCollections.observableArrayList();
+//        Test test = new Test();
+//        test.setId(this.mainController.getTest().getId());   
+//        this.mainController.getSubtest().addAll(this.mainController.getSubtestDaoImpl().getSpecificSubtest(test));
     }
 
     /*
@@ -111,6 +114,7 @@ public class TestConfirmationViewController implements Initializable {
         this.mainController = mainController;
         loginParticipant = this.mainController.getLoginParticipant();
         test = this.mainController.getTest();
+        subtests.addAll(subtestDao.getSpecificSubtest(test));
         lblNameHead.setText(loginParticipant.getFirstName() + " " + loginParticipant.getLastName());
         lblNrpHead.setText(loginParticipant.getId());
         lblTestname.setText(test.getName());

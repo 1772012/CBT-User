@@ -1,10 +1,12 @@
 package com.cbtuser.dao;
 
 import com.cbtuser.entity.Normalquestion;
+import com.cbtuser.entity.Subtestdatabase;
 import com.cbtuser.util.HibernateUtil;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.FetchMode;
+import org.hibernate.Query;
 import org.hibernate.Session;
 
 /**
@@ -40,6 +42,15 @@ public class NormalquestionDaoImpl implements DaoService<Normalquestion>{
     @Override
     public Normalquestion getOneData(Normalquestion object) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    public List<Normalquestion> getSpecificData(Subtestdatabase object) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query query = session.createQuery("FROM Normalquestion WHERE subtestdatabase_id= :id");
+        query.setParameter("id", object.getId());
+        List<Normalquestion> result = query.list();
+        return result;
     }
     
 }

@@ -1,5 +1,6 @@
 package com.cbtuser;
 
+import com.cbtuser.util.HibernateUtil;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -29,5 +30,13 @@ public class MainApp extends Application {
         primaryStage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
         primaryStage.show();
     }
+
+    @Override
+    public void stop() throws Exception {
+        super.stop();
+        HibernateUtil.getSessionFactory().close();
+    }
+    
+    
 
 }

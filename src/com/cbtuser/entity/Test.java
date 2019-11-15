@@ -1,5 +1,5 @@
 package com.cbtuser.entity;
-// Generated Nov 8, 2019 8:58:55 AM by Hibernate Tools 4.3.1
+// Generated Nov 11, 2019 11:56:01 AM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;

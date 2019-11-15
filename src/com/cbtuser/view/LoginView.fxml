@@ -54,7 +54,7 @@
                <children>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
                      <children>
-                        <TextField fx:id="txtUsername" alignment="CENTER" prefHeight="34.0" prefWidth="350.0" promptText="Username" styleClass="text-field" stylesheets="@css/fxmlControlStyle.css">
+                        <TextField fx:id="txtUsername" alignment="CENTER" prefHeight="34.0" prefWidth="350.0" promptText="Username" styleClass="text-field" stylesheets="@css/fxmlControlStyle.css" text="ariyantosani">
                            <font>
                               <Font name="Calibri" size="18.0" />
                            </font>
@@ -63,7 +63,7 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="4">
                      <children>
-                        <PasswordField fx:id="txtPassword" alignment="CENTER" prefWidth="350.0" promptText="Password" stylesheets="@css/fxmlControlStyle.css">
+                        <PasswordField fx:id="txtPassword" alignment="CENTER" prefWidth="350.0" promptText="Password" stylesheets="@css/fxmlControlStyle.css" text="ariyantosani">
                            <font>
                               <Font name="Calibri" size="18.0" />
                            </font>

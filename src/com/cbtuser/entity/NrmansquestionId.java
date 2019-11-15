@@ -1,5 +1,5 @@
 package com.cbtuser.entity;
-// Generated Nov 8, 2019 8:58:55 AM by Hibernate Tools 4.3.1
+// Generated Nov 11, 2019 11:56:01 AM by Hibernate Tools 4.3.1
 
 
 import javax.persistence.Column;
@@ -12,14 +12,14 @@ import javax.persistence.Embeddable;
 public class NrmansquestionId  implements java.io.Serializable {
 
 
-     private int id;
+     private String id;
      private String normalQuestionId;
      private String normalQuestionSubTestDatabaseId;
 
     public NrmansquestionId() {
     }
 
-    public NrmansquestionId(int id, String normalQuestionId, String normalQuestionSubTestDatabaseId) {
+    public NrmansquestionId(String id, String normalQuestionId, String normalQuestionSubTestDatabaseId) {
        this.id = id;
        this.normalQuestionId = normalQuestionId;
        this.normalQuestionSubTestDatabaseId = normalQuestionSubTestDatabaseId;
@@ -27,12 +27,12 @@ public class NrmansquestionId  implements java.io.Serializable {
    
 
 
-    @Column(name="id", unique=true, nullable=false)
-    public int getId() {
+    @Column(name="id", unique=true, nullable=false, length=10)
+    public String getId() {
         return this.id;
     }
     
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -63,7 +63,7 @@ public class NrmansquestionId  implements java.io.Serializable {
 		 if ( !(other instanceof NrmansquestionId) ) return false;
 		 NrmansquestionId castOther = ( NrmansquestionId ) other; 
          
-		 return (this.getId()==castOther.getId())
+		 return ( (this.getId()==castOther.getId()) || ( this.getId()!=null && castOther.getId()!=null && this.getId().equals(castOther.getId()) ) )
  && ( (this.getNormalQuestionId()==castOther.getNormalQuestionId()) || ( this.getNormalQuestionId()!=null && castOther.getNormalQuestionId()!=null && this.getNormalQuestionId().equals(castOther.getNormalQuestionId()) ) )
  && ( (this.getNormalQuestionSubTestDatabaseId()==castOther.getNormalQuestionSubTestDatabaseId()) || ( this.getNormalQuestionSubTestDatabaseId()!=null && castOther.getNormalQuestionSubTestDatabaseId()!=null && this.getNormalQuestionSubTestDatabaseId().equals(castOther.getNormalQuestionSubTestDatabaseId()) ) );
    }
@@ -71,7 +71,7 @@ public class NrmansquestionId  implements java.io.Serializable {
    public int hashCode() {
          int result = 17;
          
-         result = 37 * result + this.getId();
+         result = 37 * result + ( getId() == null ? 0 : this.getId().hashCode() );
          result = 37 * result + ( getNormalQuestionId() == null ? 0 : this.getNormalQuestionId().hashCode() );
          result = 37 * result + ( getNormalQuestionSubTestDatabaseId() == null ? 0 : this.getNormalQuestionSubTestDatabaseId().hashCode() );
          return result;

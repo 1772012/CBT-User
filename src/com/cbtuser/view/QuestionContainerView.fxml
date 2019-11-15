@@ -149,6 +149,9 @@
       </VBox>
    </right>
    <center>
-      <ScrollPane fx:id="scpQuestion" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <ScrollPane fx:id="scpQuestion" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" pannable="true" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <content>
+            <VBox fx:id="vboxQuestion" fillWidth="false" prefHeight="200.0" prefWidth="1084.0" />
+         </content></ScrollPane>
    </center>
 </BorderPane>

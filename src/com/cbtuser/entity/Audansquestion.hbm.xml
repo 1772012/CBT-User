@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Nov 8, 2019 8:58:58 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated Nov 11, 2019 11:56:02 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="com.cbtuser.entity.Audansquestion" table="audansquestion" catalog="computerbasedtest" optimistic-lock="version">
         <composite-id name="id" class="com.cbtuser.entity.AudansquestionId">
@@ -12,12 +12,12 @@
                 <column name="AudioQuestion_id" length="10" />
             </key-property>
             <key-property name="audioQuestionSubTestDatabaseId" type="string">
-                <column name="AudioQuestion_SubTestDatabase_id" length="10" />
+                <column name="AudioQuestion_SubTestDatabase_id" length="8" />
             </key-property>
         </composite-id>
         <many-to-one name="audioquestion" class="com.cbtuser.entity.Audioquestion" update="false" insert="false" fetch="select">
             <column name="AudioQuestion_id" length="10" not-null="true" />
-            <column name="AudioQuestion_SubTestDatabase_id" length="10" not-null="true" />
+            <column name="AudioQuestion_SubTestDatabase_id" length="8" not-null="true" />
         </many-to-one>
         <property name="trueAnswer" type="byte">
             <column name="true_answer" not-null="true" />
