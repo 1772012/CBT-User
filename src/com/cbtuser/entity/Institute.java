@@ -1,5 +1,5 @@
 package com.cbtuser.entity;
-// Generated Nov 15, 2019 8:43:31 AM by Hibernate Tools 4.3.1
+// Generated Nov 17, 2019 4:32:52 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -25,6 +25,7 @@ public class Institute  implements java.io.Serializable {
 
      private Integer id;
      private String name;
+     private Set<User> users = new HashSet<User>(0);
      private Set<Participant> participants = new HashSet<Participant>(0);
 
     public Institute() {
@@ -34,8 +35,9 @@ public class Institute  implements java.io.Serializable {
     public Institute(String name) {
         this.name = name;
     }
-    public Institute(String name, Set<Participant> participants) {
+    public Institute(String name, Set<User> users, Set<Participant> participants) {
        this.name = name;
+       this.users = users;
        this.participants = participants;
     }
    
@@ -59,6 +61,15 @@ public class Institute  implements java.io.Serializable {
     
     public void setName(String name) {
         this.name = name;
+    }
+
+@OneToMany(fetch=FetchType.LAZY, mappedBy="institute")
+    public Set<User> getUsers() {
+        return this.users;
+    }
+    
+    public void setUsers(Set<User> users) {
+        this.users = users;
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="institute")

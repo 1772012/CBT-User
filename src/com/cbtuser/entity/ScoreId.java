@@ -1,5 +1,5 @@
 package com.cbtuser.entity;
-// Generated Nov 15, 2019 8:43:31 AM by Hibernate Tools 4.3.1
+// Generated Nov 17, 2019 4:32:52 PM by Hibernate Tools 4.3.1
 
 
 import javax.persistence.Column;
@@ -12,36 +12,36 @@ import javax.persistence.Embeddable;
 public class ScoreId  implements java.io.Serializable {
 
 
-     private String participantId;
-     private String subTestId;
+     private String testId;
+     private String userId;
 
     public ScoreId() {
     }
 
-    public ScoreId(String participantId, String subTestId) {
-       this.participantId = participantId;
-       this.subTestId = subTestId;
+    public ScoreId(String testId, String userId) {
+       this.testId = testId;
+       this.userId = userId;
     }
    
 
 
-    @Column(name="Participant_id", nullable=false, length=8)
-    public String getParticipantId() {
-        return this.participantId;
+    @Column(name="Test_id", nullable=false, length=9)
+    public String getTestId() {
+        return this.testId;
     }
     
-    public void setParticipantId(String participantId) {
-        this.participantId = participantId;
+    public void setTestId(String testId) {
+        this.testId = testId;
     }
 
 
-    @Column(name="SubTest_id", nullable=false, length=8)
-    public String getSubTestId() {
-        return this.subTestId;
+    @Column(name="User_id", nullable=false, length=9)
+    public String getUserId() {
+        return this.userId;
     }
     
-    public void setSubTestId(String subTestId) {
-        this.subTestId = subTestId;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
 
@@ -51,15 +51,15 @@ public class ScoreId  implements java.io.Serializable {
 		 if ( !(other instanceof ScoreId) ) return false;
 		 ScoreId castOther = ( ScoreId ) other; 
          
-		 return ( (this.getParticipantId()==castOther.getParticipantId()) || ( this.getParticipantId()!=null && castOther.getParticipantId()!=null && this.getParticipantId().equals(castOther.getParticipantId()) ) )
- && ( (this.getSubTestId()==castOther.getSubTestId()) || ( this.getSubTestId()!=null && castOther.getSubTestId()!=null && this.getSubTestId().equals(castOther.getSubTestId()) ) );
+		 return ( (this.getTestId()==castOther.getTestId()) || ( this.getTestId()!=null && castOther.getTestId()!=null && this.getTestId().equals(castOther.getTestId()) ) )
+ && ( (this.getUserId()==castOther.getUserId()) || ( this.getUserId()!=null && castOther.getUserId()!=null && this.getUserId().equals(castOther.getUserId()) ) );
    }
    
    public int hashCode() {
          int result = 17;
          
-         result = 37 * result + ( getParticipantId() == null ? 0 : this.getParticipantId().hashCode() );
-         result = 37 * result + ( getSubTestId() == null ? 0 : this.getSubTestId().hashCode() );
+         result = 37 * result + ( getTestId() == null ? 0 : this.getTestId().hashCode() );
+         result = 37 * result + ( getUserId() == null ? 0 : this.getUserId().hashCode() );
          return result;
    }   
 

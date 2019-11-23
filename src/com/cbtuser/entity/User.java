@@ -1,5 +1,5 @@
 package com.cbtuser.entity;
-// Generated Nov 15, 2019 8:43:31 AM by Hibernate Tools 4.3.1
+// Generated Nov 17, 2019 4:32:52 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -24,6 +24,7 @@ public class User  implements java.io.Serializable {
 
 
      private String id;
+     private Institute institute;
      private Role role;
      private String username;
      private String password;
@@ -32,22 +33,28 @@ public class User  implements java.io.Serializable {
      private String phoneNumber;
      private String email;
      private Set<Userlog> userlogs = new HashSet<Userlog>(0);
-     private Set<Subtestdatabase> subtestdatabases = new HashSet<Subtestdatabase>(0);
+     private Set<Test> tests = new HashSet<Test>(0);
+     private Set<Coursedatabase> coursedatabases = new HashSet<Coursedatabase>(0);
+     private Set<Question> questions = new HashSet<Question>(0);
+     private Set<Score> scores = new HashSet<Score>(0);
 
     public User() {
     }
 
 	
-    public User(String id, Role role, String username, String password, String firstName, String lastName) {
+    public User(String id, Institute institute, Role role, String username, String password, String firstName, String phoneNumber, String email) {
         this.id = id;
+        this.institute = institute;
         this.role = role;
         this.username = username;
         this.password = password;
         this.firstName = firstName;
-        this.lastName = lastName;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
     }
-    public User(String id, Role role, String username, String password, String firstName, String lastName, String phoneNumber, String email, Set<Userlog> userlogs, Set<Subtestdatabase> subtestdatabases) {
+    public User(String id, Institute institute, Role role, String username, String password, String firstName, String lastName, String phoneNumber, String email, Set<Userlog> userlogs, Set<Test> tests, Set<Coursedatabase> coursedatabases, Set<Question> questions, Set<Score> scores) {
        this.id = id;
+       this.institute = institute;
        this.role = role;
        this.username = username;
        this.password = password;
@@ -56,19 +63,32 @@ public class User  implements java.io.Serializable {
        this.phoneNumber = phoneNumber;
        this.email = email;
        this.userlogs = userlogs;
-       this.subtestdatabases = subtestdatabases;
+       this.tests = tests;
+       this.coursedatabases = coursedatabases;
+       this.questions = questions;
+       this.scores = scores;
     }
    
      @Id 
 
     
-    @Column(name="id", unique=true, nullable=false, length=8)
+    @Column(name="id", unique=true, nullable=false, length=9)
     public String getId() {
         return this.id;
     }
     
     public void setId(String id) {
         this.id = id;
+    }
+
+@ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="Institute_id", nullable=false)
+    public Institute getInstitute() {
+        return this.institute;
+    }
+    
+    public void setInstitute(Institute institute) {
+        this.institute = institute;
     }
 
 @ManyToOne(fetch=FetchType.LAZY)
@@ -112,7 +132,7 @@ public class User  implements java.io.Serializable {
     }
 
     
-    @Column(name="last_name", nullable=false, length=75)
+    @Column(name="last_name", length=75)
     public String getLastName() {
         return this.lastName;
     }
@@ -122,7 +142,7 @@ public class User  implements java.io.Serializable {
     }
 
     
-    @Column(name="phone_number", length=13)
+    @Column(name="phone_number", nullable=false, length=13)
     public String getPhoneNumber() {
         return this.phoneNumber;
     }
@@ -132,7 +152,7 @@ public class User  implements java.io.Serializable {
     }
 
     
-    @Column(name="email", length=50)
+    @Column(name="email", nullable=false, length=50)
     public String getEmail() {
         return this.email;
     }
@@ -151,12 +171,39 @@ public class User  implements java.io.Serializable {
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="user")
-    public Set<Subtestdatabase> getSubtestdatabases() {
-        return this.subtestdatabases;
+    public Set<Test> getTests() {
+        return this.tests;
     }
     
-    public void setSubtestdatabases(Set<Subtestdatabase> subtestdatabases) {
-        this.subtestdatabases = subtestdatabases;
+    public void setTests(Set<Test> tests) {
+        this.tests = tests;
+    }
+
+@OneToMany(fetch=FetchType.LAZY, mappedBy="user")
+    public Set<Coursedatabase> getCoursedatabases() {
+        return this.coursedatabases;
+    }
+    
+    public void setCoursedatabases(Set<Coursedatabase> coursedatabases) {
+        this.coursedatabases = coursedatabases;
+    }
+
+@OneToMany(fetch=FetchType.LAZY, mappedBy="user")
+    public Set<Question> getQuestions() {
+        return this.questions;
+    }
+    
+    public void setQuestions(Set<Question> questions) {
+        this.questions = questions;
+    }
+
+@OneToMany(fetch=FetchType.LAZY, mappedBy="user")
+    public Set<Score> getScores() {
+        return this.scores;
+    }
+    
+    public void setScores(Set<Score> scores) {
+        this.scores = scores;
     }
 
 

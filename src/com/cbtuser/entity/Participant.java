@@ -1,16 +1,13 @@
 package com.cbtuser.entity;
-// Generated Nov 15, 2019 8:43:31 AM by Hibernate Tools 4.3.1
+// Generated Nov 17, 2019 4:32:52 PM by Hibernate Tools 4.3.1
 
 
-import java.util.HashSet;
-import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -30,8 +27,6 @@ public class Participant  implements java.io.Serializable {
      private String firstName;
      private String lastName;
      private String email;
-     private String gender;
-     private Set<Score> scores = new HashSet<Score>(0);
 
     public Participant() {
     }
@@ -44,7 +39,7 @@ public class Participant  implements java.io.Serializable {
         this.password = password;
         this.firstName = firstName;
     }
-    public Participant(String id, Institute institute, String username, String password, String firstName, String lastName, String email, String gender, Set<Score> scores) {
+    public Participant(String id, Institute institute, String username, String password, String firstName, String lastName, String email) {
        this.id = id;
        this.institute = institute;
        this.username = username;
@@ -52,14 +47,12 @@ public class Participant  implements java.io.Serializable {
        this.firstName = firstName;
        this.lastName = lastName;
        this.email = email;
-       this.gender = gender;
-       this.scores = scores;
     }
    
      @Id 
 
     
-    @Column(name="id", unique=true, nullable=false, length=8)
+    @Column(name="id", unique=true, nullable=false, length=11)
     public String getId() {
         return this.id;
     }
@@ -126,25 +119,6 @@ public class Participant  implements java.io.Serializable {
     
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    
-    @Column(name="gender", length=45)
-    public String getGender() {
-        return this.gender;
-    }
-    
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-@OneToMany(fetch=FetchType.LAZY, mappedBy="participant")
-    public Set<Score> getScores() {
-        return this.scores;
-    }
-    
-    public void setScores(Set<Score> scores) {
-        this.scores = scores;
     }
 
 

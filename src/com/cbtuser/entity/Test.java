@@ -1,5 +1,5 @@
 package com.cbtuser.entity;
-// Generated Nov 15, 2019 8:43:31 AM by Hibernate Tools 4.3.1
+// Generated Nov 17, 2019 4:32:52 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -9,6 +9,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -25,51 +27,63 @@ public class Test  implements java.io.Serializable {
 
 
      private String id;
+     private User user;
      private String name;
      private String token;
      private Date date;
      private Date startTime;
      private Date finishTime;
      private int time;
-     private String testMakerId;
      private Set<Subtest> subtests = new HashSet<Subtest>(0);
+     private Set<Score> scores = new HashSet<Score>(0);
 
     public Test() {
     }
 
 	
-    public Test(String id, String name, String token, Date date, Date startTime, Date finishTime, int time, String testMakerId) {
+    public Test(String id, User user, String name, String token, Date date, Date startTime, Date finishTime, int time) {
         this.id = id;
+        this.user = user;
         this.name = name;
         this.token = token;
         this.date = date;
         this.startTime = startTime;
         this.finishTime = finishTime;
         this.time = time;
-        this.testMakerId = testMakerId;
     }
-    public Test(String id, String name, String token, Date date, Date startTime, Date finishTime, int time, String testMakerId, Set<Subtest> subtests) {
+    public Test(String id, User user, String name, String token, Date date, Date startTime, Date finishTime, int time, Set<Subtest> subtests, Set<Score> scores) {
        this.id = id;
+       this.user = user;
        this.name = name;
        this.token = token;
        this.date = date;
        this.startTime = startTime;
        this.finishTime = finishTime;
        this.time = time;
-       this.testMakerId = testMakerId;
        this.subtests = subtests;
+       this.scores = scores;
     }
    
      @Id 
 
     
-    @Column(name="id", unique=true, nullable=false, length=8)
+    @Column(name="id", unique=true, nullable=false, length=9)
     public String getId() {
         return this.id;
     }
     
     public void setId(String id) {
         this.id = id;
+    }
+
+@ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="User_id", nullable=false)
+    public User getUser() {
+        return this.user;
+    }
+    
+    public void setUser(User user) {
+        this.user = user;
     }
 
     
@@ -132,16 +146,6 @@ public class Test  implements java.io.Serializable {
         this.time = time;
     }
 
-    
-    @Column(name="TestMaker_id", nullable=false, length=6)
-    public String getTestMakerId() {
-        return this.testMakerId;
-    }
-    
-    public void setTestMakerId(String testMakerId) {
-        this.testMakerId = testMakerId;
-    }
-
 @OneToMany(fetch=FetchType.LAZY, mappedBy="test")
     public Set<Subtest> getSubtests() {
         return this.subtests;
@@ -149,6 +153,15 @@ public class Test  implements java.io.Serializable {
     
     public void setSubtests(Set<Subtest> subtests) {
         this.subtests = subtests;
+    }
+
+@OneToMany(fetch=FetchType.LAZY, mappedBy="test")
+    public Set<Score> getScores() {
+        return this.scores;
+    }
+    
+    public void setScores(Set<Score> scores) {
+        this.scores = scores;
     }
 
 

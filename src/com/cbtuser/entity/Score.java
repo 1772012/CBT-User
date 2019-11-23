@@ -1,5 +1,5 @@
 package com.cbtuser.entity;
-// Generated Nov 15, 2019 8:43:31 AM by Hibernate Tools 4.3.1
+// Generated Nov 17, 2019 4:32:52 PM by Hibernate Tools 4.3.1
 
 
 import javax.persistence.AttributeOverride;
@@ -23,17 +23,17 @@ public class Score  implements java.io.Serializable {
 
 
      private ScoreId id;
-     private Participant participant;
-     private Subtest subtest;
+     private Test test;
+     private User user;
      private double score;
 
     public Score() {
     }
 
-    public Score(ScoreId id, Participant participant, Subtest subtest, double score) {
+    public Score(ScoreId id, Test test, User user, double score) {
        this.id = id;
-       this.participant = participant;
-       this.subtest = subtest;
+       this.test = test;
+       this.user = user;
        this.score = score;
     }
    
@@ -41,8 +41,8 @@ public class Score  implements java.io.Serializable {
 
     
     @AttributeOverrides( {
-        @AttributeOverride(name="participantId", column=@Column(name="Participant_id", nullable=false, length=8) ), 
-        @AttributeOverride(name="subTestId", column=@Column(name="SubTest_id", nullable=false, length=8) ) } )
+        @AttributeOverride(name="testId", column=@Column(name="Test_id", nullable=false, length=9) ), 
+        @AttributeOverride(name="userId", column=@Column(name="User_id", nullable=false, length=9) ) } )
     public ScoreId getId() {
         return this.id;
     }
@@ -52,23 +52,23 @@ public class Score  implements java.io.Serializable {
     }
 
 @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="Participant_id", nullable=false, insertable=false, updatable=false)
-    public Participant getParticipant() {
-        return this.participant;
+    @JoinColumn(name="Test_id", nullable=false, insertable=false, updatable=false)
+    public Test getTest() {
+        return this.test;
     }
     
-    public void setParticipant(Participant participant) {
-        this.participant = participant;
+    public void setTest(Test test) {
+        this.test = test;
     }
 
 @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="SubTest_id", nullable=false, insertable=false, updatable=false)
-    public Subtest getSubtest() {
-        return this.subtest;
+    @JoinColumn(name="User_id", nullable=false, insertable=false, updatable=false)
+    public User getUser() {
+        return this.user;
     }
     
-    public void setSubtest(Subtest subtest) {
-        this.subtest = subtest;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     

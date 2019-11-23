@@ -1,16 +1,16 @@
 package com.cbtuser.entity;
-// Generated Nov 15, 2019 8:43:31 AM by Hibernate Tools 4.3.1
+// Generated Nov 17, 2019 4:32:52 PM by Hibernate Tools 4.3.1
 
 
-import javax.persistence.AttributeOverride;
-import javax.persistence.AttributeOverrides;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -23,56 +23,47 @@ import javax.persistence.Table;
 public class Mediacontent  implements java.io.Serializable {
 
 
-     private MediacontentId id;
+     private String id;
      private Media media;
-     private Question question;
      private String mediaAddress;
+     private Set<Question> questions = new HashSet<Question>(0);
 
     public Mediacontent() {
     }
 
-    public Mediacontent(MediacontentId id, Media media, Question question, String mediaAddress) {
+	
+    public Mediacontent(String id, Media media, String mediaAddress) {
+        this.id = id;
+        this.media = media;
+        this.mediaAddress = mediaAddress;
+    }
+    public Mediacontent(String id, Media media, String mediaAddress, Set<Question> questions) {
        this.id = id;
        this.media = media;
-       this.question = question;
        this.mediaAddress = mediaAddress;
+       this.questions = questions;
     }
    
-     @EmbeddedId
+     @Id 
 
     
-    @AttributeOverrides( {
-        @AttributeOverride(name="questionId", column=@Column(name="Question_id", nullable=false, length=12) ), 
-        @AttributeOverride(name="questionSubTestDatabaseId", column=@Column(name="Question_SubTestDatabase_id", nullable=false, length=8) ), 
-        @AttributeOverride(name="mediaId", column=@Column(name="Media_id", nullable=false) ) } )
-    public MediacontentId getId() {
+    @Column(name="id", unique=true, nullable=false, length=12)
+    public String getId() {
         return this.id;
     }
     
-    public void setId(MediacontentId id) {
+    public void setId(String id) {
         this.id = id;
     }
 
 @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="Media_id", nullable=false, insertable=false, updatable=false)
+    @JoinColumn(name="Media_id", nullable=false)
     public Media getMedia() {
         return this.media;
     }
     
     public void setMedia(Media media) {
         this.media = media;
-    }
-
-@ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumns( { 
-        @JoinColumn(name="Question_id", referencedColumnName="id", nullable=false, insertable=false, updatable=false), 
-        @JoinColumn(name="Question_SubTestDatabase_id", referencedColumnName="SubTestDatabase_id", nullable=false, insertable=false, updatable=false) } )
-    public Question getQuestion() {
-        return this.question;
-    }
-    
-    public void setQuestion(Question question) {
-        this.question = question;
     }
 
     
@@ -83,6 +74,15 @@ public class Mediacontent  implements java.io.Serializable {
     
     public void setMediaAddress(String mediaAddress) {
         this.mediaAddress = mediaAddress;
+    }
+
+@OneToMany(fetch=FetchType.LAZY, mappedBy="mediacontent")
+    public Set<Question> getQuestions() {
+        return this.questions;
+    }
+    
+    public void setQuestions(Set<Question> questions) {
+        this.questions = questions;
     }
 
 

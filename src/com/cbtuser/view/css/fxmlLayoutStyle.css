@@ -1,5 +1,5 @@
 
-/*Scaffolding Styling*/
+/* Scaffolding Styling */
 
 .hbox-bar {
     -fx-background-color: #0068ac;
@@ -53,4 +53,74 @@
 
 .out-border{
     -fx-border-color: #0068ac;
+    -fx-border-width: 5;
+}
+
+.imageBackground{
+    -fx-background-color: white;
+    -fx-background-position: left top, center;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover, auto;
+}
+
+.imageLogoWhite{
+    -fx-background-image: url("images/cbt_logo_white.png");
+    -fx-background-position: left top, center;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover, auto;
+}
+
+.imageLogoBlue{
+    -fx-background-image: url("images/cbt_logo.png");
+    -fx-background-position: left top, center;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover, auto;
+}
+
+.label-custom-blackBold {
+    -fx-background-color: transparent;
+    -fx-text-fill: black;
+    -fx-font-family: 'Calibri';
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+.label-custom-black {
+    -fx-background-color: transparent;
+    -fx-text-fill: black;
+    -fx-font-family: 'Calibri';
+    -fx-font-size: 18px;
+}
+
+.label-custom-whiteBold {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-family: 'Calibri';
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+#vbox-question-view {
+    -fx-padding: 32;
+    -fx-spacing: 8;
+}
+
+#label-question-view {
+    -fx-background-color: transparent;
+    -fx-text-fill: black;
+    -fx-font-family: 'Calibri';
+    -fx-font-size: 18px;
+}
+
+#radiobutton-question-view {
+    -fx-background-color: transparent;
+    -fx-text-fill: black;
+    -fx-font-family: 'Calibri';
+    -fx-font-size: 16px;
+
+}
+
+#vbox-button-question-view {
+    -fx-alignment: CENTER;
+    -fx-padding: 8;
 }

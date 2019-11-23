@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Nov 15, 2019 8:43:32 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated Nov 17, 2019 4:32:53 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="com.cbtuser.entity.Userlog" table="userlog" catalog="computerbasedtest" optimistic-lock="version">
         <id name="id" type="string">
@@ -9,7 +9,7 @@
             <generator class="assigned" />
         </id>
         <many-to-one name="user" class="com.cbtuser.entity.User" fetch="select">
-            <column name="User_id" length="8" not-null="true" />
+            <column name="User_id" length="9" not-null="true" />
         </many-to-one>
         <property name="log" type="string">
             <column name="log" length="200" not-null="true" />
