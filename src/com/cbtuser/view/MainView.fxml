@@ -21,132 +21,6 @@
 
 <AnchorPane id="AnchorPane" fx:id="root" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cbtuser.controller.MainViewController">
    <children>
-      <BorderPane fx:id="questionBorderPane" prefHeight="200.0" prefWidth="200.0" styleClass="imageBackground" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <left>
-            <BorderPane prefHeight="718.0" prefWidth="1024.0" BorderPane.alignment="CENTER">
-               <bottom>
-                  <GridPane prefHeight="75.0" styleClass="hbox-bar" BorderPane.alignment="CENTER">
-                    <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                     <children>
-                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="8.0">
-                           <children>
-                              <Button fx:id="btnPrev" mnemonicParsing="false" onAction="#btnPrevClick" styleClass="button-green" text="&lt;" />
-                              <Button fx:id="btnWarn" mnemonicParsing="false" onAction="#btnCheckClick" styleClass="button-yellow" text="Tandai" />
-                              <Button fx:id="btnNext" mnemonicParsing="false" onAction="#btnNextClick" styleClass="button-green" text="&gt;" />
-                           </children>
-                        </HBox>
-                     </children>
-                  </GridPane>
-               </bottom>
-               <center>
-                  <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="668.0" prefWidth="1024.0" BorderPane.alignment="CENTER">
-                     <content>
-                        <VBox fx:id="vboxQuestion" prefHeight="200.0" prefWidth="100.0" />
-                     </content></ScrollPane>
-               </center>
-               <top>
-                  <GridPane prefHeight="50.0" prefWidth="1024.0" BorderPane.alignment="CENTER">
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                     <children>
-                        <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="1024.0" spacing="16.0" styleClass="hbox-info-border">
-                           <children>
-                              <VBox prefHeight="50.0" prefWidth="10.0" styleClass="hbox-bar" />
-                              <Label styleClass="label-custom-blackBold" text="SOAL NO" />
-                              <HBox alignment="CENTER" prefHeight="53.0" prefWidth="50.0" styleClass="hbox-bar">
-                                 <HBox.margin>
-                                    <Insets bottom="4.0" top="4.0" />
-                                 </HBox.margin>
-                                 <padding>
-                                    <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-                                 </padding>
-                                 <children>
-                                    <Label fx:id="lblNavigation" styleClass="label-custom-whiteBold" text="null" />
-                                 </children>
-                              </HBox>
-                           </children>
-                        </HBox>
-                        <HBox prefHeight="100.0" prefWidth="200.0" styleClass="hbox-bar" GridPane.columnIndex="1" />
-                     </children>
-                  </GridPane>
-               </top>
-            </BorderPane>
-         </left>
-         <right>
-            <BorderPane prefHeight="768.0" prefWidth="342.0" BorderPane.alignment="CENTER">
-               <center>
-                  <GridPane fx:id="gpQuestions" styleClass="grid-pane-info" BorderPane.alignment="CENTER">
-                    <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                     <BorderPane.margin>
-                        <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
-                     </BorderPane.margin>
-                  </GridPane>
-               </center>
-               <top>
-                  <HBox styleClass="hbox-bar" BorderPane.alignment="CENTER">
-                     <children>
-                        <VBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="342.0" styleClass="vbox-identity">
-                           <children>
-                              <Label fx:id="lblQstTestName" styleClass="label-custom-blackBold" text="null" />
-                              <HBox prefHeight="100.0" prefWidth="200.0" />
-                              <Label fx:id="lblQstParticipantName" styleClass="label-custom-black" text="null" />
-                              <Label fx:id="lblQstParticipantId" styleClass="label-custom-black" text="null" />
-                           </children>
-                           <padding>
-                              <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
-                           </padding>
-                        </VBox>
-                     </children>
-                  </HBox>
-               </top>
-               <bottom>
-                  <GridPane prefHeight="75.0" prefWidth="342.0" BorderPane.alignment="CENTER">
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                     <children>
-                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-                           <children>
-                              <Button mnemonicParsing="false" onAction="#btnEndTestClick" styleClass="button-red" text="SELESAI" />
-                           </children>
-                        </HBox>
-                     </children>
-                  </GridPane>
-               </bottom>
-            </BorderPane>
-         </right>
-      </BorderPane>
       <BorderPane fx:id="scoreBorderPane" prefHeight="200.0" prefWidth="200.0" styleClass="imageBackground" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <bottom>
             <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" styleClass="hbox-bar" BorderPane.alignment="CENTER">
@@ -566,6 +440,143 @@
                </children>
             </GridPane>
          </top></BorderPane>
+      <BorderPane fx:id="questionBorderPane" prefHeight="200.0" prefWidth="200.0" styleClass="imageBackground" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <left>
+            <BorderPane prefHeight="718.0" prefWidth="1024.0" BorderPane.alignment="CENTER">
+               <bottom>
+                  <GridPane prefHeight="75.0" styleClass="hbox-bar" BorderPane.alignment="CENTER">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="8.0">
+                           <children>
+                              <Button fx:id="btnPrev" mnemonicParsing="false" onAction="#btnPrevClick" styleClass="button-green" text="&lt;" />
+                              <Button fx:id="btnWarn" mnemonicParsing="false" onAction="#btnCheckClick" styleClass="button-yellow" text="Tandai" />
+                              <Button fx:id="btnNext" mnemonicParsing="false" onAction="#btnNextClick" styleClass="button-green" text="&gt;" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </GridPane>
+               </bottom>
+               <center>
+                  <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="668.0" prefWidth="1024.0" BorderPane.alignment="CENTER">
+                     <content>
+                        <VBox fx:id="vboxQuestion" prefHeight="200.0" prefWidth="100.0" />
+                     </content></ScrollPane>
+               </center>
+               <top>
+                  <GridPane prefHeight="50.0" prefWidth="1024.0" BorderPane.alignment="CENTER">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="1024.0" spacing="16.0" styleClass="hbox-info-border">
+                           <children>
+                              <VBox prefHeight="50.0" prefWidth="10.0" styleClass="hbox-bar" />
+                              <Label styleClass="label-custom-blackBold" text="SOAL NO" />
+                              <HBox alignment="CENTER" prefHeight="53.0" prefWidth="50.0" styleClass="hbox-bar">
+                                 <HBox.margin>
+                                    <Insets bottom="4.0" top="4.0" />
+                                 </HBox.margin>
+                                 <padding>
+                                    <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                 </padding>
+                                 <children>
+                                    <Label fx:id="lblNavigation" styleClass="label-custom-whiteBold" text="null" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="8.0" styleClass="hbox-bar" GridPane.columnIndex="1">
+                           <padding>
+                              <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                           </padding>
+                           <children>
+                              <Label text="Sisa Waktu" />
+                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="vbox-identity">
+                                 <children>
+                                    <Label fx:id="lblTimerCount" text="null" />
+                                 </children>
+                              </VBox>
+                           </children></HBox>
+                     </children>
+                  </GridPane>
+               </top>
+            </BorderPane>
+         </left>
+         <right>
+            <BorderPane prefHeight="768.0" prefWidth="342.0" BorderPane.alignment="CENTER">
+               <center>
+                  <GridPane fx:id="gpQuestions" styleClass="grid-pane-info" BorderPane.alignment="CENTER">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <BorderPane.margin>
+                        <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+                     </BorderPane.margin>
+                  </GridPane>
+               </center>
+               <top>
+                  <HBox styleClass="hbox-bar" BorderPane.alignment="CENTER">
+                     <children>
+                        <VBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="342.0" styleClass="vbox-identity">
+                           <children>
+                              <Label fx:id="lblQstTestName" styleClass="label-custom-blackBold" text="null" />
+                              <HBox prefHeight="100.0" prefWidth="200.0" />
+                              <Label fx:id="lblQstParticipantName" styleClass="label-custom-black" text="null" />
+                              <Label fx:id="lblQstParticipantId" styleClass="label-custom-black" text="null" />
+                           </children>
+                           <padding>
+                              <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </top>
+               <bottom>
+                  <GridPane prefHeight="75.0" prefWidth="342.0" BorderPane.alignment="CENTER">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#btnEndTestClick" styleClass="button-red" text="SELESAI" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </GridPane>
+               </bottom>
+            </BorderPane>
+         </right>
+      </BorderPane>
       <BorderPane fx:id="loginBorderPane" layoutX="583.0" layoutY="284.0" prefHeight="200.0" prefWidth="200.0" styleClass="imageBackground" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
             <HBox prefHeight="100.0" prefWidth="200.0" styleClass="hbox-bar" BorderPane.alignment="CENTER" />

@@ -55,6 +55,8 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 import javafx.application.Platform;
+import javafx.scene.Node;
+import javafx.scene.image.Image;
 
 /**
  * FXML Controller class
@@ -158,7 +160,10 @@ public class MainViewController implements Initializable {
     private ObservableList<Answer> answers;
     private ObservableList<Mediacontent> mediacontents;
     private ObservableList<VBox> navigationVbox;
+    private ObservableList<Integer> trueAnswerKey;
     private Map<Integer, String> mapKey;
+//    private Map<Integer, Integer> trueAnswerKey;
+    
 
     //  Stages
     private Stage subtestStage;
@@ -168,11 +173,18 @@ public class MainViewController implements Initializable {
     private Test test;
 
     //  Temp primitive data
-    private int navigationNumber;
+    private int navigationNumber = 0;
+    private int idx = 0;
+    private boolean found = false;
+    private double score = 0;
 
     //  FXML Utilities
     private double editTestX;
     private double editTestY;
+    @FXML
+    private Label lblTimerCount;
+    
+    static Thread thread = new Thread();
 
     //  =================================================
     //  Initializations of controller class
@@ -240,6 +252,8 @@ public class MainViewController implements Initializable {
         mapKey.put(2, "C. ");
         mapKey.put(3, "D. ");
         mapKey.put(4, "E. ");
+
+        trueAnswerKey = FXCollections.observableArrayList();
     }
 
     //  controls FXML at initialization
@@ -247,10 +261,6 @@ public class MainViewController implements Initializable {
 
         //  Disables the button at initialization
         btnPrev.setDisable(true);
-
-        //  Set initialization variables
-        navigationNumber = 0;
-
     }
 
     //  =================================================
@@ -390,7 +400,7 @@ public class MainViewController implements Initializable {
 
     //  If the start button is clicked
     @FXML
-    private void btnQuestionStartClick(ActionEvent event) {
+    private void btnQuestionStartClick(ActionEvent event) throws InterruptedException {
 
         //  Set the initial text
         lblQstParticipantName.setText(participant.getFirstName() + " " + participant.getLastName());
@@ -408,10 +418,27 @@ public class MainViewController implements Initializable {
 
             //  Create button and put attributes on it
             Button btn = new Button();
+            btn.setId("button-question-view");
             btn.setText(String.valueOf(i + 1));
             btn.setMaxWidth(Double.MAX_VALUE);
             btn.setMaxHeight(Double.MAX_VALUE);
-            btn.setId("button-question-view");
+            btn.setOnAction((ActionEvent e) -> {
+                navigationNumber = Integer.parseInt(btn.getText()) - 1;
+                if (navigationNumber == 0) {
+                    btnPrev.setDisable(true);
+                    btnNext.setDisable(false);
+                } else if (navigationNumber == questions.size() - 1) {
+                    btnNext.setDisable(true);
+                    btnPrev.setDisable(false);
+                } else {
+                    btnPrev.setDisable(false);
+                    btnNext.setDisable(false);
+                }
+                vboxQuestion.getChildren().clear();
+                vboxQuestion.getChildren().add(navigationVbox.get(navigationNumber));
+                lblNavigation.setText(String.valueOf(navigationNumber + 1));
+
+            });
 
             //  Create VBox and put button on it
             VBox box = new VBox();
@@ -425,6 +452,35 @@ public class MainViewController implements Initializable {
         //  Create questions and put answers into vbox
         for (int i = 0; i < questions.size(); i++) {
 
+            //  Create temp VBox and set objects in it
+            VBox vboxTemp = new VBox();
+            vboxTemp.setId("vbox-question-view");
+
+            //  Check if question has a media
+            switch (questions.get(i).getMediacontent().getMedia().getId()) {
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+
+                    //  Create Image object
+                    ImageView imgView = new ImageView(new Image(
+                            "file:" + questions.get(i).getMediacontent().getMediaAddress()));
+
+                    //  Create gap from HBox (just for style)
+                    HBox hboxGap = new HBox();
+                    hboxGap.setPrefHeight(20);
+
+                    //  Add image to VBox temp
+                    vboxTemp.getChildren().add(imgView);
+                    vboxTemp.getChildren().add(hboxGap);
+
+                    break;
+                default:
+                    break;
+            }
+
             //  Create temp label and set attributes on it
             Label lblTemp = new Label(questions.get(i).getId());
             lblTemp.setId("label-question-view");
@@ -434,9 +490,7 @@ public class MainViewController implements Initializable {
             HBox hboxGap = new HBox();
             hboxGap.setPrefHeight(20);
 
-            //  Create temp VBox and set objects in it
-            VBox vboxTemp = new VBox();
-            vboxTemp.setId("vbox-question-view");
+            //  Set the objects into VBox
             vboxTemp.getChildren().add(lblTemp);
             vboxTemp.getChildren().add(hboxGap);
 
@@ -446,8 +500,16 @@ public class MainViewController implements Initializable {
             //  Create toggle group for radio buttons
             ToggleGroup groupTemp = new ToggleGroup();
 
+            //  Create Vbox list of Radio buttons
+            VBox vboxRadioButtons = new VBox();
+
             //  Create radio buttons
             for (int j = 0; j < questions.get(i).getAnswers().size(); j++) {
+                
+                //  Create Answer key for scoring later
+                if (answers.get(j).getTrueAnswer() == 1) {
+                    trueAnswerKey.add(j);
+                }
 
                 //  Create radio button and put attributes on it
                 RadioButton rbTemp = new RadioButton(answers.get(j).getId().getId());
@@ -455,9 +517,12 @@ public class MainViewController implements Initializable {
                 rbTemp.setToggleGroup(groupTemp);
                 rbTemp.setText(mapKey.get(j) + answers.get(j).getContent());
 
-                //  Add each radio buttons to temp VBox
-                vboxTemp.getChildren().add(rbTemp);
+                //  Add each radio buttons to temp VBoxRadioButtons
+                vboxRadioButtons.getChildren().add(rbTemp);
             }
+
+            //  Add list of Radio Buttons to VBox
+            vboxTemp.getChildren().add(vboxRadioButtons);
 
             //  Clears the temporary list
             answers.clear();
@@ -468,9 +533,10 @@ public class MainViewController implements Initializable {
 
         //  Add first question to Main View of VBox
         vboxQuestion.getChildren().add(navigationVbox.get(navigationNumber));
-
+        
         //  Show the question view
         questionBorderPane.toFront();
+        
     }
 
     //  =================================================
@@ -499,6 +565,18 @@ public class MainViewController implements Initializable {
     //  If the Check button is clicked
     @FXML
     private void btnCheckClick(ActionEvent event) {
+
+        //  Call method for check cell and parse it
+        VBox vboxQst = (VBox) getCellFromGridPane(gpQuestions, (navigationNumber % 5), (navigationNumber / 5));
+        Button btnQst = (Button) vboxQst.getChildren().get(0);
+
+        //  Check the button id
+        if (btnQst.getId().equals("button-question-view")) {
+            btnQst.setId("button-question-view-mark");
+        } else {
+            btnQst.setId("button-question-view");
+        }
+
     }
 
     //  If the Next button is clicked
@@ -534,11 +612,30 @@ public class MainViewController implements Initializable {
 
         //  If choose yes
         if (alert.getResult() == ButtonType.YES) {
-
+            
+            //  Bruteforce all radiobuttons to get answer
+            navigationVbox.forEach((nav) -> {
+                found = false;
+                nav.getChildren().forEach((node) -> {   // Masuk ke setiap node of komponen soal {Image, Label dll}
+                    if (node instanceof VBox) {
+                        for (int i = 0; i < ((VBox) node).getChildren().size(); i++) { // Masuk ke list of radiobutton
+                            RadioButton rb = (RadioButton) ((VBox) node).getChildren().get(i);
+                            if (rb.isSelected() && trueAnswerKey.get(idx) == i) {
+                                found = true;
+                                score++;
+                            }
+                        }
+                    }
+                });
+                idx++;
+            });
+            
             //  Set the initial text
             lblFinalTestHeader.setText(test.getName());
             lblNameFinal.setText(participant.getFirstName() + " " + participant.getLastName());
             lblIdFinal.setText(participant.getId());
+            lblScoreFinal.setText(String.valueOf((score/questions.size()) * 100));
+            lblTrueAnswerFinal.setText(String.valueOf((int)score) + " / " + String.valueOf(questions.size()));
 
             //  Show the score view
             scoreBorderPane.toFront();
@@ -575,6 +672,16 @@ public class MainViewController implements Initializable {
         alert.show();
     }
 
+    //  Bruteforce node
+    private Node getCellFromGridPane(GridPane gridPane, int col, int row) {
+        for (Node node : gridPane.getChildren()) {
+            if (GridPane.getColumnIndex(node) == col && GridPane.getRowIndex(node) == row) {
+                return node;
+            }
+        }
+        return null;
+    }
+
     //  =================================================
     //  Getter / Setter
     //  =================================================
@@ -583,5 +690,4 @@ public class MainViewController implements Initializable {
     public ObservableList<Subtest> getSubtest() {
         return subtests;
     }
-
 }
