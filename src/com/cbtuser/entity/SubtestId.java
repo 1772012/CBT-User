@@ -1,5 +1,5 @@
 package com.cbtuser.entity;
-// Generated Nov 24, 2019 3:56:55 PM by Hibernate Tools 4.3.1
+// Generated Nov 25, 2019 1:19:47 PM by Hibernate Tools 4.3.1
 
 
 import javax.persistence.Column;

@@ -1,5 +1,5 @@
 package com.cbtuser.entity;
-// Generated Nov 24, 2019 3:56:55 PM by Hibernate Tools 4.3.1
+// Generated Nov 25, 2019 1:19:47 PM by Hibernate Tools 4.3.1
 
 
 import javax.persistence.AttributeOverride;
@@ -23,17 +23,17 @@ public class Score  implements java.io.Serializable {
 
 
      private ScoreId id;
+     private Participant participant;
      private Test test;
-     private User user;
      private double score;
 
     public Score() {
     }
 
-    public Score(ScoreId id, Test test, User user, double score) {
+    public Score(ScoreId id, Participant participant, Test test, double score) {
        this.id = id;
+       this.participant = participant;
        this.test = test;
-       this.user = user;
        this.score = score;
     }
    
@@ -42,13 +42,23 @@ public class Score  implements java.io.Serializable {
     
     @AttributeOverrides( {
         @AttributeOverride(name="testId", column=@Column(name="Test_id", nullable=false, length=9) ), 
-        @AttributeOverride(name="userId", column=@Column(name="User_id", nullable=false, length=9) ) } )
+        @AttributeOverride(name="participantId", column=@Column(name="Participant_id", nullable=false, length=11) ) } )
     public ScoreId getId() {
         return this.id;
     }
     
     public void setId(ScoreId id) {
         this.id = id;
+    }
+
+@ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="Participant_id", nullable=false, insertable=false, updatable=false)
+    public Participant getParticipant() {
+        return this.participant;
+    }
+    
+    public void setParticipant(Participant participant) {
+        this.participant = participant;
     }
 
 @ManyToOne(fetch=FetchType.LAZY)
@@ -59,16 +69,6 @@ public class Score  implements java.io.Serializable {
     
     public void setTest(Test test) {
         this.test = test;
-    }
-
-@ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="User_id", nullable=false, insertable=false, updatable=false)
-    public User getUser() {
-        return this.user;
-    }
-    
-    public void setUser(User user) {
-        this.user = user;
     }
 
     

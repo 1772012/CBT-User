@@ -1,5 +1,5 @@
 package com.cbtuser.entity;
-// Generated Nov 24, 2019 3:56:55 PM by Hibernate Tools 4.3.1
+// Generated Nov 25, 2019 1:19:47 PM by Hibernate Tools 4.3.1
 
 
 import javax.persistence.Column;
@@ -13,14 +13,14 @@ public class ScoreId  implements java.io.Serializable {
 
 
      private String testId;
-     private String userId;
+     private String participantId;
 
     public ScoreId() {
     }
 
-    public ScoreId(String testId, String userId) {
+    public ScoreId(String testId, String participantId) {
        this.testId = testId;
-       this.userId = userId;
+       this.participantId = participantId;
     }
    
 
@@ -35,13 +35,13 @@ public class ScoreId  implements java.io.Serializable {
     }
 
 
-    @Column(name="User_id", nullable=false, length=9)
-    public String getUserId() {
-        return this.userId;
+    @Column(name="Participant_id", nullable=false, length=11)
+    public String getParticipantId() {
+        return this.participantId;
     }
     
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setParticipantId(String participantId) {
+        this.participantId = participantId;
     }
 
 
@@ -52,14 +52,14 @@ public class ScoreId  implements java.io.Serializable {
 		 ScoreId castOther = ( ScoreId ) other; 
          
 		 return ( (this.getTestId()==castOther.getTestId()) || ( this.getTestId()!=null && castOther.getTestId()!=null && this.getTestId().equals(castOther.getTestId()) ) )
- && ( (this.getUserId()==castOther.getUserId()) || ( this.getUserId()!=null && castOther.getUserId()!=null && this.getUserId().equals(castOther.getUserId()) ) );
+ && ( (this.getParticipantId()==castOther.getParticipantId()) || ( this.getParticipantId()!=null && castOther.getParticipantId()!=null && this.getParticipantId().equals(castOther.getParticipantId()) ) );
    }
    
    public int hashCode() {
          int result = 17;
          
          result = 37 * result + ( getTestId() == null ? 0 : this.getTestId().hashCode() );
-         result = 37 * result + ( getUserId() == null ? 0 : this.getUserId().hashCode() );
+         result = 37 * result + ( getParticipantId() == null ? 0 : this.getParticipantId().hashCode() );
          return result;
    }   
 

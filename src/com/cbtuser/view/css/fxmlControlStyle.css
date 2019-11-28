@@ -200,3 +200,41 @@
     -fx-font-weight: bold;
     -fx-background-radius: 0px;
     -fx-padding: 8 8 8 8;}
+
+/*  Button (yellow)*/
+#button-pressed-mark {
+    -fx-background-color: #52ba6c;
+    -fx-padding: 4px;
+    -fx-fit-to-height: true;
+    -fx-fit-to-width: true;
+    -fx-text-fill: white;
+    -fx-font-family: 'Calibri';
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 0px;
+    -fx-padding: 8 8 8 8;}
+#button-pressed-mark:hover{
+    -fx-background-color: #68ed8a;
+    -fx-padding: 4px;
+    -fx-fit-to-height: true;
+    -fx-fit-to-width: true;
+    -fx-text-fill: white;
+    -fx-font-family: 'Calibri';
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 0px;
+    -fx-padding: 8 8 8 8;}
+#button-pressed-mark:pressed{
+    -fx-background-color: #38804a;
+    -fx-padding: 4px;
+    -fx-fit-to-height: true;
+    -fx-fit-to-width: true;
+    -fx-text-fill: white;
+    -fx-font-family: 'Calibri';
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 0px;
+    -fx-padding: 8 8 8 8;}
+
+#vbox-radiobuttons {
+    -fx-spacing: 8;}

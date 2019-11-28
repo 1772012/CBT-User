@@ -465,8 +465,11 @@
                <center>
                   <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="668.0" prefWidth="1024.0" BorderPane.alignment="CENTER">
                      <content>
-                        <VBox fx:id="vboxQuestion" prefHeight="200.0" prefWidth="100.0" />
-                     </content></ScrollPane>
+                        <VBox fx:id="vboxQuestion" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="grid-pane-info" />
+                     </content>
+                     <padding>
+                        <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                     </padding></ScrollPane>
                </center>
                <top>
                   <GridPane prefHeight="50.0" prefWidth="1024.0" BorderPane.alignment="CENTER">

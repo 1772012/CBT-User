@@ -1,13 +1,16 @@
 package com.cbtuser.entity;
-// Generated Nov 24, 2019 3:56:55 PM by Hibernate Tools 4.3.1
+// Generated Nov 25, 2019 1:19:47 PM by Hibernate Tools 4.3.1
 
 
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -27,6 +30,7 @@ public class Participant  implements java.io.Serializable {
      private String firstName;
      private String lastName;
      private String email;
+     private Set<Score> scores = new HashSet<Score>(0);
 
     public Participant() {
     }
@@ -39,7 +43,7 @@ public class Participant  implements java.io.Serializable {
         this.password = password;
         this.firstName = firstName;
     }
-    public Participant(String id, Institute institute, String username, String password, String firstName, String lastName, String email) {
+    public Participant(String id, Institute institute, String username, String password, String firstName, String lastName, String email, Set<Score> scores) {
        this.id = id;
        this.institute = institute;
        this.username = username;
@@ -47,6 +51,7 @@ public class Participant  implements java.io.Serializable {
        this.firstName = firstName;
        this.lastName = lastName;
        this.email = email;
+       this.scores = scores;
     }
    
      @Id 
@@ -119,6 +124,15 @@ public class Participant  implements java.io.Serializable {
     
     public void setEmail(String email) {
         this.email = email;
+    }
+
+@OneToMany(fetch=FetchType.LAZY, mappedBy="participant")
+    public Set<Score> getScores() {
+        return this.scores;
+    }
+    
+    public void setScores(Set<Score> scores) {
+        this.scores = scores;
     }
 
 

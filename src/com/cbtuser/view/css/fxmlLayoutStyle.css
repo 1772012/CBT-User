@@ -100,9 +100,9 @@
     -fx-font-weight: bold;
 }
 
-#vbox-question-view {
+#vbox-question-container {
     -fx-padding: 32;
-    -fx-spacing: 8;
+    -fx-spacing: 24;
 }
 
 #label-question-view {

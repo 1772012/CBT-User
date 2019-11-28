@@ -1,5 +1,5 @@
 package com.cbtuser.entity;
-// Generated Nov 24, 2019 3:56:55 PM by Hibernate Tools 4.3.1
+// Generated Nov 25, 2019 1:19:47 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -36,7 +36,6 @@ public class User  implements java.io.Serializable {
      private Set<Test> tests = new HashSet<Test>(0);
      private Set<Coursedatabase> coursedatabases = new HashSet<Coursedatabase>(0);
      private Set<Question> questions = new HashSet<Question>(0);
-     private Set<Score> scores = new HashSet<Score>(0);
 
     public User() {
     }
@@ -52,7 +51,7 @@ public class User  implements java.io.Serializable {
         this.phoneNumber = phoneNumber;
         this.email = email;
     }
-    public User(String id, Institute institute, Role role, String username, String password, String firstName, String lastName, String phoneNumber, String email, Set<Userlog> userlogs, Set<Test> tests, Set<Coursedatabase> coursedatabases, Set<Question> questions, Set<Score> scores) {
+    public User(String id, Institute institute, Role role, String username, String password, String firstName, String lastName, String phoneNumber, String email, Set<Userlog> userlogs, Set<Test> tests, Set<Coursedatabase> coursedatabases, Set<Question> questions) {
        this.id = id;
        this.institute = institute;
        this.role = role;
@@ -66,7 +65,6 @@ public class User  implements java.io.Serializable {
        this.tests = tests;
        this.coursedatabases = coursedatabases;
        this.questions = questions;
-       this.scores = scores;
     }
    
      @Id 
@@ -195,15 +193,6 @@ public class User  implements java.io.Serializable {
     
     public void setQuestions(Set<Question> questions) {
         this.questions = questions;
-    }
-
-@OneToMany(fetch=FetchType.LAZY, mappedBy="user")
-    public Set<Score> getScores() {
-        return this.scores;
-    }
-    
-    public void setScores(Set<Score> scores) {
-        this.scores = scores;
     }
 
 
