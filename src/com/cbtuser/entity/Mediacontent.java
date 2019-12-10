@@ -1,5 +1,5 @@
 package com.cbtuser.entity;
-// Generated Nov 25, 2019 1:19:47 PM by Hibernate Tools 4.3.1
+// Generated Nov 30, 2019 3:06:58 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -26,6 +26,7 @@ public class Mediacontent  implements java.io.Serializable {
      private String id;
      private Media media;
      private String mediaAddress;
+     private String caption;
      private Set<Question> questions = new HashSet<Question>(0);
 
     public Mediacontent() {
@@ -37,10 +38,11 @@ public class Mediacontent  implements java.io.Serializable {
         this.media = media;
         this.mediaAddress = mediaAddress;
     }
-    public Mediacontent(String id, Media media, String mediaAddress, Set<Question> questions) {
+    public Mediacontent(String id, Media media, String mediaAddress, String caption, Set<Question> questions) {
        this.id = id;
        this.media = media;
        this.mediaAddress = mediaAddress;
+       this.caption = caption;
        this.questions = questions;
     }
    
@@ -74,6 +76,16 @@ public class Mediacontent  implements java.io.Serializable {
     
     public void setMediaAddress(String mediaAddress) {
         this.mediaAddress = mediaAddress;
+    }
+
+    
+    @Column(name="caption", length=100)
+    public String getCaption() {
+        return this.caption;
+    }
+    
+    public void setCaption(String caption) {
+        this.caption = caption;
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="mediacontent")

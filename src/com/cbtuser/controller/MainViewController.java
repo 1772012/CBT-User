@@ -1,8 +1,10 @@
 package com.cbtuser.controller;
 
 import com.cbtuser.MainApp;
+import com.cbtuser.container.AudioPlayer;
 import com.cbtuser.container.ButtonNavigationContainer;
 import com.cbtuser.container.QuestionContainer;
+import com.cbtuser.container.VideoPlayer;
 import com.cbtuser.dao.ParticipantDaoImpl;
 import com.cbtuser.dao.QuestionDaoImpl;
 import com.cbtuser.dao.ScoreDaoImpl;
@@ -66,9 +68,9 @@ public class MainViewController implements Initializable {
     @FXML
     private AnchorPane root;
     @FXML
-    private BorderPane scoreBorderPane;
-    @FXML
     private BorderPane userBorderPane;
+    @FXML
+    private BorderPane scoreViewPane;
     @FXML
     private BorderPane loginBorderPane;
     @FXML
@@ -85,8 +87,6 @@ public class MainViewController implements Initializable {
     private ImageView imgLogoUserWhite;
     @FXML
     private VBox userViewPage;
-    @FXML
-    private VBox testViewPage;
     @FXML
     private Label lblNameHeaderParticipant;
     @FXML
@@ -130,12 +130,6 @@ public class MainViewController implements Initializable {
     @FXML
     private Label lblNavigation;
     @FXML
-    private Label lblFinalTestHeader;
-    @FXML
-    private Label lblNameFinal;
-    @FXML
-    private Label lblIdFinal;
-    @FXML
     private Label lblScoreFinal;
     @FXML
     private Label lblTrueAnswerFinal;
@@ -143,6 +137,8 @@ public class MainViewController implements Initializable {
     private Label lblTimeFinal;
     @FXML
     private Label lblTimerCount;
+    @FXML
+    private BorderPane testViewPane;
 
     //  Dao controllers
     private TestDaoImpl testDao;
@@ -175,6 +171,8 @@ public class MainViewController implements Initializable {
     private double editTestY;
     private Timer timer;
     public int time;
+    private int previousNav = 0;
+    private Date currentDate;
 
     //  =================================================
     //  Initializations of controller class
@@ -311,13 +309,13 @@ public class MainViewController implements Initializable {
             lblIdTest.setText(test.getId());
             lblNameTest.setText(test.getName());
             lblDateTest.setText(dateFormatter(test.getDate()));
-            lblDateTimeTest.setText(String.valueOf(test.getStartTime()));
+            lblDateTimeTest.setText(String.valueOf(test.getTime() + " menit"));
 
             //  Get subtest from database
             subtests.addAll(subtestDao.getSpecificData(test));
 
             //  Show test section
-            testViewPage.toFront();
+            testViewPane.toFront();
         } else {
             alertErrorShow("Token Error", "Token salah! harap masukan kembali.",
                     AlertType.ERROR);
@@ -394,49 +392,60 @@ public class MainViewController implements Initializable {
     @FXML
     private void btnQuestionStartClick(ActionEvent event) {
 
-        //  Set the initial text
-        lblQstParticipantName.setText(
-                participant.getFirstName() + " " + participant.getLastName());
-        lblQstParticipantId.setText(participant.getId());
-        lblQstTestName.setText(test.getName());
-        lblNavigation.setText(String.valueOf(1));
+        currentDate = new Date();
 
-        //  Add question based on subtests
-        subtests.forEach((subtest) -> {
-            questions.addAll(questionDao.getSpecificData(subtest));
-        });
+        if (currentDate.after(test.getDate())) {
+            alertErrorShow("Error",
+                    "Test belum bisa dimulai sebelum jadwal waktu test.",
+                    AlertType.ERROR);
+        } else {
+            //  Set the initial text
+            lblQstParticipantName.setText(
+                    participant.getFirstName() + " " + participant.getLastName());
+            lblQstParticipantId.setText(participant.getId());
+            lblQstTestName.setText(test.getName());
+            lblNavigation.setText(String.valueOf(1));
 
-        /*  Iteration through the size of question
+            //  Add question based on subtests
+            subtests.forEach((subtest) -> {
+                questions.addAll(questionDao.getSpecificData(subtest));
+            });
+
+            /*  Iteration through the size of question
             this algorithm creates :
             - button of question
             - question lists    */
-        for (int i = 0; i < questions.size(); i++) {
-            //  Create navigation button
-            ButtonNavigationContainer btnNavContainer = new ButtonNavigationContainer(
-                    i,
-                    vboxQuestion,
-                    navigationVbox,
-                    lblNavigation,
-                    btnPrev,
-                    btnNext,
-                    questions.size(),
-                    this);
-            //  Add navigation button to question GridPane
-            gpQuestions.add(btnNavContainer, (i % 5), (i / 5));
-            //  Create question container
-            QuestionContainer qstContainer = new QuestionContainer(questions.
-                    get(i),
-                    i, i, gpQuestions);
-            //  Add to list of VBox
-            navigationVbox.add(qstContainer);
+            for (int i = 0; i < questions.size(); i++) {
+                //  Create navigation button
+                ButtonNavigationContainer btnNavContainer = new ButtonNavigationContainer(
+                        i,
+                        vboxQuestion,
+                        navigationVbox,
+                        lblNavigation,
+                        btnPrev,
+                        btnNext,
+                        questions.size(),
+                        this);
+                //  Add navigation button to question GridPane
+                gpQuestions.add(btnNavContainer, (i % 5), (i / 5));
+                //  Create question container
+                QuestionContainer qstContainer = new QuestionContainer(
+                        questions.
+                                get(i),
+                        i, i, gpQuestions);
 
+                //  Add to list of VBox
+                navigationVbox.add(qstContainer);
+
+            }
+            //  Add first question to Main View of VBox
+            vboxQuestion.getChildren().add(navigationVbox.get(navigationNumber));
+            //  Set the timer
+            setTimer();
+            //  Show the question view
+            questionBorderPane.toFront();
         }
-        //  Add first question to Main View of VBox
-        vboxQuestion.getChildren().add(navigationVbox.get(navigationNumber));
-        //  Set the timer
-        setTimer();
-        //  Show the question view
-        questionBorderPane.toFront();
+
     }
 
     //  =================================================
@@ -447,11 +456,22 @@ public class MainViewController implements Initializable {
     @FXML
     private void btnPrevClick(ActionEvent event) {
 
+        previousNav = navigationNumber;
+
+        navigationVbox.get(previousNav).getChildren().forEach((nav) -> {
+            if (nav instanceof AudioPlayer) {
+                ((AudioPlayer) nav).getPlayer().pause();
+            } else if (nav instanceof VideoPlayer) {
+                ((VideoPlayer) nav).getPlayer().pause();
+            }
+        });
+
         //  If the navigationNumber high than zero, then enables the button
         if (navigationNumber > 0) {
             navigationNumber -= 1;
             vboxQuestion.getChildren().clear();
-            vboxQuestion.getChildren().add(navigationVbox.get(navigationNumber));
+            vboxQuestion.getChildren().add(navigationVbox.get(
+                    navigationNumber));
             btnNext.setDisable(false);
             lblNavigation.setText(String.valueOf(navigationNumber + 1));
         }
@@ -460,6 +480,7 @@ public class MainViewController implements Initializable {
         if (navigationNumber == 0) {
             btnPrev.setDisable(true);
         }
+
     }
 
     //  If the Check button is clicked
@@ -472,30 +493,44 @@ public class MainViewController implements Initializable {
                 (navigationNumber / 5));
         Button btnQst = (Button) vboxQst.getChildren().get(0);
 
-        //  Check the button id
-        switch (btnQst.getId()) {
-            case "button-question-view":
-                btnQst.setId("button-question-view-mark");
-                break;
-            case "button-pressed-mark":
-                btnQst.setId("button-question-view-mark");
-                break;
-            default:
-                btnQst.setId("button-question-view");
-                break;
-        }
+        QuestionContainer cntr = (QuestionContainer) navigationVbox.get(
+                navigationNumber);
 
+        if (cntr.getUserAnswer() == -1) {
+            if (btnQst.getId().equals("button-blue")) {
+                btnQst.setId("button-yellow");
+            } else {
+                btnQst.setId("button-blue");
+            }
+        } else {
+            if (btnQst.getId().equals("button-yellow")) {
+                btnQst.setId("button-green");
+            } else {
+                btnQst.setId("button-yellow");
+            }
+        }
     }
 
     //  If the Next button is clicked
     @FXML
     private void btnNextClick(ActionEvent event) {
 
+        previousNav = navigationNumber;
+
+        navigationVbox.get(previousNav).getChildren().forEach((nav) -> {
+            if (nav instanceof AudioPlayer) {
+                ((AudioPlayer) nav).getPlayer().pause();
+            } else if (nav instanceof VideoPlayer) {
+                ((VideoPlayer) nav).getPlayer().pause();
+            }
+        });
+
         //  If the navigationNumber lower than end of question list, then enables the button
         if (navigationNumber < questions.size() - 1) {
             navigationNumber += 1;
             vboxQuestion.getChildren().clear();
-            vboxQuestion.getChildren().add(navigationVbox.get(navigationNumber));
+            vboxQuestion.getChildren().add(navigationVbox.get(
+                    navigationNumber));
             btnPrev.setDisable(false);
             lblNavigation.setText(String.valueOf(navigationNumber + 1));
         }
@@ -504,6 +539,7 @@ public class MainViewController implements Initializable {
         if (navigationNumber == questions.size() - 1) {
             btnNext.setDisable(true);
         }
+
     }
 
     //  If the end button is clicked
@@ -521,7 +557,52 @@ public class MainViewController implements Initializable {
 
         //  If choose yes
         if (alert.getResult() == ButtonType.YES) {
-            forceEndTest();
+
+            boolean isNotEmpty = false;
+            boolean isUnchecked = false;
+
+            for (int i = 0; i < navigationVbox.size(); i++) {
+                QuestionContainer qst = (QuestionContainer) navigationVbox.
+                        get(i);
+                if (qst.getUserAnswer() == -1) {
+                    isNotEmpty = false;
+                    Alert a = new Alert(AlertType.WARNING);
+                    a.setHeaderText("Peringatan");
+                    a.setContentText("Tolong isi semua jawaban yang belum.");
+                    a.initOwner(root.getScene().getWindow());
+                    a.initModality(Modality.APPLICATION_MODAL);
+                    a.showAndWait();
+                    break;
+                } else {
+                    isNotEmpty = true;
+                }
+            }
+
+            for (int i = 0; i < navigationVbox.size(); i++) {
+
+                VBox vboxQst = (VBox) getCellFromGridPane(gpQuestions,
+                        (i % 5),
+                        (i / 5));
+                Button btn = (Button) vboxQst.getChildren().get(0);
+
+                if (btn.getId().equals("button-yellow")) {
+                    isUnchecked = false;
+                    Alert a = new Alert(AlertType.WARNING);
+                    a.setHeaderText("Peringatan");
+                    a.setContentText(
+                            "Tolong batalkan semua checklist ragu-ragu.");
+                    a.initOwner(root.getScene().getWindow());
+                    a.initModality(Modality.APPLICATION_MODAL);
+                    a.showAndWait();
+                    break;
+                } else {
+                    isUnchecked = true;
+                }
+            }
+
+            if (isNotEmpty && isUnchecked) {
+                forceEndTest();
+            }
         }
     }
 
@@ -541,7 +622,7 @@ public class MainViewController implements Initializable {
     //
     //  Usable for formatting date
     private String dateFormatter(Date date) {
-        SimpleDateFormat sdf = new SimpleDateFormat("EEEE, dd MMMM yyyy",
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy",
                 Locale.ENGLISH);
         return sdf.format(date);
     }
@@ -553,7 +634,7 @@ public class MainViewController implements Initializable {
         alert.setContentText(content);
         alert.initOwner(root.getScene().getWindow());
         alert.initModality(Modality.APPLICATION_MODAL);
-        alert.show();
+        alert.showAndWait();
     }
 
     //  Bruteforce GridPane
@@ -592,7 +673,8 @@ public class MainViewController implements Initializable {
         Score tempScore = new Score();
         tempScore.setParticipant(participant);
         tempScore.setTest(test);
-        tempScore.setScore((score / questions.size()) * 100);
+        tempScore.setScore(
+                Math.round(((score / questions.size()) * 100) * 100) / 100);
         tempScore.setId(new ScoreId(test.getId(), participant.getId()));
         Score compare = scoreDao.getOneSpecificData(participant, test);
 
@@ -603,12 +685,8 @@ public class MainViewController implements Initializable {
             scoreDao.addData(tempScore);
         }
 
-        //  Set the initial text
-        lblFinalTestHeader.setText(test.getName());
-        lblNameFinal.setText(participant.getFirstName() + " " + participant.
-                getLastName());
-        lblIdFinal.setText(participant.getId());
-        lblScoreFinal.setText(String.valueOf((score / questions.size()) * 100));
+        lblScoreFinal.setText(String.valueOf(
+                Math.round(((score / questions.size()) * 100) * 100) / 100));
         lblTrueAnswerFinal.setText(String.valueOf((int) score) + " / " + String.
                 valueOf(questions.size()));
 
@@ -618,8 +696,8 @@ public class MainViewController implements Initializable {
         lblTimeFinal.setText(String.valueOf(formatter.format(date)));
 
         //  Show the score view
-        scoreBorderPane.toFront();
-
+        userBorderPane.toFront();
+        scoreViewPane.toFront();
     }
 
     private void setTimer() {
@@ -634,12 +712,11 @@ public class MainViewController implements Initializable {
                             valueOf(time / 3600) + ":" + String.valueOf(
                             ((time / 60) % 60))));
                     time--;
-                    if (endTest) {
-                        timer.cancel();
-                    }
                 } else {
                     timer.cancel();
-                    forceEndTest();
+                    Platform.runLater(() -> {
+                        forceEndTest();
+                    });
                 }
             }
         }, 1000, 1000);
@@ -651,6 +728,14 @@ public class MainViewController implements Initializable {
 
     public void setNavigationNumber(int navigationNumber) {
         this.navigationNumber = navigationNumber;
+    }
+
+    public int getPreviousNav() {
+        return previousNav;
+    }
+
+    public void setPreviousNav(int previousNav) {
+        this.previousNav = previousNav;
     }
 
 }

@@ -48,7 +48,7 @@ public class RadioButtonContainer extends VBox {
     public RadioButtonContainer(ObservableList<Answer> answers,
             Node gridPaneNode, int questionNumber, QuestionContainer qstCon) {
 
-        setId("vbox-radiobuttons");
+        setId("vbox-radiobutton");
 
         /*  This constructor creates 5 answers for each question.
             Answers are added into temporary list of answers.
@@ -70,7 +70,7 @@ public class RadioButtonContainer extends VBox {
             // Set the attributes into RadioButton
             rb.setText(RadioButtonContainer.alphaMap.get(this.iter) + ans.
                     getContent());
-            rb.setId("radiobutton-question-view");
+            rb.setId("radiobutton-question");
             rb.setToggleGroup(this.tg);
             rb.setSelected(this.iter);
 
@@ -88,19 +88,22 @@ public class RadioButtonContainer extends VBox {
                 //  Change the CSS if Button is clicked
                 switch (btnQst.getId()) {
 
-                    //  If Button is Blue -> Change into Yellow
-                    case "button-question-view":
-                        btnQst.setId("button-pressed-mark");
+                    //  If Button is Blue -> Change into green
+                    case "button-blue":
+                        btnQst.setId("button-green");
                         break;
 
-                    //  If Button is Yellow -> Change into Blue
-                    case "button-question-view-mark":
-                        btnQst.setId("button-pressed-mark");
+                    //  If Button is green -> Change into green
+                    case "button-green":
+                        btnQst.setId("button-green");
                         break;
+
+                    //  If Button is yellow -> Change into yellow
+                    case "button-yellow":
+                        btnQst.setId("button-yellow");
 
                     //  If Button is Blue, do nothing
                     default:
-                        btnQst.setId("button-pressed-mark");
                         break;
                 }
             });

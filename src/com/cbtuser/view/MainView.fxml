@@ -19,428 +19,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="root" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cbtuser.controller.MainViewController">
+<AnchorPane fx:id="root" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cbtuser.controller.MainViewController">
    <children>
-      <BorderPane fx:id="scoreBorderPane" prefHeight="200.0" prefWidth="200.0" styleClass="imageBackground" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <bottom>
-            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" styleClass="hbox-bar" BorderPane.alignment="CENTER">
-               <children>
-                  <Label text="© 2019 Universitas Kristen Maranatha" />
-               </children>
-            </HBox>
-         </bottom>
-         <center>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-               <padding>
-                  <Insets left="256.0" right="256.0" />
-               </padding>
-               <children>
-                  <GridPane prefHeight="375.0" prefWidth="854.0" styleClass="grid-pane-info">
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                     <children>
-                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" styleClass="hbox-info-header-bar">
-                           <children>
-                              <Label text="HASIL TES" />
-                           </children>
-                           <padding>
-                              <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
-                           </padding>
-                        </HBox>
-                        <HBox alignment="CENTER" prefHeight="22.0" prefWidth="850.0" GridPane.rowIndex="7">
-                           <children>
-                              <Button mnemonicParsing="false" onAction="#btnExitPlatform" styleClass="button-red" text="KELUAR" />
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
-                           <padding>
-                              <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
-                           </padding>
-                           <children>
-                              <Label styleClass="label-custom-blackBold" text="Nilai Akhir" />
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" styleClass="hbox-info-border" GridPane.rowIndex="2">
-                           <padding>
-                              <Insets bottom="8.0" left="32.0" right="8.0" top="8.0" />
-                           </padding>
-                           <children>
-                              <Label fx:id="lblScoreFinal" styleClass="label-custom-black" text="null" />
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="3">
-                           <padding>
-                              <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
-                           </padding>
-                           <children>
-                              <Label styleClass="label-custom-blackBold" text="Jawaban Benar" />
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" styleClass="hbox-info-border" GridPane.rowIndex="4">
-                           <padding>
-                              <Insets bottom="8.0" left="32.0" right="8.0" top="8.0" />
-                           </padding>
-                           <children>
-                              <Label fx:id="lblTrueAnswerFinal" styleClass="label-custom-black" text="null" />
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="5">
-                           <children>
-                              <Label styleClass="label-custom-blackBold" text="Waktu Selesai" />
-                           </children>
-                           <padding>
-                              <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
-                           </padding>
-                        </HBox>
-                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" styleClass="hbox-info-border" GridPane.rowIndex="6">
-                           <children>
-                              <Label fx:id="lblTimeFinal" styleClass="label-custom-black" text="null" />
-                           </children>
-                           <padding>
-                              <Insets bottom="8.0" left="32.0" right="8.0" top="8.0" />
-                           </padding>
-                        </HBox>
-                     </children>
-                  </GridPane>
-               </children>
-            </VBox>
-         </center>
-         <top>
-            <GridPane prefHeight="100.0" styleClass="hbox-bar" BorderPane.alignment="CENTER">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-               <children>
-                  <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
-                     <children>
-                        <VBox prefHeight="84.0" prefWidth="300.0" styleClass="vbox-identity">
-                           <children>
-                              <Label fx:id="lblFinalTestHeader" styleClass="label-custom-whiteBold" text="null" />
-                              <VBox prefHeight="43.0" prefWidth="284.0" />
-                              <Label fx:id="lblNameFinal" styleClass="label-custom-whiteBold" text="null" />
-                              <Label fx:id="lblIdFinal" text="null" />
-                           </children>
-                           <padding>
-                              <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
-                           </padding>
-                        </VBox>
-                     </children>
-                  </HBox>
-               </children>
-            </GridPane>
-         </top></BorderPane>
-      <BorderPane fx:id="userBorderPane" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <bottom>
-            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" styleClass="hbox-bar" BorderPane.alignment="CENTER">
-               <children>
-                  <Label text="© 2019 Universitas Kristen Maranatha" />
-               </children>
-            </HBox>
-         </bottom>
-         <center>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="imageBackground" BorderPane.alignment="CENTER">
-               <children>
-                  <VBox fx:id="testViewPage" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" styleClass="imageBackground" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <padding>
-                        <Insets left="256.0" right="256.0" />
-                     </padding>
-                     <children>
-                        <GridPane prefHeight="534.0" prefWidth="854.0" styleClass="grid-pane-info">
-                           <columnConstraints>
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                           </columnConstraints>
-                           <rowConstraints>
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
-                           </rowConstraints>
-                           <children>
-                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" styleClass="hbox-info-header-bar">
-                                 <padding>
-                                    <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
-                                 </padding>
-                                 <children>
-                                    <Label text="KONFIRMASI TES" />
-                                 </children>
-                              </HBox>
-                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
-                                 <padding>
-                                    <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
-                                 </padding>
-                                 <children>
-                                    <Label styleClass="label-custom-blackBold" text="ID TES" />
-                                 </children>
-                              </HBox>
-                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" styleClass="hbox-info-border" GridPane.rowIndex="2">
-                                 <padding>
-                                    <Insets bottom="8.0" left="32.0" right="8.0" top="8.0" />
-                                 </padding>
-                                 <children>
-                                    <Label fx:id="lblIdTest" styleClass="label-custom-black" text="null" />
-                                 </children>
-                              </HBox>
-                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="3">
-                                 <padding>
-                                    <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
-                                 </padding>
-                                 <children>
-                                    <Label styleClass="label-custom-blackBold" text="NAMA TES" />
-                                 </children>
-                              </HBox>
-                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" styleClass="hbox-info-border" GridPane.rowIndex="4">
-                                 <padding>
-                                    <Insets bottom="8.0" left="32.0" right="8.0" top="8.0" />
-                                 </padding>
-                                 <children>
-                                    <Label fx:id="lblNameTest" styleClass="label-custom-black" text="null" />
-                                 </children>
-                              </HBox>
-                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" styleClass="hbox-info-border" GridPane.rowIndex="5">
-                                 <padding>
-                                    <Insets bottom="8.0" left="32.0" right="8.0" top="8.0" />
-                                 </padding>
-                                 <children>
-                                    <Button mnemonicParsing="false" onAction="#btnSubtestClick" styleClass="button-blue" text="DAFTAR MATA PELAJARAN" />
-                                 </children>
-                              </HBox>
-                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="6">
-                                 <padding>
-                                    <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
-                                 </padding>
-                                 <children>
-                                    <Label styleClass="label-custom-blackBold" text="TANGGAL TES" />
-                                 </children>
-                              </HBox>
-                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" styleClass="hbox-info-border" GridPane.rowIndex="7">
-                                 <padding>
-                                    <Insets bottom="8.0" left="32.0" right="8.0" top="8.0" />
-                                 </padding>
-                                 <children>
-                                    <Label fx:id="lblDateTest" styleClass="label-custom-black" text="null" />
-                                 </children>
-                              </HBox>
-                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="8">
-                                 <padding>
-                                    <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
-                                 </padding>
-                                 <children>
-                                    <Label styleClass="label-custom-blackBold" text="WAKTU TES" />
-                                 </children>
-                              </HBox>
-                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" styleClass="hbox-info-border" GridPane.rowIndex="9">
-                                 <padding>
-                                    <Insets bottom="8.0" left="32.0" right="8.0" top="8.0" />
-                                 </padding>
-                                 <children>
-                                    <Label fx:id="lblDateTimeTest" styleClass="label-custom-black" text="null" />
-                                 </children>
-                              </HBox>
-                              <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="10">
-                                 <padding>
-                                    <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
-                                 </padding>
-                                 <children>
-                                    <Button mnemonicParsing="false" onAction="#btnQuestionStartClick" styleClass="button-red" text="MULAI TES" />
-                                 </children>
-                              </HBox>
-                           </children>
-                        </GridPane>
-                     </children>
-                  </VBox>
-                  <VBox fx:id="userViewPage" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="imageBackground" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <children>
-                        <GridPane prefHeight="534.0" prefWidth="854.0" styleClass="grid-pane-info">
-                          <columnConstraints>
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                          </columnConstraints>
-                          <rowConstraints>
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
-                          </rowConstraints>
-                           <children>
-                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" styleClass="hbox-info-header-bar">
-                                 <padding>
-                                    <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
-                                 </padding>
-                                 <children>
-                                    <Label text="KONFIRMASI PESERTA" />
-                                 </children>
-                              </HBox>
-                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
-                                 <padding>
-                                    <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
-                                 </padding>
-                                 <children>
-                                    <Label styleClass="label-custom-blackBold" text="NOMOR PESERTA" />
-                                 </children>
-                              </HBox>
-                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" styleClass="hbox-info-border" GridPane.rowIndex="2">
-                                 <padding>
-                                    <Insets bottom="8.0" left="32.0" right="8.0" top="8.0" />
-                                 </padding>
-                                 <children>
-                                    <Label fx:id="lblIdParticipant" styleClass="label-custom-black" text="null" />
-                                 </children>
-                              </HBox>
-                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="3">
-                                 <padding>
-                                    <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
-                                 </padding>
-                                 <children>
-                                    <Label styleClass="label-custom-blackBold" text="NAMA PESERTA" />
-                                 </children>
-                              </HBox>
-                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" styleClass="hbox-info-border" GridPane.rowIndex="4">
-                                 <padding>
-                                    <Insets bottom="8.0" left="32.0" right="8.0" top="8.0" />
-                                 </padding>
-                                 <children>
-                                    <Label fx:id="lblNameParticipant" styleClass="label-custom-black" text="null" />
-                                 </children>
-                              </HBox>
-                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="5">
-                                 <padding>
-                                    <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
-                                 </padding>
-                                 <children>
-                                    <Label styleClass="label-custom-blackBold" text="INSTITUSI" />
-                                 </children>
-                              </HBox>
-                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" styleClass="hbox-info-border" GridPane.rowIndex="6">
-                                 <padding>
-                                    <Insets bottom="8.0" left="32.0" right="8.0" top="8.0" />
-                                 </padding>
-                                 <children>
-                                    <Label fx:id="lblInstituteParticipant" styleClass="label-custom-black" text="null" />
-                                 </children>
-                              </HBox>
-                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="7">
-                                 <padding>
-                                    <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
-                                 </padding>
-                                 <children>
-                                    <Label styleClass="label-custom-blackBold" text="E-MAIL" />
-                                 </children>
-                              </HBox>
-                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" styleClass="hbox-info-border" GridPane.rowIndex="8">
-                                 <padding>
-                                    <Insets bottom="8.0" left="32.0" right="8.0" top="8.0" />
-                                 </padding>
-                                 <children>
-                                    <Label fx:id="lblEmailParticipant" styleClass="label-custom-black" text="null" />
-                                 </children>
-                              </HBox>
-                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="9">
-                                 <padding>
-                                    <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
-                                 </padding>
-                                 <children>
-                                    <Label styleClass="label-custom-blackBold" text="TOKEN" />
-                                 </children>
-                              </HBox>
-                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" styleClass="hbox-info-border" GridPane.rowIndex="10">
-                                 <padding>
-                                    <Insets bottom="8.0" left="32.0" right="8.0" top="8.0" />
-                                 </padding>
-                                 <children>
-                                    <TextField fx:id="txtTokenTest" prefHeight="40.0" prefWidth="300.0" text="token01">
-                                       <font>
-                                          <Font name="Calibri Bold" size="20.0" />
-                                       </font></TextField>
-                                 </children>
-                              </HBox>
-                              <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="11">
-                                 <padding>
-                                    <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
-                                 </padding>
-                                 <children>
-                                    <Button mnemonicParsing="false" onAction="#btnTestConfirmationClick" styleClass="button-blue" text="KONFIRMASI" />
-                                 </children>
-                              </HBox>
-                           </children>
-                        </GridPane>
-                     </children>
-                     <padding>
-                        <Insets left="256.0" right="256.0" />
-                     </padding></VBox>
-               </children>
-            </AnchorPane>
-         </center>
-         <top>
-            <GridPane prefHeight="100.0" styleClass="hbox-bar" BorderPane.alignment="CENTER">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-               <children>
-                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-                     <children>
-                        <Pane fx:id="imgUserPane" prefHeight="100.0" prefWidth="300.0">
-                           <children>
-                              <ImageView fx:id="imgLogoUserWhite" fitHeight="82.0" fitWidth="119.0" pickOnBounds="true">
-                                 <image>
-                                    <Image url="@css/images/cbt_logo_white.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </Pane>
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
-                     <children>
-                        <VBox prefHeight="84.0" prefWidth="300.0" styleClass="vbox-identity">
-                           <children>
-                              <Label styleClass="label-custom-whiteBold" text="SELAMAT DATANG" />
-                              <VBox prefHeight="43.0" prefWidth="284.0" />
-                              <Label fx:id="lblNameHeaderParticipant" styleClass="label-custom-whiteBold" text="null" />
-                              <Label fx:id="lblIdHeaderParticipant" text="null" />
-                           </children>
-                           <padding>
-                              <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
-                           </padding>
-                        </VBox>
-                     </children>
-                  </HBox>
-               </children>
-            </GridPane>
-         </top></BorderPane>
-      <BorderPane fx:id="questionBorderPane" prefHeight="200.0" prefWidth="200.0" styleClass="imageBackground" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <BorderPane fx:id="questionBorderPane" prefHeight="200.0" prefWidth="200.0" styleClass="box-background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <left>
             <BorderPane prefHeight="718.0" prefWidth="1024.0" BorderPane.alignment="CENTER">
                <bottom>
@@ -452,20 +33,41 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="8.0">
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="8.0" styleClass="box-theme">
                            <children>
-                              <Button fx:id="btnPrev" mnemonicParsing="false" onAction="#btnPrevClick" styleClass="button-green" text="&lt;" />
-                              <Button fx:id="btnWarn" mnemonicParsing="false" onAction="#btnCheckClick" styleClass="button-yellow" text="Tandai" />
-                              <Button fx:id="btnNext" mnemonicParsing="false" onAction="#btnNextClick" styleClass="button-green" text="&gt;" />
+                              <Button id="button-green" fx:id="btnPrev" mnemonicParsing="false" onAction="#btnPrevClick">
+                                 <graphic>
+                                    <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@css/images/prev.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic></Button>
+                              <Button id="button-yellow" fx:id="btnWarn" mnemonicParsing="false" onAction="#btnCheckClick" prefHeight="46.0" prefWidth="200.0" text="Ragu-ragu">
+                                 <graphic>
+                                    <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@css/images/warning.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic></Button>
+                              <Button id="button-green" fx:id="btnNext" mnemonicParsing="false" onAction="#btnNextClick">
+                                 <graphic>
+                                    <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@css/images/next.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic></Button>
                            </children>
                         </HBox>
                      </children>
                   </GridPane>
                </bottom>
                <center>
-                  <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="668.0" prefWidth="1024.0" BorderPane.alignment="CENTER">
+                  <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="668.0" prefWidth="1024.0" styleClass="box-background" BorderPane.alignment="CENTER">
                      <content>
-                        <VBox fx:id="vboxQuestion" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="grid-pane-info" />
+                        <VBox fx:id="vboxQuestion" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="box-background-white-bordered" />
                      </content>
                      <padding>
                         <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
@@ -483,9 +85,9 @@
                      <children>
                         <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="1024.0" spacing="16.0" styleClass="hbox-info-border">
                            <children>
-                              <VBox prefHeight="50.0" prefWidth="10.0" styleClass="hbox-bar" />
-                              <Label styleClass="label-custom-blackBold" text="SOAL NO" />
-                              <HBox alignment="CENTER" prefHeight="53.0" prefWidth="50.0" styleClass="hbox-bar">
+                              <VBox prefHeight="50.0" prefWidth="10.0" styleClass="box-theme" />
+                              <Label styleClass="label-black-bold" text="SOAL NO" />
+                              <HBox alignment="CENTER" prefHeight="53.0" prefWidth="50.0" styleClass="box-header">
                                  <HBox.margin>
                                     <Insets bottom="4.0" top="4.0" />
                                  </HBox.margin>
@@ -498,15 +100,20 @@
                               </HBox>
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="8.0" styleClass="hbox-bar" GridPane.columnIndex="1">
+                        <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="8.0" styleClass="box-theme" GridPane.columnIndex="1">
                            <padding>
                               <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                            </padding>
                            <children>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@css/images/timer_white.png" />
+                                 </image>
+                              </ImageView>
                               <Label text="Sisa Waktu" />
-                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="vbox-identity">
+                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="box-user">
                                  <children>
-                                    <Label fx:id="lblTimerCount" text="null" />
+                                    <Label fx:id="lblTimerCount" styleClass="label-white-bold" text="null" />
                                  </children>
                               </VBox>
                            </children></HBox>
@@ -516,9 +123,9 @@
             </BorderPane>
          </left>
          <right>
-            <BorderPane prefHeight="768.0" prefWidth="342.0" BorderPane.alignment="CENTER">
+            <BorderPane prefHeight="768.0" prefWidth="342.0" styleClass="box-background" BorderPane.alignment="CENTER">
                <center>
-                  <GridPane fx:id="gpQuestions" styleClass="grid-pane-info" BorderPane.alignment="CENTER">
+                  <GridPane fx:id="gpQuestions" styleClass="box-background-white-bordered" BorderPane.alignment="CENTER">
                     <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -544,14 +151,48 @@
                   </GridPane>
                </center>
                <top>
-                  <HBox styleClass="hbox-bar" BorderPane.alignment="CENTER">
+                  <HBox styleClass="box-theme" BorderPane.alignment="CENTER">
                      <children>
-                        <VBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="342.0" styleClass="vbox-identity">
+                        <VBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="342.0" spacing="16.0" styleClass="box-user">
                            <children>
-                              <Label fx:id="lblQstTestName" styleClass="label-custom-blackBold" text="null" />
-                              <HBox prefHeight="100.0" prefWidth="200.0" />
-                              <Label fx:id="lblQstParticipantName" styleClass="label-custom-black" text="null" />
-                              <Label fx:id="lblQstParticipantId" styleClass="label-custom-black" text="null" />
+                              <Label fx:id="lblQstTestName" styleClass="label-white-bold" text="null" />
+                              <GridPane>
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="50.3333740234375" minWidth="10.0" prefWidth="50.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="276.666748046875" minWidth="10.0" prefWidth="274.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
+                                       <children>
+                                          <Label fx:id="lblQstParticipantName" styleClass="label-custom-black" text="null" />
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                                       </padding>
+                                    </HBox>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                       <children>
+                                          <Label fx:id="lblQstParticipantId" styleClass="label-custom-black" text="null" />
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                                       </padding>
+                                    </HBox>
+                                    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowSpan="2147483647">
+                                       <children>
+                                          <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@css/images/account_white.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </GridPane>
                            </children>
                            <padding>
                               <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
@@ -571,7 +212,14 @@
                      <children>
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#btnEndTestClick" styleClass="button-red" text="SELESAI" />
+                              <Button id="button-red" mnemonicParsing="false" onAction="#btnEndTestClick" prefHeight="46.0" prefWidth="200.0" text="SELESAI">
+                                 <graphic>
+                                    <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@css/images/assignment_done_white.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic></Button>
                            </children>
                         </HBox>
                      </children>
@@ -580,24 +228,599 @@
             </BorderPane>
          </right>
       </BorderPane>
-      <BorderPane fx:id="loginBorderPane" layoutX="583.0" layoutY="284.0" prefHeight="200.0" prefWidth="200.0" styleClass="imageBackground" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <top>
-            <HBox prefHeight="100.0" prefWidth="200.0" styleClass="hbox-bar" BorderPane.alignment="CENTER" />
-         </top>
+      <BorderPane fx:id="userBorderPane" prefHeight="200.0" prefWidth="200.0" styleClass="box-background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <bottom>
-            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" styleClass="hbox-bar" BorderPane.alignment="CENTER">
+            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" styleClass="box-theme" BorderPane.alignment="CENTER">
                <children>
                   <Label text="© 2019 Universitas Kristen Maranatha" />
                </children>
             </HBox>
          </bottom>
          <center>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="imageBackground" BorderPane.alignment="CENTER">
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <BorderPane fx:id="testViewPane" styleClass="box-background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <left>
+                        <VBox alignment="TOP_CENTER" prefHeight="618.0" prefWidth="1024.0" styleClass="box-background" BorderPane.alignment="CENTER">
+                           <children>
+                              <GridPane prefHeight="500.0" prefWidth="854.0" styleClass="box-background-white-bordered">
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <children>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="8.0" styleClass="box-header">
+                                       <padding>
+                                          <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                                       </padding>
+                                       <children>
+                                          <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@css/images/assignment_white.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Label text="KONFIRMASI TES" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
+                                       <padding>
+                                          <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                                       </padding>
+                                       <children>
+                                          <Label styleClass="label-black-bold" text="ID TES" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="8.0" styleClass="box-border-bottom" GridPane.rowIndex="2">
+                                       <padding>
+                                          <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                                       </padding>
+                                       <children>
+                                          <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@css/images/user_assignment.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Label fx:id="lblIdTest" styleClass="label-black" text="null" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="3">
+                                       <padding>
+                                          <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                                       </padding>
+                                       <children>
+                                          <Label styleClass="label-black-bold" text="NAMA TES" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="8.0" styleClass="box-border-bottom" GridPane.rowIndex="4">
+                                       <padding>
+                                          <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                                       </padding>
+                                       <children>
+                                          <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@css/images/assignment_black.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Label fx:id="lblNameTest" styleClass="label-black" text="null" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="8.0" styleClass="box-border-bottom" GridPane.rowIndex="5">
+                                       <padding>
+                                          <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                                       </padding>
+                                       <children>
+                                          <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@css/images/baseline_school_black_18dp.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Button id="button-blue" mnemonicParsing="false" onAction="#btnSubtestClick" text="DAFTAR MATA PELAJARAN" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="6">
+                                       <padding>
+                                          <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                                       </padding>
+                                       <children>
+                                          <Label styleClass="label-black-bold" text="TANGGAL TES" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="8.0" styleClass="box-border-bottom" GridPane.rowIndex="7">
+                                       <padding>
+                                          <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                                       </padding>
+                                       <children>
+                                          <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@css/images/calendar.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Label fx:id="lblDateTest" styleClass="label-black" text="null" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="8">
+                                       <padding>
+                                          <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                                       </padding>
+                                       <children>
+                                          <Label styleClass="label-black-bold" text="WAKTU TES" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="8.0" styleClass="box-border-bottom" GridPane.rowIndex="9">
+                                       <padding>
+                                          <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                                       </padding>
+                                       <children>
+                                          <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@css/images/time.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Label fx:id="lblDateTimeTest" styleClass="label-black" text="null" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </GridPane>
+                           </children>
+                           <padding>
+                              <Insets bottom="32.0" left="32.0" right="32.0" top="32.0" />
+                           </padding>
+                        </VBox>
+                     </left>
+                     <right>
+                        <VBox alignment="TOP_CENTER" prefHeight="618.0" prefWidth="342.0" BorderPane.alignment="CENTER">
+                           <padding>
+                              <Insets bottom="32.0" left="32.0" right="32.0" top="32.0" />
+                           </padding>
+                           <children>
+                              <GridPane prefHeight="250.0" prefWidth="326.0">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints maxHeight="210.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="210.0" minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
+                                  <RowConstraints maxHeight="174.0" minHeight="10.0" prefHeight="82.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="8.0" styleClass="box-header">
+                                       <children>
+                                          <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@css/images/warning.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Label styleClass="label-white-bold" text="PERINGATAN" />
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                                       </padding>
+                                    </HBox>
+                                    <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
+                                       <children>
+                                          <Button id="button-red" mnemonicParsing="false" onAction="#btnQuestionStartClick" prefHeight="38.0" prefWidth="340.0" text="MULAI TES">
+                                             <graphic>
+                                                <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@css/images/warning.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Button>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                                       </padding>
+                                    </HBox>
+                                    <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" styleClass="box-background-white-bordered" GridPane.rowIndex="1">
+                                       <padding>
+                                          <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                                       </padding>
+                                       <children>
+                                          <Label styleClass="label-black" text="Tombol MULAI TES hanya akan aktif apabila waktu sekarang sudah melewati waktu test." textAlignment="JUSTIFY" wrapText="true" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </GridPane>
+                           </children>
+                        </VBox>
+                     </right>
+                  </BorderPane>
+                  <BorderPane fx:id="scoreViewPane" styleClass="box-background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <left>
+                        <VBox alignment="TOP_CENTER" prefHeight="618.0" prefWidth="1024.0" styleClass="box-background" BorderPane.alignment="CENTER">
+                           <padding>
+                              <Insets bottom="32.0" left="32.0" right="32.0" top="32.0" />
+                           </padding>
+                           <children>
+                              <GridPane prefHeight="375.0" prefWidth="854.0" styleClass="box-background-white-bordered">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="8.0" styleClass="box-header">
+                                       <children>
+                                          <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@css/images/assignment_white.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Label text="HASIL TES" />
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                                       </padding>
+                                    </HBox>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
+                                       <padding>
+                                          <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                                       </padding>
+                                       <children>
+                                          <Label styleClass="label-black-bold" text="Nilai Akhir" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="8.0" styleClass="box-border-bottom" GridPane.rowIndex="2">
+                                       <padding>
+                                          <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                                       </padding>
+                                       <children>
+                                          <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@css/images/score.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Label fx:id="lblScoreFinal" styleClass="label-black" text="null" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="3">
+                                       <padding>
+                                          <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                                       </padding>
+                                       <children>
+                                          <Label styleClass="label-black-bold" text="Jawaban Benar" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="8.0" styleClass="box-border-bottom" GridPane.rowIndex="4">
+                                       <padding>
+                                          <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                                       </padding>
+                                       <children>
+                                          <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@css/images/assignment_done_black.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Label fx:id="lblTrueAnswerFinal" styleClass="label-black" text="null" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="5">
+                                       <children>
+                                          <Label styleClass="label-black-bold" text="Waktu Selesai" />
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                                       </padding>
+                                    </HBox>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="8.0" styleClass="box-border-bottom" GridPane.rowIndex="6">
+                                       <children>
+                                          <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@css/images/time.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Label fx:id="lblTimeFinal" styleClass="label-black" text="null" />
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                                       </padding>
+                                    </HBox>
+                                 </children>
+                              </GridPane>
+                           </children>
+                        </VBox>
+                     </left>
+                     <right>
+                        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="342.0" styleClass="box-background" BorderPane.alignment="CENTER">
+                           <padding>
+                              <Insets bottom="128.0" left="32.0" right="32.0" top="32.0" />
+                           </padding>
+                           <children>
+                              <Button id="button-red" mnemonicParsing="false" onAction="#btnExitPlatform" prefHeight="38.0" prefWidth="250.0" text="KELUAR">
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@css/images/cancel.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </right>
+                  </BorderPane>
+                  <VBox fx:id="userViewPage" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="box-background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <GridPane prefHeight="534.0" prefWidth="854.0" styleClass="box-background-white-bordered">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="8.0" styleClass="box-header">
+                                 <padding>
+                                    <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                                 </padding>
+                                 <children>
+                                    <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@css/images/account_white.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label text="KONFIRMASI PESERTA" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
+                                 <padding>
+                                    <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                                 </padding>
+                                 <children>
+                                    <Label styleClass="label-black-bold" text="NOMOR PESERTA" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="8.0" styleClass="box-border-bottom" GridPane.rowIndex="2">
+                                 <padding>
+                                    <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                                 </padding>
+                                 <children>
+                                    <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@css/images/baseline_folder_shared_black_18dp.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label fx:id="lblIdParticipant" styleClass="label-black" text="null" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="3">
+                                 <padding>
+                                    <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                                 </padding>
+                                 <children>
+                                    <Label styleClass="label-black-bold" text="NAMA PESERTA" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="8.0" styleClass="box-border-bottom" GridPane.rowIndex="4">
+                                 <padding>
+                                    <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                                 </padding>
+                                 <children>
+                                    <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@css/images/account_black.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label fx:id="lblNameParticipant" styleClass="label-black" text="null" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="5">
+                                 <padding>
+                                    <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                                 </padding>
+                                 <children>
+                                    <Label styleClass="label-black-bold" text="INSTITUSI" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="8.0" styleClass="box-border-bottom" GridPane.rowIndex="6">
+                                 <padding>
+                                    <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                                 </padding>
+                                 <children>
+                                    <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@css/images/apartement.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label fx:id="lblInstituteParticipant" styleClass="label-black" text="null" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="7">
+                                 <padding>
+                                    <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                                 </padding>
+                                 <children>
+                                    <Label styleClass="label-black-bold" text="E-MAIL" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="8.0" styleClass="box-border-bottom" GridPane.rowIndex="8">
+                                 <padding>
+                                    <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                                 </padding>
+                                 <children>
+                                    <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@css/images/mail.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label fx:id="lblEmailParticipant" styleClass="label-black" text="null" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="9">
+                                 <padding>
+                                    <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                                 </padding>
+                                 <children>
+                                    <Label styleClass="label-black-bold" text="TOKEN" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="8.0" styleClass="box-border-bottom" GridPane.rowIndex="10">
+                                 <padding>
+                                    <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                                 </padding>
+                                 <children>
+                                    <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@css/images/key.png" />
+                                       </image>
+                                    </ImageView>
+                                    <TextField fx:id="txtTokenTest" prefHeight="40.0" prefWidth="300.0" text="token01">
+                                       <font>
+                                          <Font name="Calibri Bold" size="20.0" />
+                                       </font></TextField>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="11">
+                                 <padding>
+                                    <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                                 </padding>
+                                 <children>
+                                    <Button id="button-blue" mnemonicParsing="false" onAction="#btnTestConfirmationClick" text="KONFIRMASI">
+                                       <graphic>
+                                          <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@css/images/done.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic></Button>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </GridPane>
+                     </children>
+                     <padding>
+                        <Insets left="256.0" right="256.0" />
+                     </padding></VBox>
+               </children>
+            </AnchorPane>
+         </center>
+         <top>
+            <GridPane prefHeight="100.0" styleClass="box-theme" BorderPane.alignment="CENTER">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Pane fx:id="imgUserPane" prefHeight="100.0" prefWidth="325.0">
+                           <children>
+                              <ImageView fx:id="imgLogoUserWhite" fitHeight="82.0" fitWidth="119.0" pickOnBounds="true">
+                                 <image>
+                                    <Image url="@css/images/cbt_logo_white.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
+                     <children>
+                        <HBox>
+                           <children>
+                              <VBox prefHeight="84.0" prefWidth="342.0" spacing="16.0" styleClass="box-user">
+                                 <children>
+                                    <Label styleClass="label-white-bold" text="SELAMAT DATANG" />
+                                    <GridPane>
+                                      <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="50.0" minWidth="10.0" prefWidth="50.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="235.0" minWidth="10.0" prefWidth="235.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                       <children>
+                                          <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
+                                             <children>
+                                                <Label fx:id="lblNameHeaderParticipant" styleClass="label-custom-whiteBold" text="null" />
+                                             </children>
+                                             <padding>
+                                                <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                                             </padding>
+                                          </HBox>
+                                          <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                             <children>
+                                                <Label fx:id="lblIdHeaderParticipant" text="null" />
+                                             </children>
+                                             <padding>
+                                                <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                                             </padding>
+                                          </HBox>
+                                          <HBox alignment="CENTER" prefHeight="46.0" prefWidth="86.0" GridPane.rowSpan="2147483647">
+                                             <children>
+                                                <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@css/images/account_white.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </GridPane>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                                 </padding>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+               </children>
+            </GridPane>
+         </top></BorderPane>
+      <BorderPane fx:id="loginBorderPane" layoutX="583.0" layoutY="284.0" prefHeight="200.0" prefWidth="200.0" styleClass="box-background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <HBox prefHeight="100.0" prefWidth="200.0" styleClass="box-theme" BorderPane.alignment="CENTER" />
+         </top>
+         <bottom>
+            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" styleClass="box-theme" BorderPane.alignment="CENTER">
+               <children>
+                  <Label text="© 2019 Universitas Kristen Maranatha" />
+               </children>
+            </HBox>
+         </bottom>
+         <center>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
                <padding>
                   <Insets left="512.0" right="512.0" />
                </padding>
                <children>
-                  <GridPane prefHeight="399.0" prefWidth="342.0" style="-fx-background-radius: 5;" styleClass="grid-pane-info">
+                  <GridPane prefHeight="399.0" prefWidth="342.0" styleClass="box-background-white-bordered">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                     </columnConstraints>
@@ -624,7 +847,7 @@
                            <children>
                               <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
                                  <children>
-                                    <Label styleClass="label-custom-blackBold" text="Username" />
+                                    <Label styleClass="label-black-bold" text="Username" />
                                  </children>
                               </HBox>
                               <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
@@ -638,7 +861,7 @@
                               </HBox>
                               <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="4">
                                  <children>
-                                    <Label styleClass="label-custom-blackBold" text="Password" />
+                                    <Label styleClass="label-black-bold" text="Password" />
                                  </children>
                               </HBox>
                               <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="5">
@@ -652,12 +875,12 @@
                               </HBox>
                               <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="7">
                                  <children>
-                                    <Button mnemonicParsing="false" onAction="#loginButtonClick" styleClass="button-blue" text="LOGIN" />
+                                    <Button id="button-blue" mnemonicParsing="false" onAction="#loginButtonClick" text="LOGIN" />
                                  </children>
                               </HBox>
                            </children>
                         </GridPane>
-                        <Pane fx:id="imgLoginPane" styleClass="hbox-bar">
+                        <Pane fx:id="imgLoginPane" styleClass="box-header">
                            <children>
                               <ImageView fx:id="imgLogoLoginWhite" fitHeight="57.0" fitWidth="209.0" pickOnBounds="true">
                                  <image>
@@ -674,7 +897,9 @@
       </BorderPane>
    </children>
    <stylesheets>
-      <URL value="@css/fxmlLayoutStyle.css" />
-      <URL value="@css/fxmlControlStyle.css" />
+      <URL value="@css/buttonStyle.css" />
+      <URL value="@css/staticControlStyle.css" />
+      <URL value="@css/boxStyle.css" />
+      <URL value="@css/containerStyle.css" />
    </stylesheets>
 </AnchorPane>

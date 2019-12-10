@@ -1,83 +1,75 @@
-
-/* Scaffolding Styling */
-
-.hbox-bar {
-    -fx-background-color: #0068ac;
-}
-.hbox-bar .label {
+.box-theme {
+    -fx-background-color: #0068ac;}
+.box-theme .label {
     -fx-background-color: transparent;
     -fx-text-fill: white;
     -fx-font-family: 'Calibri';
-    -fx-font-size: 18px;
+    -fx-font-size: 18px;}
+
+.box-background {
+    -fx-background-color: #eeeeee;
 }
 
-/*Gridpane Information Styling*/
+.box-background-white-bordered {
+    -fx-background-color: white;
+    -fx-border-color: #0068ac;
+    -fx-border-width: 2px;
+}
 
-.hbox-info-header-bar {
+.box-background-white {
+    -fx-background-color: white;
+}
+
+.box-header {
     -fx-background-color: #0068ac;
 }
-.hbox-info-header-bar .label {
+.box-header .label {
     -fx-background-color: transparent;
     -fx-text-fill: white;
     -fx-font-family: 'Calibri';
     -fx-font-size: 24px;
     -fx-font-weight: bold;
 }
-.grid-pane-info {
+
+.box-border {
     -fx-border-color: #0068ac;
     -fx-border-width: 2px;
 }
-.hbox-info-border {
+
+.box-border-bottom {
     -fx-border-color: #0068ac;
     -fx-border-width: 0 0 1 0;
 }
 
-/*Name Placeholder Styling*/
-
-.vbox-identity {
+.box-user {
     -fx-background-color: rgba(30, 30, 30, 0.4);
 }
-.vbox-identity .label {
+.box-user .label {
     -fx-background-color: transparent;
     -fx-text-fill: white;
     -fx-font-family: 'Calibri';
     -fx-font-size: 18px;
 }
-.hbox-welcome .label {
-    -fx-background-color: transparent;
-    -fx-text-fill: white;
-    -fx-font-family: 'Calibri';
-    -fx-font-size: 20px;
-    -fx-font-weight: bold;
-}
 
-.out-border{
+.box-out-border{
     -fx-border-color: #0068ac;
     -fx-border-width: 5;
 }
 
-.imageBackground{
-    -fx-background-color: white;
-    -fx-background-position: left top, center;
-    -fx-background-repeat: no-repeat;
-    -fx-background-size: cover, auto;
-}
-
-.imageLogoWhite{
+.image-logo-white{
     -fx-background-image: url("images/cbt_logo_white.png");
     -fx-background-position: left top, center;
     -fx-background-repeat: no-repeat;
     -fx-background-size: cover, auto;
 }
-
-.imageLogoBlue{
+.image-logo-blue{
     -fx-background-image: url("images/cbt_logo.png");
     -fx-background-position: left top, center;
     -fx-background-repeat: no-repeat;
     -fx-background-size: cover, auto;
 }
 
-.label-custom-blackBold {
+.label-black-bold {
     -fx-background-color: transparent;
     -fx-text-fill: black;
     -fx-font-family: 'Calibri';
@@ -85,14 +77,14 @@
     -fx-font-weight: bold;
 }
 
-.label-custom-black {
+.label-black {
     -fx-background-color: transparent;
     -fx-text-fill: black;
     -fx-font-family: 'Calibri';
     -fx-font-size: 18px;
 }
 
-.label-custom-whiteBold {
+.label-white-bold {
     -fx-background-color: transparent;
     -fx-text-fill: white;
     -fx-font-family: 'Calibri';
@@ -100,27 +92,28 @@
     -fx-font-weight: bold;
 }
 
-#vbox-question-container {
+#box-question-container {
     -fx-padding: 32;
     -fx-spacing: 24;
 }
 
-#label-question-view {
+#label-question {
     -fx-background-color: transparent;
     -fx-text-fill: black;
     -fx-font-family: 'Calibri';
     -fx-font-size: 18px;
 }
 
-#radiobutton-question-view {
+#box-navigation {
+    -fx-alignment: CENTER;
+    -fx-padding: 8;}
+
+#radiobutton-question {
     -fx-background-color: transparent;
     -fx-text-fill: black;
     -fx-font-family: 'Calibri';
     -fx-font-size: 16px;
-
 }
+#vbox-radiobutton {
+    -fx-spacing: 8;}
 
-#vbox-button-question-view {
-    -fx-alignment: CENTER;
-    -fx-padding: 8;
-}

@@ -8,12 +8,12 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox fx:id="root" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="600.0" styleClass="out-border" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cbtuser.controller.TestListViewController">
+<VBox fx:id="root" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="390.0" prefWidth="600.0" styleClass="box-out-border" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cbtuser.controller.TestListViewController">
    <padding>
       <Insets bottom="32.0" left="32.0" right="32.0" top="32.0" />
    </padding>
    <children>
-      <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="536.0" styleClass="hbox-bar">
+      <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="536.0" styleClass="box-header">
          <padding>
             <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
          </padding>
@@ -23,17 +23,18 @@
       </HBox>
       <ListView fx:id="listViewSubtest" prefHeight="200.0" prefWidth="200.0" styleClass="table-view" />
       <HBox prefHeight="16.0" prefWidth="200.0" />
-      <HBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="536.0">
+      <HBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="536.0" styleClass="box-border">
          <padding>
             <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
          </padding>
          <children>
-            <Button mnemonicParsing="false" onAction="#btnListViewClose" styleClass="button-blue" text="TUTUP" />
+            <Button id="button-blue" mnemonicParsing="false" onAction="#btnListViewClose" stylesheets="@css/buttonStyle.css" text="TUTUP" />
          </children>
       </HBox>
    </children>
    <stylesheets>
-      <URL value="@css/fxmlLayoutStyle.css" />
-      <URL value="@css/fxmlControlStyle.css" />
+      <URL value="@css/staticControlStyle.css" />
+      <URL value="@css/buttonStyle.css" />
+      <URL value="@css/boxStyle.css" />
    </stylesheets>
 </VBox>

@@ -23,6 +23,8 @@ public class QuestionContainer extends VBox {
     private int answerNumber;
     //  User answer of question
     private int userAnswer = -1;
+    //  Label for media caption
+    private Label lblCaption;
     //  Label for question content
     private Label lbl;
     //  Observable list of answers
@@ -31,7 +33,6 @@ public class QuestionContainer extends VBox {
     private Question question = new Question();
     //  New answer DAO
     private AnswerDaoImpl answerDao;
-    //
 
     //  Class constructor
     public QuestionContainer(
@@ -41,7 +42,7 @@ public class QuestionContainer extends VBox {
             GridPane gpQuestions) {
 
         //  Set VBox CSS style
-        setId("vbox-question-container");
+        setId("box-question-container");
 
         //  Set this attributes
         this.question = question;
@@ -56,14 +57,39 @@ public class QuestionContainer extends VBox {
                 VideoPlayer vp = new VideoPlayer(new File(this.question
                         .getMediacontent().getMediaAddress()).toURI()
                         .toString());
+
+                if (this.question.getMediacontent().getCaption() != null) {
+                    this.lblCaption = new Label(this.question.getId());
+                    this.lblCaption.setId("label-question");
+                    this.lblCaption.setText(this.question.getMediacontent().
+                            getCaption());
+                    getChildren().add(lblCaption);
+                }
+
                 getChildren().add(vp);
                 break;
             //  Audio media content
             case 2:
-                //  TODO FOR AUDIO QUESTION
+                AudioPlayer ap = new AudioPlayer(
+                        this.question.getMediacontent().getMediaAddress());
+                if (this.question.getMediacontent().getCaption() != null) {
+                    this.lblCaption = new Label(this.question.getId());
+                    this.lblCaption.setId("label-question");
+                    this.lblCaption.setText(this.question.getMediacontent().
+                            getCaption());
+                    getChildren().add(lblCaption);
+                }
+                getChildren().add(ap);
                 break;
             //  Image media content
             case 3:
+                if (this.question.getMediacontent().getCaption() != null) {
+                    this.lblCaption = new Label(this.question.getId());
+                    this.lblCaption.setId("label-question");
+                    this.lblCaption.setText(this.question.getMediacontent().
+                            getCaption());
+                    getChildren().add(lblCaption);
+                }
                 MediaImageContainer imageContainer = new MediaImageContainer(
                         this.question.getMediacontent().getMediaAddress()
                 );
@@ -76,7 +102,7 @@ public class QuestionContainer extends VBox {
 
         //  Set this question content label
         this.lbl = new Label(this.question.getId());
-        this.lbl.setId("label-question-view");
+        this.lbl.setId("label-question");
         this.lbl.setText(this.question.getContent());
 
         //  Get answers from question
