@@ -45,12 +45,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
@@ -173,6 +175,18 @@ public class MainViewController implements Initializable {
     public int time;
     private int previousNav = 0;
     private Date currentDate;
+    @FXML
+    private ScrollPane scpPane;
+    private BorderPane questionListPane;
+    private boolean isHide = true;
+    @FXML
+    private BorderPane questionViewBorderPane;
+    @FXML
+    private VBox boxLayout1Change;
+    @FXML
+    private HBox boxNumberChange;
+    @FXML
+    private HBox boxLayout2Change;
 
     //  =================================================
     //  Initializations of controller class
@@ -392,59 +406,55 @@ public class MainViewController implements Initializable {
     @FXML
     private void btnQuestionStartClick(ActionEvent event) {
 
-        currentDate = new Date();
+//        currentDate = new Date();
+//
+//        if (currentDate.after(test.getDate())) {
+//            alertErrorShow("Error",
+//                    "Test belum bisa dimulai sebelum jadwal waktu test.",
+//                    AlertType.ERROR);
+//        } else {
+        //  Set the initial text
+        lblQstParticipantName.setText(
+                participant.getFirstName() + " " + participant.getLastName());
+        lblQstParticipantId.setText(participant.getId());
+        lblQstTestName.setText(test.getName());
+        lblNavigation.setText(String.valueOf(1));
 
-        if (currentDate.after(test.getDate())) {
-            alertErrorShow("Error",
-                    "Test belum bisa dimulai sebelum jadwal waktu test.",
-                    AlertType.ERROR);
-        } else {
-            //  Set the initial text
-            lblQstParticipantName.setText(
-                    participant.getFirstName() + " " + participant.getLastName());
-            lblQstParticipantId.setText(participant.getId());
-            lblQstTestName.setText(test.getName());
-            lblNavigation.setText(String.valueOf(1));
+        //  Add question based on subtests
+        subtests.forEach((subtest) -> {
+            questions.addAll(questionDao.getSpecificData(subtest));
+        });
 
-            //  Add question based on subtests
-            subtests.forEach((subtest) -> {
-                questions.addAll(questionDao.getSpecificData(subtest));
-            });
-
-            /*  Iteration through the size of question
+        /*  Iteration through the size of question
             this algorithm creates :
             - button of question
             - question lists    */
-            for (int i = 0; i < questions.size(); i++) {
-                //  Create navigation button
-                ButtonNavigationContainer btnNavContainer = new ButtonNavigationContainer(
-                        i,
-                        vboxQuestion,
-                        navigationVbox,
-                        lblNavigation,
-                        btnPrev,
-                        btnNext,
-                        questions.size(),
-                        this);
-                //  Add navigation button to question GridPane
-                gpQuestions.add(btnNavContainer, (i % 5), (i / 5));
-                //  Create question container
-                QuestionContainer qstContainer = new QuestionContainer(
-                        questions.
-                                get(i),
-                        i, i, gpQuestions);
+        for (int i = 0; i < questions.size(); i++) {
+            //  Create navigation button
+            ButtonNavigationContainer btnNavContainer = new ButtonNavigationContainer(
+                    i,
+                    vboxQuestion,
+                    navigationVbox,
+                    lblNavigation,
+                    btnPrev,
+                    btnNext,
+                    questions.size(),
+                    this);
+            //  Add navigation button to question GridPane
+            gpQuestions.add(btnNavContainer, (i % 5), (i / 5));
+            QuestionContainer qstContainer = new QuestionContainer(this,
+                    questions.get(i));
+            //  Add to list of VBox
+            navigationVbox.add(qstContainer);
 
-                //  Add to list of VBox
-                navigationVbox.add(qstContainer);
-
-            }
-            //  Add first question to Main View of VBox
-            vboxQuestion.getChildren().add(navigationVbox.get(navigationNumber));
-            //  Set the timer
-            setTimer();
-            //  Show the question view
-            questionBorderPane.toFront();
         }
+        //  Add first question to Main View of VBox
+        vboxQuestion.getChildren().add(navigationVbox.get(navigationNumber));
+        //  Set the timer
+        setTimer();
+        //  Show the question view
+        questionBorderPane.toFront();
+//        }
 
     }
 
@@ -481,6 +491,35 @@ public class MainViewController implements Initializable {
             btnPrev.setDisable(true);
         }
 
+        if (((QuestionContainer) navigationVbox.get(navigationNumber)).
+                getUserAnswerKey() == -1) {
+            if (!((QuestionContainer) navigationVbox.get(navigationNumber)).
+                    isChecked()) {
+                boxNumberChange.setId("box-container-blue");
+                boxLayout1Change.setId("box-container-blue");
+                boxLayout2Change.setId("box-container-blue");
+                vboxQuestion.setId("box-border-blue");
+            } else {
+                boxNumberChange.setId("box-container-yellow");
+                boxLayout1Change.setId("box-container-yellow");
+                boxLayout2Change.setId("box-container-yellow");
+                vboxQuestion.setId("box-border-yellow");
+            }
+        } else {
+            if (!((QuestionContainer) navigationVbox.get(navigationNumber)).
+                    isChecked()) {
+                boxNumberChange.setId("box-container-green");
+                boxLayout1Change.setId("box-container-green");
+                boxLayout2Change.setId("box-container-green");
+                vboxQuestion.setId("box-border-green");
+            } else {
+                boxNumberChange.setId("box-container-yellow");
+                boxLayout1Change.setId("box-container-yellow");
+                boxLayout2Change.setId("box-container-yellow");
+                vboxQuestion.setId("box-border-yellow");
+            }
+        }
+
     }
 
     //  If the Check button is clicked
@@ -496,19 +535,42 @@ public class MainViewController implements Initializable {
         QuestionContainer cntr = (QuestionContainer) navigationVbox.get(
                 navigationNumber);
 
-        if (cntr.getUserAnswer() == -1) {
-            if (btnQst.getId().equals("button-blue")) {
+        if (cntr.getUserAnswerKey() == -1) {
+            if (!cntr.isChecked()) {
                 btnQst.setId("button-yellow");
+                cntr.setChecked(true);
+                boxNumberChange.setId("box-container-yellow");
+                boxLayout1Change.setId("box-container-yellow");
+                boxLayout2Change.setId("box-container-yellow");
+                vboxQuestion.setId("box-border-yellow");
+
             } else {
                 btnQst.setId("button-blue");
+                cntr.setChecked(false);
+                boxNumberChange.setId("box-container-blue");
+                boxLayout1Change.setId("box-container-blue");
+                boxLayout2Change.setId("box-container-blue");
+                vboxQuestion.setId("box-border-blue");
             }
         } else {
-            if (btnQst.getId().equals("button-yellow")) {
+            if (cntr.isChecked()) {
                 btnQst.setId("button-green");
+                cntr.setChecked(false);
+                boxNumberChange.setId("box-container-green");
+                boxLayout1Change.setId("box-container-green");
+                boxLayout2Change.setId("box-container-green");
+                vboxQuestion.setId("box-border-green");
+
             } else {
                 btnQst.setId("button-yellow");
+                cntr.setChecked(true);
+                boxNumberChange.setId("box-container-yellow");
+                boxLayout1Change.setId("box-container-yellow");
+                boxLayout2Change.setId("box-container-yellow");
+                vboxQuestion.setId("box-border-yellow");
             }
         }
+
     }
 
     //  If the Next button is clicked
@@ -540,6 +602,46 @@ public class MainViewController implements Initializable {
             btnNext.setDisable(true);
         }
 
+        if (((QuestionContainer) navigationVbox.get(navigationNumber)).
+                getUserAnswerKey() == -1) {
+            if (!((QuestionContainer) navigationVbox.get(navigationNumber)).
+                    isChecked()) {
+                boxNumberChange.setId("box-container-blue");
+                boxLayout1Change.setId("box-container-blue");
+                boxLayout2Change.setId("box-container-blue");
+                vboxQuestion.setId("box-border-blue");
+            } else {
+                boxNumberChange.setId("box-container-yellow");
+                boxLayout1Change.setId("box-container-yellow");
+                boxLayout2Change.setId("box-container-yellow");
+                vboxQuestion.setId("box-border-yellow");
+            }
+        } else {
+            if (!((QuestionContainer) navigationVbox.get(navigationNumber)).
+                    isChecked()) {
+                boxNumberChange.setId("box-container-green");
+                boxLayout1Change.setId("box-container-green");
+                boxLayout2Change.setId("box-container-green");
+                vboxQuestion.setId("box-border-green");
+            } else {
+                boxNumberChange.setId("box-container-yellow");
+                boxLayout1Change.setId("box-container-yellow");
+                boxLayout2Change.setId("box-container-yellow");
+                vboxQuestion.setId("box-border-yellow");
+            }
+        }
+
+    }
+
+    @FXML
+    private void btnQuestionListClick(ActionEvent event) {
+        if (isHide) {
+            questionViewBorderPane.setPrefWidth(1024);
+            isHide = false;
+        } else {
+            questionViewBorderPane.setPrefWidth(1366);
+            isHide = true;
+        }
     }
 
     //  If the end button is clicked
@@ -564,7 +666,7 @@ public class MainViewController implements Initializable {
             for (int i = 0; i < navigationVbox.size(); i++) {
                 QuestionContainer qst = (QuestionContainer) navigationVbox.
                         get(i);
-                if (qst.getUserAnswer() == -1) {
+                if (qst.getUserAnswerKey() == -1) {
                     isNotEmpty = false;
                     Alert a = new Alert(AlertType.WARNING);
                     a.setHeaderText("Peringatan");
@@ -664,7 +766,7 @@ public class MainViewController implements Initializable {
         //  Check correct answers
         navigationVbox.forEach((nav) -> {
             QuestionContainer container = (QuestionContainer) nav;
-            if (container.getUserAnswer() == container.getAnswerNumber()) {
+            if (container.getUserAnswerKey() == container.getAnswerKey()) {
                 score++;
             }
         });
@@ -736,6 +838,30 @@ public class MainViewController implements Initializable {
 
     public void setPreviousNav(int previousNav) {
         this.previousNav = previousNav;
+    }
+
+    public GridPane getGpQuestions() {
+        return gpQuestions;
+    }
+
+    public VBox getBoxLayout1Change() {
+        return boxLayout1Change;
+    }
+
+    public HBox getBoxNumberChange() {
+        return boxNumberChange;
+    }
+
+    public HBox getBoxLayout2Change() {
+        return boxLayout2Change;
+    }
+
+    public ObservableList<VBox> getNavigationVbox() {
+        return navigationVbox;
+    }
+
+    public VBox getVboxQuestion() {
+        return vboxQuestion;
     }
 
 }

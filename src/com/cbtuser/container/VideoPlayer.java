@@ -13,12 +13,14 @@ import javafx.scene.media.MediaView;
  */
 public class VideoPlayer extends BorderPane {
 
+    //  Initialization of objects
     private Media media;
     private MediaPlayer player;
     private MediaView view;
     private HBox pane;
     private MediaBarController controller;
 
+    //  Constructor
     public VideoPlayer(String file) {
         this.pane = new HBox();
         this.media = new Media(file);
@@ -26,12 +28,15 @@ public class VideoPlayer extends BorderPane {
         this.view = new MediaView(this.player);
         this.controller = new MediaBarController(this.player);
 
+        //  Set video MediaPlayer
         this.player.setOnPlaying(() -> {
             this.controller.getVideoSlider().setValue((this.player.
                     getCurrentTime().toMillis() / this.player.getTotalDuration().
                             toMillis()) * 100);
         });
 
+        //  Set video MediaView
+        this.view.setFitWidth(700);
         this.view.setOnMouseClicked((e) -> {
             if (this.player.getStatus() == MediaPlayer.Status.PLAYING) {
                 this.player.pause();
@@ -42,24 +47,26 @@ public class VideoPlayer extends BorderPane {
             }
         });
 
+        //  Set class attributes
         setWidth(600);
         setPrefWidth(600);
         setMaxWidth(600);
+        setStyle("-fx-background-color:#cccccc");
 
+        //  Set HBox attributes
         this.pane.setMaxWidth(600);
         this.pane.setPrefWidth(600);
         this.pane.setAlignment(Pos.CENTER);
 
-        this.view.setFitWidth(700);
-
+        //  Add objects into HBox
         pane.getChildren().add(view);
 
+        //  Add objects into class
         setCenter(pane);
-
         setBottom(this.controller);
-        setStyle("-fx-background-color:#0068ac");
     }
 
+    //  Getter / Setter
     public MediaPlayer getPlayer() {
         return player;
     }

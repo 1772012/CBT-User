@@ -79,6 +79,36 @@ public class ButtonNavigationContainer extends VBox {
             vboxQuestion.getChildren().add(navigationVbox.
                     get(this.btnNumber - 1));
             lblNavigation.setText(String.valueOf(this.btnNumber));
+
+            if (((QuestionContainer) nav.getNavigationVbox().get(
+                    this.btnNumber - 1)).getUserAnswerKey() == -1) {
+                if (!((QuestionContainer) nav.getNavigationVbox().get(
+                        this.btnNumber - 1)).isChecked()) {
+                    nav.getBoxNumberChange().setId("box-container-blue");
+                    nav.getBoxLayout1Change().setId("box-container-blue");
+                    nav.getBoxLayout2Change().setId("box-container-blue");
+                    nav.getVboxQuestion().setId("box-border-blue");
+                } else {
+                    nav.getBoxNumberChange().setId("box-container-yellow");
+                    nav.getBoxLayout1Change().setId("box-container-yellow");
+                    nav.getBoxLayout2Change().setId("box-container-yellow");
+                    nav.getVboxQuestion().setId("box-border-yellow");
+                }
+            } else {
+                if (!((QuestionContainer) nav.getNavigationVbox().get(
+                        this.btnNumber - 1)).isChecked()) {
+                    nav.getBoxNumberChange().setId("box-container-green");
+                    nav.getBoxLayout1Change().setId("box-container-green");
+                    nav.getBoxLayout2Change().setId("box-container-green");
+                    nav.getVboxQuestion().setId("box-border-green");
+                } else {
+                    nav.getBoxNumberChange().setId("box-container-yellow");
+                    nav.getBoxLayout1Change().setId("box-container-yellow");
+                    nav.getBoxLayout2Change().setId("box-container-yellow");
+                    nav.getVboxQuestion().setId("box-border-yellow");
+                }
+            }
+
         });
 
         //  Add this button to VBox

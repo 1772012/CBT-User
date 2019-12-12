@@ -1,5 +1,5 @@
 package com.cbtuser.entity;
-// Generated Nov 30, 2019 3:06:58 PM by Hibernate Tools 4.3.1
+// Generated Dec 12, 2019 10:33:59 AM by Hibernate Tools 4.3.1
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
@@ -97,7 +97,7 @@ public class Subtest implements java.io.Serializable {
 
     @Override
     public String toString() {
-        return this.name + " (" + this.amount + " butir)";
+        return this.getName() + " (" + this.getAmount() + " butir)";
     }
 
 }

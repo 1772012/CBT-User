@@ -1,5 +1,6 @@
 package com.cbtuser.container;
 
+import com.cbtuser.controller.MainViewController;
 import com.cbtuser.dao.AnswerDaoImpl;
 import com.cbtuser.entity.Answer;
 import com.cbtuser.entity.Question;
@@ -10,6 +11,8 @@ import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 
 /**
  *
@@ -17,110 +20,119 @@ import javafx.scene.layout.VBox;
  */
 public class QuestionContainer extends VBox {
 
-    //  Number of question
-    private int questionNumber;
-    //  Answer number of question
-    private int answerNumber;
-    //  User answer of question
-    private int userAnswer = -1;
-    //  Label for media caption
-    private Label lblCaption;
-    //  Label for question content
-    private Label lbl;
-    //  Observable list of answers
-    private ObservableList<Answer> answers;
-    //  New question
+    //  Static class fields
+    private static int ITER = 0;
+
+    //  Default class fields
+    private int userAnswerKey = -1;
+    private boolean checked = false;
+
+    //  Variable class fields
+    private ObservableList<Answer> answers = FXCollections.observableArrayList();
     private Question question = new Question();
-    //  New answer DAO
-    private AnswerDaoImpl answerDao;
+    private AnswerDaoImpl answerDao = new AnswerDaoImpl();
+    private Label lblContent = new Label();
+    private int questionNumber;
+    private int answerKey;
+    private Text txt = new Text();
 
-    //  Class constructor
-    public QuestionContainer(
-            Question question,
-            int questionNumber,
-            int navigationNumber,
-            GridPane gpQuestions) {
+    //  Constructor
+    public QuestionContainer(MainViewController main, Question question) {
+        //  Set ID number of QuestionContainer
+        this.questionNumber = QuestionContainer.ITER;
 
-        //  Set VBox CSS style
-        setId("box-question-container");
-
-        //  Set this attributes
+        //  Set question
         this.question = question;
-        this.answers = FXCollections.observableArrayList();
-        this.answerDao = new AnswerDaoImpl();
-        this.questionNumber = questionNumber;
 
-        //  Check if the question has media content
+        //  Switch media
         switch (this.question.getMediacontent().getMedia().getId()) {
-            //  Video media content
+            //  Video media player
             case 1:
                 VideoPlayer vp = new VideoPlayer(new File(this.question
                         .getMediacontent().getMediaAddress()).toURI()
                         .toString());
-
+                //  Check for caption
                 if (this.question.getMediacontent().getCaption() != null) {
-                    this.lblCaption = new Label(this.question.getId());
-                    this.lblCaption.setId("label-question");
-                    this.lblCaption.setText(this.question.getMediacontent().
+                    Label lblCaption = new Label();
+                    lblCaption.setId("label-question");
+                    lblCaption.setText(this.question.getMediacontent().
                             getCaption());
                     getChildren().add(lblCaption);
                 }
-
                 getChildren().add(vp);
                 break;
-            //  Audio media content
+            //  Audio media player
             case 2:
                 AudioPlayer ap = new AudioPlayer(
                         this.question.getMediacontent().getMediaAddress());
+                //  Check for caption
                 if (this.question.getMediacontent().getCaption() != null) {
-                    this.lblCaption = new Label(this.question.getId());
-                    this.lblCaption.setId("label-question");
-                    this.lblCaption.setText(this.question.getMediacontent().
+                    Label lblCaption = new Label();
+                    lblCaption.setId("label-question");
+                    lblCaption.setText(this.question.getMediacontent().
                             getCaption());
                     getChildren().add(lblCaption);
                 }
                 getChildren().add(ap);
                 break;
-            //  Image media content
+            //  Image media
             case 3:
-                if (this.question.getMediacontent().getCaption() != null) {
-                    this.lblCaption = new Label(this.question.getId());
-                    this.lblCaption.setId("label-question");
-                    this.lblCaption.setText(this.question.getMediacontent().
-                            getCaption());
-                    getChildren().add(lblCaption);
-                }
                 MediaImageContainer imageContainer = new MediaImageContainer(
                         this.question.getMediacontent().getMediaAddress()
                 );
+                //  Check for caption
+                if (this.question.getMediacontent().getCaption() != null) {
+                    Label lblCaption = new Label();
+                    lblCaption.setId("label-question");
+                    lblCaption.setText(this.question.getMediacontent().
+                            getCaption());
+                    getChildren().add(lblCaption);
+                }
                 getChildren().add(imageContainer);
                 break;
-            //  Nothing to do here...
+            case 4:
+                if (this.question.getMediacontent().getCaption() != null) {
+                    Text txtCaption = new Text();
+                    txtCaption.setText(this.question.getMediacontent().
+                            getCaption().replace("\\n", "\n"));
+                    Label lblCaption = new Label();
+                    lblCaption.setWrapText(true);
+                    lblCaption.setText(txtCaption.getText());
+                    lblCaption.setTextAlignment(TextAlignment.JUSTIFY);
+                    lblCaption.setId("label-border");
+                    getChildren().add(lblCaption);
+                }
             default:
                 break;
         }
 
-        //  Set this question content label
-        this.lbl = new Label(this.question.getId());
-        this.lbl.setId("label-question");
-        this.lbl.setText(this.question.getContent());
+        //  Set content text
+        this.txt.setText(this.question.getContent().replace("\\n", "\n"));
+        this.lblContent.setText(txt.getText());
+        this.lblContent.setWrapText(true);
+        this.lblContent.setTextAlignment(TextAlignment.JUSTIFY);
+        this.lblContent.setId("label-black");
+        getChildren().add(this.lblContent);
 
         //  Get answers from question
         this.answers.addAll(this.answerDao.getSpecificData(this.question));
 
         //  Create radio button of each answer
         RadioButtonContainer rbc = new RadioButtonContainer(this.answers,
-                getCellFromGridPane(gpQuestions, (navigationNumber % 5),
-                        (navigationNumber / 5)),
-                this.questionNumber, this);
+                getCellFromGridPane(main.getGpQuestions(),
+                        (QuestionContainer.ITER % 5),
+                        (QuestionContainer.ITER / 5)),
+                this.questionNumber, this, main);
+        getChildren().add(rbc);
 
         //  Get answer number from radio button
-        this.answerNumber = rbc.getAnswerNumber();
+        this.answerKey = rbc.getAnswerNumber();
 
-//        this.userAnswer = rbc.getUserAnswer();
-        //  Add nodes to VBox
-        getChildren().add(this.lbl);
-        getChildren().add(rbc);
+        //  Iteration for question number
+        QuestionContainer.ITER++;
+
+        //  Set class style
+        setId("box-container");
     }
 
     //  Usable function for getting navigation button of question
@@ -139,16 +151,24 @@ public class QuestionContainer extends VBox {
         return questionNumber;
     }
 
-    public int getAnswerNumber() {
-        return answerNumber;
+    public int getUserAnswerKey() {
+        return userAnswerKey;
     }
 
-    public int getUserAnswer() {
-        return userAnswer;
+    public int getAnswerKey() {
+        return answerKey;
     }
 
-    public void setUserAnswer(int userAnswer) {
-        this.userAnswer = userAnswer;
+    public void setUserAnswerKey(int userAnswerKey) {
+        this.userAnswerKey = userAnswerKey;
+    }
+
+    public boolean isChecked() {
+        return checked;
+    }
+
+    public void setChecked(boolean checked) {
+        this.checked = checked;
     }
 
 }

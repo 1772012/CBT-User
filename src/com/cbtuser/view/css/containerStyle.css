@@ -1,4 +1,98 @@
-#mediaBarController {
+#mediabar-controller {
     -fx-padding: 8;
     -fx-spacing: 8;
+    -fx-background-color: #cccccc;
+}
+
+#label-black {
+    -fx-background-color: transparent;
+    -fx-text-fill: black;
+    -fx-font-family: 'Calibri';
+    -fx-font-size: 18px;
+}
+#label-black-bold {
+    -fx-background-color: transparent;
+    -fx-text-fill: black;
+    -fx-font-family: 'Calibri';
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+#box-header {
+    -fx-background-color: #0068ac;
+    -fx-padding: 10;
+}
+#box-header .label {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-family: 'Calibri';
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+}
+#box-container {
+    -fx-padding: 24;
+    -fx-spacing: 24;
+}
+
+#box-number-header {
+    -fx-border-color: #0068ac;
+    -fx-border-width: 2px;
+    -fx-spacing: 12;
+    -fx-pref-height: 50;
+}
+
+#label-border {
+    -fx-border-color: black;
+    -fx-border-width: 1px;
+    -fx-background-color: transparent;
+    -fx-text-fill: black;
+    -fx-font-family: 'Calibri';
+    -fx-font-size: 18px;
+    -fx-padding: 12;
+}
+
+#box-container-blue {
+    -fx-background-color: #0068ac;
+    -fx-padding: 4px;
+    -fx-fit-to-height: true;
+    -fx-fit-to-width: true;
+    -fx-text-fill: white;
+    -fx-font-family: 'Calibri';
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 0px;
+    -fx-padding: 8 8 8 8;}
+#box-container-green {
+    -fx-background-color: #499F68;
+    -fx-padding: 4px;
+    -fx-fit-to-height: true;
+    -fx-fit-to-width: true;
+    -fx-text-fill: white;
+    -fx-font-family: 'Calibri';
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 0px;
+    -fx-padding: 8 8 8 8;}
+#box-container-yellow {
+    -fx-background-color: #F0C808;
+    -fx-padding: 4px;
+    -fx-fit-to-height: true;
+    -fx-fit-to-width: true;
+    -fx-text-fill: white;
+    -fx-font-family: 'Calibri';
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 0px;
+    -fx-padding: 8 8 8 8;}
+
+#box-border-blue {
+    -fx-border-color: #0068ac;
+    -fx-border-width: 2px;
+}
+#box-border-green {
+    -fx-border-color: #499F68;
+    -fx-border-width: 2px;
+}
+#box-border-yellow {
+    -fx-border-color: #F0C808;
+    -fx-border-width: 2px;
 }

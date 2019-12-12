@@ -1,5 +1,6 @@
 package com.cbtuser.container;
 
+import com.cbtuser.controller.MainViewController;
 import com.cbtuser.entity.Answer;
 import java.util.HashMap;
 import java.util.Map;
@@ -46,7 +47,8 @@ public class RadioButtonContainer extends VBox {
 
     //  Main class constructor
     public RadioButtonContainer(ObservableList<Answer> answers,
-            Node gridPaneNode, int questionNumber, QuestionContainer qstCon) {
+            Node gridPaneNode, int questionNumber, QuestionContainer qstCon,
+            MainViewController main) {
 
         setId("vbox-radiobutton");
 
@@ -77,7 +79,7 @@ public class RadioButtonContainer extends VBox {
             // Set functionality of RadioButton
             rb.setOnAction((ActionEvent e) -> {
 
-                qstCon.setUserAnswer(rb.getSelected());
+                qstCon.setUserAnswerKey(rb.getSelected());
 
                 //  Parsing GridPane to VBox
                 VBox vboxQst = (VBox) gridPaneNode;
@@ -91,16 +93,28 @@ public class RadioButtonContainer extends VBox {
                     //  If Button is Blue -> Change into green
                     case "button-blue":
                         btnQst.setId("button-green");
+                        main.getBoxNumberChange().setId("box-container-green");
+                        main.getBoxLayout1Change().setId("box-container-green");
+                        main.getBoxLayout2Change().setId("box-container-green");
+                        main.getVboxQuestion().setId("box-border-green");
                         break;
 
                     //  If Button is green -> Change into green
                     case "button-green":
                         btnQst.setId("button-green");
+                        main.getBoxNumberChange().setId("box-container-green");
+                        main.getBoxLayout1Change().setId("box-container-green");
+                        main.getBoxLayout2Change().setId("box-container-green");
+                        main.getVboxQuestion().setId("box-border-green");
                         break;
 
                     //  If Button is yellow -> Change into yellow
                     case "button-yellow":
                         btnQst.setId("button-yellow");
+                        main.getBoxNumberChange().setId("box-container-yellow");
+                        main.getBoxLayout1Change().setId("box-container-yellow");
+                        main.getBoxLayout2Change().setId("box-container-yellow");
+                        main.getVboxQuestion().setId("box-border-yellow");
 
                     //  If Button is Blue, do nothing
                     default:

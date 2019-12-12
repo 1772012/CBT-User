@@ -1,5 +1,5 @@
 package com.cbtuser.entity;
-// Generated Nov 30, 2019 3:06:58 PM by Hibernate Tools 4.3.1
+// Generated Dec 12, 2019 10:33:59 AM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -33,10 +33,9 @@ public class Mediacontent  implements java.io.Serializable {
     }
 
 	
-    public Mediacontent(String id, Media media, String mediaAddress) {
+    public Mediacontent(String id, Media media) {
         this.id = id;
         this.media = media;
-        this.mediaAddress = mediaAddress;
     }
     public Mediacontent(String id, Media media, String mediaAddress, String caption, Set<Question> questions) {
        this.id = id;
@@ -69,7 +68,7 @@ public class Mediacontent  implements java.io.Serializable {
     }
 
     
-    @Column(name="media_address", nullable=false, length=200)
+    @Column(name="media_address", length=200)
     public String getMediaAddress() {
         return this.mediaAddress;
     }
@@ -79,7 +78,7 @@ public class Mediacontent  implements java.io.Serializable {
     }
 
     
-    @Column(name="caption", length=100)
+    @Column(name="caption", length=16777215)
     public String getCaption() {
         return this.caption;
     }
