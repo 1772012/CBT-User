@@ -715,7 +715,11 @@ public class MainViewController implements Initializable {
     //  if the exit button is pressed
     @FXML
     private void btnExitPlatform(ActionEvent event) {
-        Platform.exit();
+//        Platform.exit();
+        Node source = (Node) event.getSource();
+        Stage stage = (Stage) source.getScene().getWindow();
+        stage.close();
+
     }
 
     //  =================================================

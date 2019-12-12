@@ -1,5 +1,5 @@
 package com.cbtuser.entity;
-// Generated Dec 12, 2019 10:33:59 AM by Hibernate Tools 4.3.1
+// Generated Dec 12, 2019 9:49:07 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -9,8 +9,11 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -32,16 +35,18 @@ public class User  implements java.io.Serializable {
      private String lastName;
      private String phoneNumber;
      private String email;
+     private byte status;
      private Set<Userlog> userlogs = new HashSet<Userlog>(0);
-     private Set<Test> tests = new HashSet<Test>(0);
      private Set<Coursedatabase> coursedatabases = new HashSet<Coursedatabase>(0);
+     private Set<Test> tests = new HashSet<Test>(0);
+     private Statusdetail statusdetail;
      private Set<Question> questions = new HashSet<Question>(0);
 
     public User() {
     }
 
 	
-    public User(String id, Institute institute, Role role, String username, String password, String firstName, String phoneNumber, String email) {
+    public User(String id, Institute institute, Role role, String username, String password, String firstName, String phoneNumber, String email, byte status) {
         this.id = id;
         this.institute = institute;
         this.role = role;
@@ -50,8 +55,9 @@ public class User  implements java.io.Serializable {
         this.firstName = firstName;
         this.phoneNumber = phoneNumber;
         this.email = email;
+        this.status = status;
     }
-    public User(String id, Institute institute, Role role, String username, String password, String firstName, String lastName, String phoneNumber, String email, Set<Userlog> userlogs, Set<Test> tests, Set<Coursedatabase> coursedatabases, Set<Question> questions) {
+    public User(String id, Institute institute, Role role, String username, String password, String firstName, String lastName, String phoneNumber, String email, byte status, Set<Userlog> userlogs, Set<Coursedatabase> coursedatabases, Set<Test> tests, Statusdetail statusdetail, Set<Question> questions) {
        this.id = id;
        this.institute = institute;
        this.role = role;
@@ -61,9 +67,11 @@ public class User  implements java.io.Serializable {
        this.lastName = lastName;
        this.phoneNumber = phoneNumber;
        this.email = email;
+       this.status = status;
        this.userlogs = userlogs;
-       this.tests = tests;
        this.coursedatabases = coursedatabases;
+       this.tests = tests;
+       this.statusdetail = statusdetail;
        this.questions = questions;
     }
    
@@ -159,6 +167,16 @@ public class User  implements java.io.Serializable {
         this.email = email;
     }
 
+    
+    @Column(name="status", nullable=false)
+    public byte getStatus() {
+        return this.status;
+    }
+    
+    public void setStatus(byte status) {
+        this.status = status;
+    }
+
 @OneToMany(fetch=FetchType.LAZY, mappedBy="user")
     public Set<Userlog> getUserlogs() {
         return this.userlogs;
@@ -166,6 +184,18 @@ public class User  implements java.io.Serializable {
     
     public void setUserlogs(Set<Userlog> userlogs) {
         this.userlogs = userlogs;
+    }
+
+@ManyToMany(fetch=FetchType.LAZY)
+    @JoinTable(name="specialization", catalog="computerbasedtest", joinColumns = { 
+        @JoinColumn(name="User_id", nullable=false, updatable=false) }, inverseJoinColumns = { 
+        @JoinColumn(name="CourseDatabase_id", nullable=false, updatable=false) })
+    public Set<Coursedatabase> getCoursedatabases() {
+        return this.coursedatabases;
+    }
+    
+    public void setCoursedatabases(Set<Coursedatabase> coursedatabases) {
+        this.coursedatabases = coursedatabases;
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="user")
@@ -177,13 +207,13 @@ public class User  implements java.io.Serializable {
         this.tests = tests;
     }
 
-@OneToMany(fetch=FetchType.LAZY, mappedBy="user")
-    public Set<Coursedatabase> getCoursedatabases() {
-        return this.coursedatabases;
+@OneToOne(fetch=FetchType.LAZY, mappedBy="user")
+    public Statusdetail getStatusdetail() {
+        return this.statusdetail;
     }
     
-    public void setCoursedatabases(Set<Coursedatabase> coursedatabases) {
-        this.coursedatabases = coursedatabases;
+    public void setStatusdetail(Statusdetail statusdetail) {
+        this.statusdetail = statusdetail;
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="user")

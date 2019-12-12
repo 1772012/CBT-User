@@ -45,8 +45,8 @@ Contributor(s):
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/computerbasedtest?zeroDateTimeBehavior=convertToNull</property>
     <property name="hibernate.connection.username">root</property>
-    <property name="hibernate.connection.autocommit">false</property>
     <property name="hibernate.connection.isolation">2</property>
+    <property name="hibernate.connection.autocommit">false</property>
     <mapping resource="com/cbtuser/entity/Answer.hbm.xml"/>
     <mapping resource="com/cbtuser/entity/Media.hbm.xml"/>
     <mapping resource="com/cbtuser/entity/User.hbm.xml"/>
@@ -55,6 +55,7 @@ Contributor(s):
     <mapping resource="com/cbtuser/entity/Institute.hbm.xml"/>
     <mapping resource="com/cbtuser/entity/Userlog.hbm.xml"/>
     <mapping resource="com/cbtuser/entity/Coursedatabase.hbm.xml"/>
+    <mapping resource="com/cbtuser/entity/Statusdetail.hbm.xml"/>
     <mapping resource="com/cbtuser/entity/Mediacontent.hbm.xml"/>
     <mapping resource="com/cbtuser/entity/Subtest.hbm.xml"/>
     <mapping resource="com/cbtuser/entity/Role.hbm.xml"/>

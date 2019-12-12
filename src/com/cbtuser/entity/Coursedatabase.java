@@ -1,5 +1,5 @@
 package com.cbtuser.entity;
-// Generated Dec 12, 2019 10:33:59 AM by Hibernate Tools 4.3.1
+// Generated Dec 12, 2019 9:49:07 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -9,7 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -24,8 +25,8 @@ public class Coursedatabase  implements java.io.Serializable {
 
 
      private String id;
-     private User user;
      private String name;
+     private Set<User> users = new HashSet<User>(0);
      private Set<Question> questions = new HashSet<Question>(0);
      private Set<Subtest> subtests = new HashSet<Subtest>(0);
 
@@ -37,10 +38,10 @@ public class Coursedatabase  implements java.io.Serializable {
         this.id = id;
         this.name = name;
     }
-    public Coursedatabase(String id, User user, String name, Set<Question> questions, Set<Subtest> subtests) {
+    public Coursedatabase(String id, String name, Set<User> users, Set<Question> questions, Set<Subtest> subtests) {
        this.id = id;
-       this.user = user;
        this.name = name;
+       this.users = users;
        this.questions = questions;
        this.subtests = subtests;
     }
@@ -57,16 +58,6 @@ public class Coursedatabase  implements java.io.Serializable {
         this.id = id;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="User_id")
-    public User getUser() {
-        return this.user;
-    }
-    
-    public void setUser(User user) {
-        this.user = user;
-    }
-
     
     @Column(name="name", nullable=false, length=50)
     public String getName() {
@@ -75,6 +66,18 @@ public class Coursedatabase  implements java.io.Serializable {
     
     public void setName(String name) {
         this.name = name;
+    }
+
+@ManyToMany(fetch=FetchType.LAZY)
+    @JoinTable(name="specialization", catalog="computerbasedtest", joinColumns = { 
+        @JoinColumn(name="CourseDatabase_id", nullable=false, updatable=false) }, inverseJoinColumns = { 
+        @JoinColumn(name="User_id", nullable=false, updatable=false) })
+    public Set<User> getUsers() {
+        return this.users;
+    }
+    
+    public void setUsers(Set<User> users) {
+        this.users = users;
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="coursedatabase")
