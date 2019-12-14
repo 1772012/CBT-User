@@ -1,6 +1,5 @@
 package com.cbtuser.container;
 
-import java.io.File;
 import javafx.application.Platform;
 import javafx.beans.Observable;
 import javafx.beans.binding.Bindings;
@@ -37,7 +36,7 @@ public class AudioPlayer extends HBox {
     public AudioPlayer(String file) {
 
         //  Set Media
-        this.media = new Media(new File(file).toURI().toString());
+        this.media = new Media(file);
 
         //  Set MediaPlayer
         this.audio = new MediaPlayer(this.media);

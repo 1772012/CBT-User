@@ -11,7 +11,7 @@ import org.hibernate.Session;
  *
  * @author Redwolfer
  */
-public class QuestionDaoImpl implements DaoService <Question> {
+public class QuestionDaoImpl implements DaoService<Question> {
 
     @Override
     public int addData(Question object) {
@@ -27,13 +27,24 @@ public class QuestionDaoImpl implements DaoService <Question> {
     public Question getOneData(Question object) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
     public List<Question> getSpecificData(Subtest object) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
-        Query query = session.createQuery("from Question where coursedatabase_id = :id");
-        query.setParameter("id", object.getCoursedatabase().getId());
-        List<Question> result = query.list();
-        return result;
+        if (object.getCoursedatabase().getEnableShuffle() == 1) {
+            Query query = session.createQuery(
+                    "from Question where coursedatabase_id = :id order by rand()");
+            query.setParameter("id", object.getCoursedatabase().getId());
+            query.setMaxResults(object.getAmount());
+            List<Question> result = query.list();
+            return result;
+        } else {
+            Query query = session.createQuery(
+                    "from Question where coursedatabase_id = :id");
+            query.setParameter("id", object.getCoursedatabase().getId());
+            query.setMaxResults(object.getAmount());
+            List<Question> result = query.list();
+            return result;
+        }
     }
 }

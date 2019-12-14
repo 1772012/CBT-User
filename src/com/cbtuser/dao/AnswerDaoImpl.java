@@ -9,9 +9,9 @@ import org.hibernate.Session;
 
 /**
  *
- * @author Redwolfer
+ * @author Kafka Febianto Agiharta - 1772012
  */
-public class AnswerDaoImpl implements DaoService <Answer> {
+public class AnswerDaoImpl implements DaoService<Answer> {
 
     @Override
     public int addData(Answer object) {
@@ -27,14 +27,14 @@ public class AnswerDaoImpl implements DaoService <Answer> {
     public Answer getOneData(Answer object) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
     public List<Answer> getSpecificData(Question object) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
-        Query query = session.createQuery("from Answer where question_id = :id");
+        Query query = session.createQuery(
+                "from Answer where question_id = :id order by rand()");
         query.setParameter("id", object.getId());
         List<Answer> result = query.list();
         return result;
     }
-    
 }

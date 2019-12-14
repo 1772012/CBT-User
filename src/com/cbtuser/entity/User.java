@@ -1,5 +1,5 @@
 package com.cbtuser.entity;
-// Generated Dec 12, 2019 9:49:07 PM by Hibernate Tools 4.3.1
+// Generated Dec 14, 2019 11:23:33 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -187,7 +187,7 @@ public class User  implements java.io.Serializable {
     }
 
 @ManyToMany(fetch=FetchType.LAZY)
-    @JoinTable(name="specialization", catalog="computerbasedtest", joinColumns = { 
+    @JoinTable(name="expertise", catalog="computerbasedtest", joinColumns = { 
         @JoinColumn(name="User_id", nullable=false, updatable=false) }, inverseJoinColumns = { 
         @JoinColumn(name="CourseDatabase_id", nullable=false, updatable=false) })
     public Set<Coursedatabase> getCoursedatabases() {

@@ -4,7 +4,6 @@ import com.cbtuser.controller.MainViewController;
 import com.cbtuser.dao.AnswerDaoImpl;
 import com.cbtuser.entity.Answer;
 import com.cbtuser.entity.Question;
-import java.io.File;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
@@ -48,9 +47,8 @@ public class QuestionContainer extends VBox {
         switch (this.question.getMediacontent().getMedia().getId()) {
             //  Video media player
             case 1:
-                VideoPlayer vp = new VideoPlayer(new File(this.question
-                        .getMediacontent().getMediaAddress()).toURI()
-                        .toString());
+                VideoPlayer vp = new VideoPlayer(
+                        this.question.getMediacontent().getMediaAddress());
                 //  Check for caption
                 if (this.question.getMediacontent().getCaption() != null) {
                     Label lblCaption = new Label();

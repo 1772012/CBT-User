@@ -2,17 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/Redwolfer/Documents/Document%20Projects/Netbeans/CBT-User/src/com/cbtuser/container/QuestionContainer.java</file>
-            <file>file:/C:/Users/Redwolfer/Documents/Document%20Projects/Netbeans/CBT-User/src/com/cbtuser/container/ButtonNavigationContainer.java</file>
-            <file>file:/C:/Users/Redwolfer/Documents/Document%20Projects/Netbeans/CBT-User/src/com/cbtuser/controller/MainViewController.java</file>
-            <file>file:/C:/Users/Redwolfer/Documents/Document%20Projects/Netbeans/CBT-User/src/com/cbtuser/view/css/containerStyle.css</file>
-            <file>file:/C:/Users/Redwolfer/Documents/Document%20Projects/Netbeans/CBT-User/src/com/cbtuser/container/MediaImageContainer.java</file>
-            <file>file:/C:/Users/Redwolfer/Documents/Document%20Projects/Netbeans/CBT-User/src/com/cbtuser/controller/TestListViewController.java</file>
-            <file>file:/C:/Users/Redwolfer/Documents/Document%20Projects/Netbeans/CBT-User/src/com/cbtuser/container/AudioPlayer.java</file>
-            <file>file:/C:/Users/Redwolfer/Documents/Document%20Projects/Netbeans/CBT-User/src/com/cbtuser/container/VideoPlayer.java</file>
-            <file>file:/C:/Users/Redwolfer/Documents/Document%20Projects/Netbeans/CBT-User/src/com/cbtuser/container/RadioButtonContainer.java</file>
-            <file>file:/C:/Users/Redwolfer/Documents/Document%20Projects/Netbeans/CBT-User/src/com/cbtuser/MainApp.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
