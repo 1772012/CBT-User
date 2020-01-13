@@ -8,24 +8,23 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 
 /**
- *
  * @author Kafka Febianto Agiharta - 1772012
  */
 public class AnswerDaoImpl implements DaoService<Answer> {
 
     @Override
     public int addData(Answer object) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
     public List<Answer> getAllData() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
     public Answer getOneData(Answer object) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     public List<Answer> getSpecificData(Question object) {

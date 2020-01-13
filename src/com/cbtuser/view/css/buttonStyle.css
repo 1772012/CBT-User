@@ -135,22 +135,31 @@
     -fx-padding: 8 8 8 8;}
 
 #media-progress-bar > .track {
-    -fx-pref-height: 10px;
+    -fx-background-color:null;  /* Hide the track */
+    -fx-background-insets: 1 0 -1 0, 0, 1;
+    -fx-background-radius: 2.5, 2.5, 1.5;
+    -fx-padding: 0.208333em; /* 2.5 */
+/*    -fx-pref-height: 10px;
     -fx-text-box-border: #499F68;
     -fx-control-inner-background: #499F68;
     -fx-background-insets: 1 0 -1 0, 0, 1;
     -fx-background-radius: 2.5, 2.5, 1.5;
-    -fx-padding: 0.208333em; /* 2.5 */
+    -fx-padding: 0.208333em;  2.5 */
 }
+
+/*.slider .track {
+    -fx-background-color:null;   Hide the track 
+    -fx-background-insets: 1 0 -1 0, 0, 1;
+    -fx-background-radius: 2.5, 2.5, 1.5;
+    -fx-padding: 0.208333em;  2.5 */
+/*}*/
 #media-progress-bar .thumb{
     -fx-pref-height: 20;
     -fx-pref-width: 20;
 }
 
 #volume-progress-bar > .track {
-    -fx-pref-height: 5px;
-    -fx-text-box-border: #499F68;
-    -fx-control-inner-background: #499F68;
+    -fx-background-color:null;  /* Hide the track */
     -fx-background-insets: 1 0 -1 0, 0, 1;
     -fx-background-radius: 2.5, 2.5, 1.5;
     -fx-padding: 0.208333em; /* 2.5 */

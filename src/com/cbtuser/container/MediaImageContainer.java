@@ -4,21 +4,28 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 /**
- *
  * @author Kafka Febianto Agiharta - 1772012
+ *
+ * MediaImageContainer is used for create image based question
  */
 public class MediaImageContainer extends ImageView {
 
-    //  Create Image field
+    /**
+     * Code below for create class objects
+     */
     private Image img;
 
-    //  MediaImageContainer constructor
+    /**
+     * Block below is constructor of class
+     *
+     * @param source
+     */
     public MediaImageContainer(String source) {
 
-        //  Create new Image from source
+        /**
+         * Set the image
+         */
         this.img = new Image(source);
-
-        //  Sets the Image to ImageView
         setImage(this.img);
     }
 }

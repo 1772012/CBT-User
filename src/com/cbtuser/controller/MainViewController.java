@@ -1,10 +1,10 @@
 package com.cbtuser.controller;
 
 import com.cbtuser.MainApp;
-import com.cbtuser.container.AudioPlayer;
+import com.cbtuser.container.AudioPlayerQuestion;
 import com.cbtuser.container.ButtonNavigationContainer;
 import com.cbtuser.container.QuestionContainer;
-import com.cbtuser.container.VideoPlayer;
+import com.cbtuser.container.VideoPlayerQuestion;
 import com.cbtuser.dao.ParticipantDaoImpl;
 import com.cbtuser.dao.QuestionDaoImpl;
 import com.cbtuser.dao.ScoreDaoImpl;
@@ -60,13 +60,15 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 /**
- * FXML Controller class
- *
  * @author Kafka Febianto Agiharta - 1772012
+ *
+ * MainViewController is main FXML class
  */
 public class MainViewController implements Initializable {
 
-    //  FXML attributes
+    /**
+     * FXML Attributes
+     */
     @FXML
     private AnchorPane root;
     @FXML
@@ -141,44 +143,8 @@ public class MainViewController implements Initializable {
     private Label lblTimerCount;
     @FXML
     private BorderPane testViewPane;
-
-    //  Dao controllers
-    private TestDaoImpl testDao;
-    private ParticipantDaoImpl participantDao;
-    private SubtestDaoImpl subtestDao;
-    private QuestionDaoImpl questionDao;
-    private ScoreDaoImpl scoreDao;
-
-    //  Observable lists
-    private ObservableList<Subtest> subtests;
-    private ObservableList<Question> questions;
-    private ObservableList<VBox> navigationVbox;
-    private Map<Integer, String> mapKey;
-
-    //  Stages
-    private Stage subtestStage;
-    private Alert alert;
-
-    //  Temp objects
-    private Participant participant;
-    private Test test;
-
-    //  Temp primitive data
-    private int navigationNumber = 0;
-    private boolean endTest = false;
-    private double score = 0;
-
-    //  FXML Utilities
-    private double editTestX;
-    private double editTestY;
-    private Timer timer;
-    public int time;
-    private int previousNav = 0;
-    private Date currentDate;
     @FXML
     private ScrollPane scpPane;
-    private BorderPane questionListPane;
-    private boolean isHide = true;
     @FXML
     private BorderPane questionViewBorderPane;
     @FXML
@@ -188,11 +154,59 @@ public class MainViewController implements Initializable {
     @FXML
     private HBox boxLayout2Change;
 
-    //  =================================================
-    //  Initializations of controller class
-    //  @param url
-    //  @param rb
-    //  =================================================
+    /**
+     * DAO controllers
+     */
+    private TestDaoImpl testDao;
+    private ParticipantDaoImpl participantDao;
+    private SubtestDaoImpl subtestDao;
+    private QuestionDaoImpl questionDao;
+    private ScoreDaoImpl scoreDao;
+
+    /**
+     * Observable lists
+     */
+    private ObservableList<Subtest> subtests;
+    private ObservableList<Question> questions;
+    private ObservableList<VBox> navigationVbox;
+    private Map<Integer, String> mapKey;
+
+    /**
+     * Stages
+     */
+    private Stage subtestStage;
+    private Alert alert;
+
+    /**
+     * Temp objects
+     */
+    private Participant participant;
+    private Test test;
+
+    /**
+     * Temp primitive data
+     */
+    private int navigationNumber = 0;
+    private boolean endTest = false;
+    private double score = 0;
+    public int time;
+    private int previousNav = 0;
+    private boolean isHide = true;
+
+    /**
+     * FXML utilities
+     */
+    private double editTestX;
+    private double editTestY;
+    private Timer timer;
+    private Date currentDate;
+
+    /**
+     * Initialization of class controller
+     *
+     * @param url
+     * @param rb
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         initFXMLControls();
@@ -202,14 +216,18 @@ public class MainViewController implements Initializable {
         initControllerControls();
     }
 
-    //  =================================================
-    //  Initializations
-    //  =================================================
-    //
-    //  Creates first initialization of FXML Controllers
+    /**
+     * =========================================================================
+     * Initialize the FXML layout logic control
+     * =========================================================================
+     *
+     * This section block is used for initialization method
+     */
     private void initFXMLControls() {
 
-        //  Lock the imgCbt size to parent container
+        /**
+         * Lock its size to parent container
+         */
         imgLogoLoginWhite.fitWidthProperty().bind(imgLoginPane.widthProperty());
         imgLogoLoginWhite.fitHeightProperty().
                 bind(imgLoginPane.heightProperty());
@@ -217,7 +235,9 @@ public class MainViewController implements Initializable {
         imgLogoUserWhite.fitWidthProperty().bind(imgUserPane.widthProperty());
         imgLogoUserWhite.fitHeightProperty().bind(imgUserPane.heightProperty());
 
-        //  Disable the TextField focus
+        /**
+         * Disable the TextField focus
+         */
         final BooleanProperty firstTime = new SimpleBooleanProperty(true);
         txtUsername.focusedProperty().addListener((observable, oldValue,
                 newValue) -> {
@@ -228,7 +248,9 @@ public class MainViewController implements Initializable {
         });
     }
 
-    //  Creates DAO control on first initialization
+    /**
+     * Creates DAO control on first initialization
+     */
     private void initDaoControls() {
         participantDao = new ParticipantDaoImpl();
         testDao = new TestDaoImpl();
@@ -237,14 +259,18 @@ public class MainViewController implements Initializable {
         scoreDao = new ScoreDaoImpl();
     }
 
-    //  Creates Observable List on first initialization
+    /**
+     * Creates Observable List on first initialization
+     */
     private void initListControls() {
         subtests = FXCollections.observableArrayList();
         questions = FXCollections.observableArrayList();
         navigationVbox = FXCollections.observableArrayList();
     }
 
-    //  Creates usable utilities on first initialization
+    /**
+     * Creates usable utilities on first initialization
+     */
     private void initUtilityControls() {
         mapKey = new HashMap<>();
         mapKey.put(0, "A. ");
@@ -254,23 +280,38 @@ public class MainViewController implements Initializable {
         mapKey.put(4, "E. ");
     }
 
-    //  controls FXML at initialization
+    /**
+     * controls FXML at initialization
+     */
     private void initControllerControls() {
 
-        //  Disables the button at initialization
+        /**
+         * Disables the button at initialization
+         */
         btnPrev.setDisable(true);
     }
 
-    //  =================================================
-    //  Login View Sections
-    //  =================================================
+    /**
+     * =========================================================================
+     * Block for LoginForm
+     * =========================================================================
+     *
+     * This section block is used for login
+     */
     //
-    //  If login button is clicked
+    /**
+     * If the login button is clicked. If username or password are wrong, shows
+     * the alert.
+     *
+     * @param event
+     */
     @FXML
     private void loginButtonClick(ActionEvent event) {
         if (login()) {
 
-            //  Set text into nodes
+            /**
+             * Set text into nodes
+             */
             lblNameHeaderParticipant.setText(
                     participant.getFirstName() + " " + participant.getLastName());
             lblIdHeaderParticipant.setText(participant.getId());
@@ -281,7 +322,9 @@ public class MainViewController implements Initializable {
                     setText(participant.getInstitute().getName());
             lblEmailParticipant.setText(participant.getEmail());
 
-            //  Show User section
+            /**
+             * Show User section
+             */
             userBorderPane.toFront();
         } else {
             alertErrorShow("Login error",
@@ -290,45 +333,71 @@ public class MainViewController implements Initializable {
         }
     }
 
-    //  Function for login button
+    /**
+     * Method below used for login
+     *
+     * @return
+     */
     private boolean login() {
 
-        //  Boolean variable to check the object
+        /**
+         * Boolean variable to check the object
+         */
         boolean valid;
 
-        //  Create temp object for Participant
+        /**
+         * Create temp object for Participant
+         */
         Participant tempParticipant = new Participant();
         tempParticipant.setUsername(txtUsername.getText());
         tempParticipant.setPassword(txtPassword.getText());
 
-        //  Get one object from Participant
+        /**
+         * Get one object from Participant
+         */
         participant = participantDao.getOneData(tempParticipant);
 
-        //  Checks if the object is null
+        /**
+         * Checks if the object is null
+         */
         valid = (participant != null);
-
         return valid;
     }
 
-    //  =================================================
-    //  User View Sections
-    //  =================================================
+    /**
+     * =========================================================================
+     * Block for User Form
+     * =========================================================================
+     *
+     * This section block is used for show user data
+     */
     //
-    //  If confirmation button is clicked
+    /**
+     * If the show test button is clicked. If the token is wrong, shows the
+     * alert
+     *
+     * @param event
+     */
     @FXML
     private void btnTestConfirmationClick(ActionEvent event) {
         if (tokenConfirmation()) {
 
-            //  Set text into nodes
+            /**
+             * Set text into nodes
+             */
             lblIdTest.setText(test.getId());
             lblNameTest.setText(test.getName());
             lblDateTest.setText(dateFormatter(test.getDate()));
             lblDateTimeTest.setText(String.valueOf(test.getTime() + " menit"));
 
-            //  Get subtest from database
+            /**
+             * Get subtest from database
+             */
             subtests.addAll(subtestDao.getSpecificData(test));
 
-            //  Show test section
+            /**
+             * Show test section
+             */
             testViewPane.toFront();
         } else {
             alertErrorShow("Token Error", "Token salah! harap masukan kembali.",
@@ -336,34 +405,56 @@ public class MainViewController implements Initializable {
         }
     }
 
+    /**
+     * Method below is used for token confirmation
+     *
+     * @return
+     */
     private boolean tokenConfirmation() {
 
-        //  Boolean variable to check the object
+        /**
+         * Boolean variable to check the object
+         */
         boolean valid;
 
-        //  Create temp object for test
+        /**
+         * Create temp object for test
+         */
         Test tempTest = new Test();
         tempTest.setToken(txtTokenTest.getText());
 
-        //  Get one object from test
+        /**
+         * Get one object from test
+         */
         test = testDao.getOneData(tempTest);
 
-        //  Check if the object is null
+        /**
+         * Check if the object is null
+         */
         valid = (test != null);
-
         return valid;
     }
 
-    //  =================================================
-    //  Test View Sections
-    //  =================================================
+    /**
+     * =========================================================================
+     * Block for Test Form
+     * =========================================================================
+     *
+     * This section block is used for show test data
+     */
     //
-    //  If the view subtest is clicked
+    /**
+     * Method below is used when show subtest button is clicked
+     *
+     * @param event
+     */
     @FXML
     private void btnSubtestClick(ActionEvent event) {
         try {
 
-            //  Create new stage
+            /**
+             * Create new stage
+             */
             subtestStage = new Stage();
             subtestStage.setTitle("Lihat Mata Pelajaran");
             FXMLLoader loader = new FXMLLoader();
@@ -379,7 +470,9 @@ public class MainViewController implements Initializable {
             subtestStage.initModality(Modality.APPLICATION_MODAL);
             subtestStage.initStyle(StageStyle.UNDECORATED);
 
-            //  Utilities for dragabble stage
+            /**
+             * Utilities for drag-able stage
+             */
             testPane.setOnMousePressed((MouseEvent event1) -> {
                 editTestX = subtestStage.getX() - event1.getScreenX();
                 editTestY = subtestStage.getY() - event1.getScreenY();
@@ -389,7 +482,9 @@ public class MainViewController implements Initializable {
                 subtestStage.setY(event1.getScreenY() + editTestY);
             });
 
-            //  Show the stage
+            /**
+             * Show the stage
+             */
             if (!subtestStage.isShowing()) {
                 subtestStage.show();
             } else {
@@ -402,7 +497,11 @@ public class MainViewController implements Initializable {
         }
     }
 
-    //  If the start button is clicked
+    /**
+     * Method for start test button
+     *
+     * @param event
+     */
     @FXML
     private void btnQuestionStartClick(ActionEvent event) {
 
@@ -413,24 +512,30 @@ public class MainViewController implements Initializable {
 //                    "Test belum bisa dimulai sebelum jadwal waktu test.",
 //                    AlertType.ERROR);
 //        } else {
-        //  Set the initial text
+        /**
+         * Set the initial text
+         */
         lblQstParticipantName.setText(
                 participant.getFirstName() + " " + participant.getLastName());
         lblQstParticipantId.setText(participant.getId());
         lblQstTestName.setText(test.getName());
         lblNavigation.setText(String.valueOf(1));
 
-        //  Add question based on subtests
+        /**
+         * Add question based on sub tests
+         */
         subtests.forEach((subtest) -> {
             questions.addAll(questionDao.getSpecificData(subtest));
         });
 
-        /*  Iteration through the size of question
-            this algorithm creates :
-            - button of question
-            - question lists    */
+        /**
+         * Iteration through list of subtest to create question
+         */
         for (int i = 0; i < questions.size(); i++) {
-            //  Create navigation button
+
+            /**
+             * Create navigation button
+             */
             ButtonNavigationContainer btnNavContainer = new ButtonNavigationContainer(
                     i,
                     vboxQuestion,
@@ -440,43 +545,71 @@ public class MainViewController implements Initializable {
                     btnNext,
                     questions.size(),
                     this);
-            //  Add navigation button to question GridPane
+
+            /**
+             * Add navigation button to question GridPane
+             */
             gpQuestions.add(btnNavContainer, (i % 5), (i / 5));
             QuestionContainer qstContainer = new QuestionContainer(this,
                     questions.get(i));
-            //  Add to list of VBox
+
+            /**
+             * Add to list of VBox
+             */
             navigationVbox.add(qstContainer);
 
         }
-        //  Add first question to Main View of VBox
+
+        /**
+         * Add first question to Main View of VBox
+         */
         vboxQuestion.getChildren().add(navigationVbox.get(navigationNumber));
-        //  Set the timer
+
+        /**
+         * Set the timer
+         */
         setTimer();
-        //  Show the question view
+
+        /**
+         * Show the question view
+         */
         questionBorderPane.toFront();
 //        }
 
     }
 
-    //  =================================================
-    //  Question View Sections
-    //  =================================================
+    /**
+     * =========================================================================
+     * Block for Question Form
+     * =========================================================================
+     *
+     * This section block is used for test
+     */
     //
-    //  If the Previous button is clicked
+    /**
+     * If the previous button at bottom navigation bar is clicked
+     *
+     * @param event
+     */
     @FXML
     private void btnPrevClick(ActionEvent event) {
 
+        /**
+         * Pause the media player when changing question
+         */
         previousNav = navigationNumber;
-
         navigationVbox.get(previousNav).getChildren().forEach((nav) -> {
-            if (nav instanceof AudioPlayer) {
-                ((AudioPlayer) nav).getPlayer().pause();
-            } else if (nav instanceof VideoPlayer) {
-                ((VideoPlayer) nav).getPlayer().pause();
+            if (nav instanceof AudioPlayerQuestion) {
+                ((AudioPlayerQuestion) nav).getPlayer().pause();
+            } else if (nav instanceof VideoPlayerQuestion) {
+                ((VideoPlayerQuestion) nav).getStatusBox().toFront();
+                ((VideoPlayerQuestion) nav).getPlayer().pause();
             }
         });
 
-        //  If the navigationNumber high than zero, then enables the button
+        /**
+         * If the navigationNumber high than zero, then enables the button
+         */
         if (navigationNumber > 0) {
             navigationNumber -= 1;
             vboxQuestion.getChildren().clear();
@@ -486,11 +619,17 @@ public class MainViewController implements Initializable {
             lblNavigation.setText(String.valueOf(navigationNumber + 1));
         }
 
-        //  If the navigationNumber is zero, then disables the button
+        /**
+         * If the navigationNumber is zero, then disables the button
+         */
         if (navigationNumber == 0) {
             btnPrev.setDisable(true);
         }
 
+        /**
+         * Check the question while changed to new question and change the color
+         * depends on answer status
+         */
         if (((QuestionContainer) navigationVbox.get(navigationNumber)).
                 getUserAnswerKey() == -1) {
             if (!((QuestionContainer) navigationVbox.get(navigationNumber)).
@@ -519,14 +658,19 @@ public class MainViewController implements Initializable {
                 vboxQuestion.setId("box-border-yellow");
             }
         }
-
     }
 
-    //  If the Check button is clicked
+    /**
+     * If the Check button is clicked
+     *
+     * @param event
+     */
     @FXML
     private void btnCheckClick(ActionEvent event) {
 
-        //  Call method for check cell and parse it
+        /**
+         * Call method for check cell and parse it
+         */
         VBox vboxQst = (VBox) getCellFromGridPane(gpQuestions,
                 (navigationNumber % 5),
                 (navigationNumber / 5));
@@ -535,6 +679,9 @@ public class MainViewController implements Initializable {
         QuestionContainer cntr = (QuestionContainer) navigationVbox.get(
                 navigationNumber);
 
+        /**
+         * Check the question before change to yellow
+         */
         if (cntr.getUserAnswerKey() == -1) {
             if (!cntr.isChecked()) {
                 btnQst.setId("button-yellow");
@@ -543,7 +690,6 @@ public class MainViewController implements Initializable {
                 boxLayout1Change.setId("box-container-yellow");
                 boxLayout2Change.setId("box-container-yellow");
                 vboxQuestion.setId("box-border-yellow");
-
             } else {
                 btnQst.setId("button-blue");
                 cntr.setChecked(false);
@@ -560,7 +706,6 @@ public class MainViewController implements Initializable {
                 boxLayout1Change.setId("box-container-green");
                 boxLayout2Change.setId("box-container-green");
                 vboxQuestion.setId("box-border-green");
-
             } else {
                 btnQst.setId("button-yellow");
                 cntr.setChecked(true);
@@ -570,24 +715,33 @@ public class MainViewController implements Initializable {
                 vboxQuestion.setId("box-border-yellow");
             }
         }
-
     }
 
-    //  If the Next button is clicked
+    /**
+     * If the Next button is clicked
+     *
+     * @param event
+     */
     @FXML
     private void btnNextClick(ActionEvent event) {
 
+        /**
+         * Pause the media player when changing question
+         */
         previousNav = navigationNumber;
-
         navigationVbox.get(previousNav).getChildren().forEach((nav) -> {
-            if (nav instanceof AudioPlayer) {
-                ((AudioPlayer) nav).getPlayer().pause();
-            } else if (nav instanceof VideoPlayer) {
-                ((VideoPlayer) nav).getPlayer().pause();
+            if (nav instanceof AudioPlayerQuestion) {
+                ((AudioPlayerQuestion) nav).getPlayer().pause();
+            } else if (nav instanceof VideoPlayerQuestion) {
+                ((VideoPlayerQuestion) nav).getStatusBox().toFront();
+                ((VideoPlayerQuestion) nav).getPlayer().pause();
             }
         });
 
-        //  If the navigationNumber lower than end of question list, then enables the button
+        /**
+         * If the navigationNumber lower than end of question list, then enables
+         * the button
+         */
         if (navigationNumber < questions.size() - 1) {
             navigationNumber += 1;
             vboxQuestion.getChildren().clear();
@@ -597,11 +751,18 @@ public class MainViewController implements Initializable {
             lblNavigation.setText(String.valueOf(navigationNumber + 1));
         }
 
-        //  If the navigationNumber reach end of question list, then disables the button
+        /**
+         * If the navigationNumber reach end of question list, then disables the
+         * button
+         */
         if (navigationNumber == questions.size() - 1) {
             btnNext.setDisable(true);
         }
 
+        /**
+         * Check the question while changed to new question and change the color
+         * depends on answer status
+         */
         if (((QuestionContainer) navigationVbox.get(navigationNumber)).
                 getUserAnswerKey() == -1) {
             if (!((QuestionContainer) navigationVbox.get(navigationNumber)).
@@ -630,9 +791,13 @@ public class MainViewController implements Initializable {
                 vboxQuestion.setId("box-border-yellow");
             }
         }
-
     }
 
+    /**
+     * Shows the navigation bar at right side and vice versa
+     *
+     * @param event
+     */
     @FXML
     private void btnQuestionListClick(ActionEvent event) {
         if (isHide) {
@@ -644,11 +809,17 @@ public class MainViewController implements Initializable {
         }
     }
 
-    //  If the end button is clicked
+    /**
+     * If the end button is clicked
+     *
+     * @param event
+     */
     @FXML
     private void btnEndTestClick(ActionEvent event) {
 
-        //  Create alert for confirmation of ending test
+        /**
+         * Create alert for confirmation of ending test
+         */
         alert = new Alert(AlertType.CONFIRMATION,
                 "Apakah Anda yakin ingin mengakhiri tes?",
                 ButtonType.YES, ButtonType.NO);
@@ -657,7 +828,9 @@ public class MainViewController implements Initializable {
         alert.initModality(Modality.APPLICATION_MODAL);
         alert.showAndWait();
 
-        //  If choose yes
+        /**
+         * If choose yes
+         */
         if (alert.getResult() == ButtonType.YES) {
 
             boolean isNotEmpty = false;
@@ -708,32 +881,51 @@ public class MainViewController implements Initializable {
         }
     }
 
-    //  =================================================
-    //  Score View Sections
-    //  =================================================
+    /**
+     * =========================================================================
+     * Block for Score Form
+     * =========================================================================
+     *
+     * This section block is used for show score form
+     */
     //
-    //  if the exit button is pressed
+    /**
+     * If the exit button is clicked
+     *
+     * @param event
+     */
     @FXML
     private void btnExitPlatform(ActionEvent event) {
-//        Platform.exit();
         Node source = (Node) event.getSource();
         Stage stage = (Stage) source.getScene().getWindow();
         stage.close();
-
     }
 
-    //  =================================================
-    //  Usable Functions
-    //  =================================================
+    /**
+     * =========================================================================
+     * Usable functions
+     * =========================================================================
+     */
     //
-    //  Usable for formatting date
+    /**
+     * Method for formatting date
+     *
+     * @param date
+     * @return
+     */
     private String dateFormatter(Date date) {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy",
                 Locale.ENGLISH);
         return sdf.format(date);
     }
 
-    //  Usable for show alert
+    /**
+     * Usable for show alert
+     *
+     * @param header
+     * @param content
+     * @param type
+     */
     private void alertErrorShow(String header, String content, AlertType type) {
         alert = new Alert(type);
         alert.setHeaderText(header);
@@ -743,7 +935,14 @@ public class MainViewController implements Initializable {
         alert.showAndWait();
     }
 
-    //  Bruteforce GridPane
+    /**
+     * Brute force GridPane
+     *
+     * @param gridPane
+     * @param col
+     * @param row
+     * @return
+     */
     private Node getCellFromGridPane(GridPane gridPane, int col, int row) {
         for (Node node : gridPane.getChildren()) {
             if (GridPane.getColumnIndex(node) == col && GridPane.getRowIndex(
@@ -754,20 +953,17 @@ public class MainViewController implements Initializable {
         return null;
     }
 
-    //  =================================================
-    //  Getter / Setter
-    //  =================================================
-    //
-    //  Get Subtest
-    public ObservableList<Subtest> getSubtest() {
-        return subtests;
-    }
-
+    /**
+     * Method for force end test if the timer is reach zero or end button is
+     * clicked
+     */
     private void forceEndTest() {
 
         endTest = true;
 
-        //  Check correct answers
+        /**
+         * Check correct answers
+         */
         navigationVbox.forEach((nav) -> {
             QuestionContainer container = (QuestionContainer) nav;
             if (container.getUserAnswerKey() == container.getAnswerKey()) {
@@ -775,7 +971,9 @@ public class MainViewController implements Initializable {
             }
         });
 
-        //  Input score to database
+        /**
+         * Input score to database
+         */
         Score tempScore = new Score();
         tempScore.setParticipant(participant);
         tempScore.setTest(test);
@@ -784,28 +982,36 @@ public class MainViewController implements Initializable {
         tempScore.setId(new ScoreId(test.getId(), participant.getId()));
         Score compare = scoreDao.getOneSpecificData(participant, test);
 
-        //  Check if the score is already exists
+        /**
+         * Check if the score is already exists
+         */
         if (compare != null) {
             scoreDao.updateData(tempScore);
         } else {
             scoreDao.addData(tempScore);
         }
 
+        /**
+         * Set the score to label
+         */
         lblScoreFinal.setText(String.valueOf(
                 Math.round(((score / questions.size()) * 100) * 100) / 100));
         lblTrueAnswerFinal.setText(String.valueOf((int) score) + " / " + String.
                 valueOf(questions.size()));
-
         SimpleDateFormat formatter = new SimpleDateFormat("HH:mm");
         Date date = new Date(System.currentTimeMillis());
-
         lblTimeFinal.setText(String.valueOf(formatter.format(date)));
 
-        //  Show the score view
+        /**
+         * Show the score view
+         */
         userBorderPane.toFront();
         scoreViewPane.toFront();
     }
 
+    /**
+     * Method for set timer
+     */
     private void setTimer() {
         timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask() {
@@ -819,13 +1025,20 @@ public class MainViewController implements Initializable {
                             ((time / 60) % 60))));
                     time--;
                 } else {
+                    System.out.println("CANCEL");
                     timer.cancel();
-                    Platform.runLater(() -> {
-                        forceEndTest();
-                    });
                 }
             }
         }, 1000, 1000);
+    }
+
+    /**
+     * =========================================================================
+     * Getter/setter
+     * =========================================================================
+     */
+    public ObservableList<Subtest> getSubtest() {
+        return subtests;
     }
 
     public int getNavigationNumber() {

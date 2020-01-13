@@ -1,6 +1,5 @@
 package com.cbtuser.dao;
 
-import com.cbtuser.entity.Coursedatabase;
 import com.cbtuser.entity.Subtest;
 import com.cbtuser.entity.Test;
 import com.cbtuser.util.HibernateUtil;
@@ -9,24 +8,23 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 
 /**
- *
- * @author Redwolfer
+ * @author Kafka Febianto Agiharta - 1772012
  */
 public class SubtestDaoImpl implements DaoService<Subtest> {
 
     @Override
     public int addData(Subtest object) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
     public List<Subtest> getAllData() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
     public Subtest getOneData(Subtest object) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     public List<Subtest> getSpecificData(Test object) {
@@ -37,5 +35,4 @@ public class SubtestDaoImpl implements DaoService<Subtest> {
         List<Subtest> result = query.list();
         return result;
     }
-
 }

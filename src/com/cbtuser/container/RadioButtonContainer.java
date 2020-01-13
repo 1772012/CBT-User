@@ -13,21 +13,27 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.VBox;
 
 /**
- *
  * @author Kafka Febianto Agiharta - 1772012
+ *
+ * RadioButtonContainer is used for create radio buttons
  */
 public class RadioButtonContainer extends VBox {
 
-    //  Create ToggleGroup for RadioButton
+    /**
+     * Create class objects
+     */
     private ToggleGroup tg = new ToggleGroup();
 
-    //  Create current Question Answers (Max 5 Answers)
+    /**
+     * Create list of temporary answer (5 Answer)
+     */
     private ObservableList<Answer> answers = FXCollections.observableArrayList();
 
-    //  Create mapping for answers enumeration
+    /**
+     * Create mapping for answers enumeration
+     */
     private static final Map<Integer, String> alphaMap = new HashMap<>();
 
-    //
     static {
         alphaMap.put(0, "A. ");
         alphaMap.put(1, "B. ");
@@ -36,61 +42,87 @@ public class RadioButtonContainer extends VBox {
         alphaMap.put(4, "E. ");
     }
 
-    //  Iteration for looping
+    /**
+     * Default class attributes
+     *
+     * @iter for iteration of radio buttons
+     * @questionNumber question number
+     * @answerNumber answer number
+     */
     private int iter = 0;
-
-    //  Question number
     private int questionNumber;
-
-    //  Answer number
     private int answerNumber;
 
-    //  Main class constructor
+    /**
+     * Block below is constructor of class
+     *
+     * @param answers
+     * @param gridPaneNode
+     * @param questionNumber
+     * @param qstCon
+     * @param main
+     *
+     * This constructor creates 5 answers for each question. Answers are added
+     * into temporary list of answers. Each new RadioButton are created and set
+     * the text with answers enumeration.
+     */
     public RadioButtonContainer(ObservableList<Answer> answers,
             Node gridPaneNode, int questionNumber, QuestionContainer qstCon,
             MainViewController main) {
 
-        setId("vbox-radiobutton");
-
-        /*  This constructor creates 5 answers for each question.
-            Answers are added into temporary list of answers.
-            Each new RadioButton are created and set the text
-            with answers enumeration.*/
-        //
-        //  Set the list of answers into this class
+        /**
+         * Set the class attributes
+         */
         this.answers = answers;
-
-        //  Create integer for this question number
         this.questionNumber = questionNumber;
 
-        //  For each answer, set the text and css attributes into RadioButton
+        /**
+         * For each answer, set the text and CSS attributes into RadioButton
+         */
         this.answers.forEach((Answer ans) -> {
 
-            //  Create new RadioButton
+            /**
+             * Create new RadioButton
+             */
             CustomizedRadioButton rb = new CustomizedRadioButton();
 
-            // Set the attributes into RadioButton
+            /**
+             * Code block below to set the attributes into RadioButton
+             */
             rb.setText(RadioButtonContainer.alphaMap.get(this.iter) + ans.
                     getContent());
             rb.setId("radiobutton-question");
             rb.setToggleGroup(this.tg);
             rb.setSelected(this.iter);
 
-            // Set functionality of RadioButton
+            /**
+             * Code block below to set functionality of RadioButton
+             */
             rb.setOnAction((ActionEvent e) -> {
 
+                /**
+                 * Set the user answer key
+                 */
                 qstCon.setUserAnswerKey(rb.getSelected());
 
-                //  Parsing GridPane to VBox
+                /**
+                 * Parsing GridPane to VBox
+                 */
                 VBox vboxQst = (VBox) gridPaneNode;
 
-                //  Parsing VBox to Button
+                /**
+                 * Parsing VBox to Button
+                 */
                 Button btnQst = (Button) vboxQst.getChildren().get(0);
 
-                //  Change the CSS if Button is clicked
+                /**
+                 * Code block below for changing the CSS if Button is clicked
+                 */
                 switch (btnQst.getId()) {
 
-                    //  If Button is Blue -> Change into green
+                    /**
+                     * If Button is Blue -> Change into green
+                     */
                     case "button-blue":
                         btnQst.setId("button-green");
                         main.getBoxNumberChange().setId("box-container-green");
@@ -99,7 +131,9 @@ public class RadioButtonContainer extends VBox {
                         main.getVboxQuestion().setId("box-border-green");
                         break;
 
-                    //  If Button is green -> Change into green
+                    /**
+                     * If Button is green -> Change into green
+                     */
                     case "button-green":
                         btnQst.setId("button-green");
                         main.getBoxNumberChange().setId("box-container-green");
@@ -108,28 +142,34 @@ public class RadioButtonContainer extends VBox {
                         main.getVboxQuestion().setId("box-border-green");
                         break;
 
-                    //  If Button is yellow -> Change into yellow
+                    /**
+                     * If Button is yellow -> Change into green
+                     */
                     case "button-yellow":
                         btnQst.setId("button-yellow");
                         main.getBoxNumberChange().setId("box-container-yellow");
                         main.getBoxLayout1Change().setId("box-container-yellow");
                         main.getBoxLayout2Change().setId("box-container-yellow");
                         main.getVboxQuestion().setId("box-border-yellow");
-
-                    //  If Button is Blue, do nothing
                     default:
                         break;
                 }
             });
 
-            //  Add each RadioButton to VBox
+            /**
+             * Add radio button to class
+             */
             getChildren().add(rb);
 
-            //  Get the next iteration
+            /**
+             * Get the next iteration
+             */
             this.iter++;
         });
 
-        //  Set the question answer
+        /**
+         * Set the question answer
+         */
         for (int i = 0; i < answers.size(); i++) {
             if (answers.get(i).getTrueAnswer() == 1) {
                 this.answerNumber = i;
@@ -137,9 +177,15 @@ public class RadioButtonContainer extends VBox {
             }
         }
 
+        /**
+         * Set the class properties
+         */
+        setId("vbox-radiobutton");
     }
 
-    //  Create getter method
+    /**
+     * Getter method section
+     */
     public int getQuestionNumber() {
         return questionNumber;
     }

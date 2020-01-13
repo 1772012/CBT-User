@@ -10,10 +10,9 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 /**
- *
- * @author Redwolfer
+ * @author Kafka Febianto Agiharta - 1772012
  */
-public class ScoreDaoImpl implements DaoService <Score> {
+public class ScoreDaoImpl implements DaoService<Score> {
 
     @Override
     public int addData(Score object) {
@@ -33,14 +32,14 @@ public class ScoreDaoImpl implements DaoService <Score> {
 
     @Override
     public List<Score> getAllData() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
     public Score getOneData(Score object) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet.");
     }
-    
+
     public int updateData(Score object) {
         int result = 0;
         Session session = HibernateUtil.getSessionFactory().openSession();
@@ -55,15 +54,15 @@ public class ScoreDaoImpl implements DaoService <Score> {
         session.close();
         return result;
     }
-    
+
     public Score getOneSpecificData(Participant obj1, Test obj2) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
-        Query query = session.createQuery("FROM Score WHERE test_id= :test AND participant_id= :id");
+        Query query = session.createQuery(
+                "FROM Score WHERE test_id= :test AND participant_id= :id");
         query.setParameter("id", obj1.getId());
         query.setParameter("test", obj2.getId());
         Score result = (Score) query.uniqueResult();
         return result;
     }
-    
 }

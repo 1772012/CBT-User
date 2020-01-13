@@ -12,40 +12,56 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
- * FXML Controller class
+ * @author Kafka Febianto Agiharta - 1772012
  *
- * @author Redwolfer
+ * TestListViewController is controller class used to show test
  */
 public class TestListViewController implements Initializable {
 
+    /**
+     * Class FXML Attributes
+     */
     @FXML
     private VBox root;
     @FXML
     private ListView<Subtest> listViewSubtest;
-    
+
+    /**
+     * Main Controller
+     */
     private MainViewController mainController;
 
     /**
      * Initializes the controller class.
+     *
      * @param url
      * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+
     }
-    
+
+    /**
+     * Initialize the controller class
+     *
+     * @param mainController
+     */
     public void setMainController(MainViewController mainController) {
         this.mainController = mainController;
         listViewSubtest.setItems(this.mainController.getSubtest());
-        
     }
 
+    /**
+     * Close button clicked
+     *
+     * @param event
+     */
     @FXML
     private void btnListViewClose(ActionEvent event) {
         Node source = (Node) event.getSource();
         Stage stage = (Stage) source.getScene().getWindow();
         stage.close();
     }
-    
+
 }

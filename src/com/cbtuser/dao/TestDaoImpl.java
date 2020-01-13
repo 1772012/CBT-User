@@ -7,19 +7,18 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 
 /**
- *
- * @author Redwolfer
+ * @author Kafka Febianto Agiharta - 1772012
  */
-public class TestDaoImpl implements DaoService <Test> {
+public class TestDaoImpl implements DaoService<Test> {
 
     @Override
     public int addData(Test object) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
     public List<Test> getAllData() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
@@ -31,5 +30,4 @@ public class TestDaoImpl implements DaoService <Test> {
         Test result = (Test) query.uniqueResult();
         return result;
     }
-    
 }

@@ -1,3 +1,6 @@
+:root {
+    -fx-main-bg-color: #0068ac;
+}
 #mediabar-controller {
     -fx-padding: 8;
     -fx-spacing: 8;
@@ -18,7 +21,7 @@
     -fx-font-weight: bold;
 }
 #box-header {
-    -fx-background-color: #0068ac;
+    -fx-background-color: var(-theme-color);
     -fx-padding: 10;
 }
 #box-header .label {
@@ -95,4 +98,7 @@
 #box-border-yellow {
     -fx-border-color: #F0C808;
     -fx-border-width: 2px;
+}
+#video-status-paused {
+    -fx-background-color: rgba(30, 30, 30, 0.6);
 }
