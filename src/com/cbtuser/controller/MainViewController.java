@@ -26,6 +26,8 @@ import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Platform;
@@ -199,7 +201,7 @@ public class MainViewController implements Initializable {
     private double editTestX;
     private double editTestY;
     private Timer timer;
-    private Date currentDate;
+    ExecutorService executorService = Executors.newFixedThreadPool(10);
 
     /**
      * Initialization of class controller
@@ -432,6 +434,7 @@ public class MainViewController implements Initializable {
          * Check if the object is null
          */
         valid = (test != null);
+
         return valid;
     }
 
@@ -505,77 +508,81 @@ public class MainViewController implements Initializable {
     @FXML
     private void btnQuestionStartClick(ActionEvent event) {
 
-//        currentDate = new Date();
-//
-//        if (currentDate.after(test.getDate())) {
-//            alertErrorShow("Error",
-//                    "Test belum bisa dimulai sebelum jadwal waktu test.",
-//                    AlertType.ERROR);
-//        } else {
         /**
-         * Set the initial text
+         * Check the server time whether current time is above the start time
          */
-        lblQstParticipantName.setText(
-                participant.getFirstName() + " " + participant.getLastName());
-        lblQstParticipantId.setText(participant.getId());
-        lblQstTestName.setText(test.getName());
-        lblNavigation.setText(String.valueOf(1));
-
-        /**
-         * Add question based on sub tests
-         */
-        subtests.forEach((subtest) -> {
-            questions.addAll(questionDao.getSpecificData(subtest));
-        });
-
-        /**
-         * Iteration through list of subtest to create question
-         */
-        for (int i = 0; i < questions.size(); i++) {
+        if (System.currentTimeMillis() <= test.getStartTime().getTime()) {
+            alertErrorShow("Error",
+                    "Test belum bisa dimulai sebelum jadwal waktu test.",
+                    AlertType.ERROR);
+        } else if (System.currentTimeMillis() >= test.getFinishTime().getTime()) {
+            alertErrorShow("Error",
+                    "Jadwal test sudah expired. Anda tidak dapat mengikuti test ini.",
+                    AlertType.ERROR);
+        } else {
+            /**
+             * Set the initial text
+             */
+            lblQstParticipantName.setText(
+                    participant.getFirstName() + " " + participant.getLastName());
+            lblQstParticipantId.setText(participant.getId());
+            lblQstTestName.setText(test.getName());
+            lblNavigation.setText(String.valueOf(1));
 
             /**
-             * Create navigation button
+             * Add question based on sub tests
              */
-            ButtonNavigationContainer btnNavContainer = new ButtonNavigationContainer(
-                    i,
-                    vboxQuestion,
-                    navigationVbox,
-                    lblNavigation,
-                    btnPrev,
-                    btnNext,
-                    questions.size(),
-                    this);
+            subtests.forEach((subtest) -> {
+                questions.addAll(questionDao.getSpecificData(subtest));
+            });
 
             /**
-             * Add navigation button to question GridPane
+             * Iteration through list of subtest to create question
              */
-            gpQuestions.add(btnNavContainer, (i % 5), (i / 5));
-            QuestionContainer qstContainer = new QuestionContainer(this,
-                    questions.get(i));
+            for (int i = 0; i < questions.size(); i++) {
+
+                /**
+                 * Create navigation button
+                 */
+                ButtonNavigationContainer btnNavContainer = new ButtonNavigationContainer(
+                        i,
+                        vboxQuestion,
+                        navigationVbox,
+                        lblNavigation,
+                        btnPrev,
+                        btnNext,
+                        questions.size(),
+                        this);
+
+                /**
+                 * Add navigation button to question GridPane
+                 */
+                gpQuestions.add(btnNavContainer, (i % 5), (i / 5));
+                QuestionContainer qstContainer = new QuestionContainer(this,
+                        questions.get(i));
+
+                /**
+                 * Add to list of VBox
+                 */
+                navigationVbox.add(qstContainer);
+
+            }
 
             /**
-             * Add to list of VBox
+             * Add first question to Main View of VBox
              */
-            navigationVbox.add(qstContainer);
+            vboxQuestion.getChildren().add(navigationVbox.get(navigationNumber));
 
+            /**
+             * Set the timer
+             */
+            setTimer();
+            setTimer();
+            /**
+             * Show the question view
+             */
+            questionBorderPane.toFront();
         }
-
-        /**
-         * Add first question to Main View of VBox
-         */
-        vboxQuestion.getChildren().add(navigationVbox.get(navigationNumber));
-
-        /**
-         * Set the timer
-         */
-        setTimer();
-
-        /**
-         * Show the question view
-         */
-        questionBorderPane.toFront();
-//        }
-
     }
 
     /**
@@ -896,9 +903,8 @@ public class MainViewController implements Initializable {
      */
     @FXML
     private void btnExitPlatform(ActionEvent event) {
-        Node source = (Node) event.getSource();
-        Stage stage = (Stage) source.getScene().getWindow();
-        stage.close();
+        Platform.exit();
+        System.exit(0);
     }
 
     /**
@@ -1014,6 +1020,7 @@ public class MainViewController implements Initializable {
      */
     private void setTimer() {
         timer = new Timer();
+
         timer.scheduleAtFixedRate(new TimerTask() {
             private int time = test.getTime() * 60;
 
@@ -1025,11 +1032,13 @@ public class MainViewController implements Initializable {
                             ((time / 60) % 60))));
                     time--;
                 } else {
-                    System.out.println("CANCEL");
-                    timer.cancel();
+                    cancel();
+                    Platform.runLater(() -> forceEndTest());
                 }
             }
+
         }, 1000, 1000);
+
     }
 
     /**
@@ -1080,5 +1089,4 @@ public class MainViewController implements Initializable {
     public VBox getVboxQuestion() {
         return vboxQuestion;
     }
-
 }

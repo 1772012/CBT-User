@@ -27,5 +27,8 @@ public class MediaImageContainer extends ImageView {
          */
         this.img = new Image(source);
         setImage(this.img);
+        setPreserveRatio(true);
+        setFitHeight(300);
+        setFitHeight(300);
     }
 }
