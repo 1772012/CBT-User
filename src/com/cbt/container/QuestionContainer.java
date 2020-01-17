@@ -78,6 +78,9 @@ public class QuestionContainer extends VBox {
         this.questionNumber = QuestionContainer.ITER;
         this.question = question;
 
+        /**
+         * Block below for create course database sign
+         */
         this.lblSubtest.setText(this.question.getCoursedatabase().getName());
         HBox boxSubtest = new HBox(this.lblSubtest);
         boxSubtest.setId("box-themed");
