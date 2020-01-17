@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 14, 2019 11:23:33 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="computerbasedtest" name="com.cbt.entity.Coursedatabase" optimistic-lock="version" table="coursedatabase">
+    <id name="id" type="string">
+      <column length="9" name="id"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="name" type="string">
+      <column length="50" name="name" not-null="true"/>
+    </property>
+    <property name="enableShuffle" type="byte">
+      <column name="enable_shuffle" not-null="true"/>
+    </property>
+    <set fetch="select" inverse="false" lazy="true" name="users" table="expertise">
+      <key>
+        <column length="9" name="CourseDatabase_id" not-null="true"/>
+      </key>
+      <many-to-many entity-name="com.cbt.entity.User">
+        <column length="9" name="User_id" not-null="true"/>
+      </many-to-many>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="questions" table="question">
+      <key>
+        <column length="9" name="CourseDatabase_id" not-null="true"/>
+      </key>
+      <one-to-many class="com.cbt.entity.Question"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="subtests" table="subtest">
+      <key>
+        <column length="9" name="CourseDatabase_id" not-null="true"/>
+      </key>
+      <one-to-many class="com.cbt.entity.Subtest"/>
+    </set>
+  </class>
+</hibernate-mapping>

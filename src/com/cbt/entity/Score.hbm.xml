@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 14, 2019 11:23:33 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="computerbasedtest" name="com.cbt.entity.Score" optimistic-lock="version" table="score">
+    <composite-id class="com.cbt.entity.ScoreId" name="id">
+      <key-property name="testId" type="string">
+        <column length="9" name="Test_id"/>
+      </key-property>
+      <key-property name="participantId" type="string">
+        <column length="11" name="Participant_id"/>
+      </key-property>
+    </composite-id>
+    <many-to-one class="com.cbt.entity.Participant" fetch="select" insert="false" name="participant" update="false">
+      <column length="11" name="Participant_id" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="com.cbt.entity.Test" fetch="select" insert="false" name="test" update="false">
+      <column length="9" name="Test_id" not-null="true"/>
+    </many-to-one>
+    <property name="score" type="double">
+      <column name="score" not-null="true" precision="22" scale="0"/>
+    </property>
+  </class>
+</hibernate-mapping>

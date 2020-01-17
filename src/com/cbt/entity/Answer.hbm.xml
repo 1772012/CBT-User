@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 14, 2019 11:23:33 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="computerbasedtest" name="com.cbt.entity.Answer" optimistic-lock="version" table="answer">
+    <composite-id class="com.cbt.entity.AnswerId" name="id">
+      <key-property name="id" type="string">
+        <column length="12" name="id"/>
+      </key-property>
+      <key-property name="questionId" type="string">
+        <column length="12" name="Question_id"/>
+      </key-property>
+    </composite-id>
+    <many-to-one class="com.cbt.entity.Question" fetch="select" insert="false" name="question" update="false">
+      <column length="12" name="Question_id" not-null="true"/>
+    </many-to-one>
+    <property name="trueAnswer" type="byte">
+      <column name="true_answer" not-null="true"/>
+    </property>
+    <property name="content" type="string">
+      <column length="200" name="content" not-null="true"/>
+    </property>
+  </class>
+</hibernate-mapping>
