@@ -47,19 +47,20 @@ Contributor(s):
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.autocommit">false</property>
     <property name="hibernate.connection.isolation">2</property>
-    <mapping resource="com/cbt/entity/Answer.hbm.xml"/>
-    <mapping resource="com/cbt/entity/Media.hbm.xml"/>
-    <mapping resource="com/cbt/entity/User.hbm.xml"/>
-    <mapping resource="com/cbt/entity/Participant.hbm.xml"/>
-    <mapping resource="com/cbt/entity/Test.hbm.xml"/>
-    <mapping resource="com/cbt/entity/Institute.hbm.xml"/>
-    <mapping resource="com/cbt/entity/Userlog.hbm.xml"/>
-    <mapping resource="com/cbt/entity/Coursedatabase.hbm.xml"/>
-    <mapping resource="com/cbt/entity/Statusdetail.hbm.xml"/>
     <mapping resource="com/cbt/entity/Mediacontent.hbm.xml"/>
-    <mapping resource="com/cbt/entity/Subtest.hbm.xml"/>
+    <mapping resource="com/cbt/entity/Coursedatabase.hbm.xml"/>
     <mapping resource="com/cbt/entity/Role.hbm.xml"/>
-    <mapping resource="com/cbt/entity/Score.hbm.xml"/>
+    <mapping resource="com/cbt/entity/Media.hbm.xml"/>
     <mapping resource="com/cbt/entity/Question.hbm.xml"/>
+    <mapping resource="com/cbt/entity/Statusdetail.hbm.xml"/>
+    <mapping resource="com/cbt/entity/Score.hbm.xml"/>
+    <mapping resource="com/cbt/entity/Participant.hbm.xml"/>
+    <mapping resource="com/cbt/entity/User.hbm.xml"/>
+    <mapping resource="com/cbt/entity/Institute.hbm.xml"/>
+    <mapping resource="com/cbt/entity/Test.hbm.xml"/>
+    <mapping resource="com/cbt/entity/Expertise.hbm.xml"/>
+    <mapping resource="com/cbt/entity/Userlog.hbm.xml"/>
+    <mapping resource="com/cbt/entity/Answer.hbm.xml"/>
+    <mapping resource="com/cbt/entity/Subtest.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

@@ -3,16 +3,16 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated Jan 18, 2020 5:56:26 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="com.cbt.entity.Userlog" table="userlog" catalog="computerbasedtest" optimistic-lock="version">
-        <id name="id" type="string">
-            <column name="id" length="15" />
-            <generator class="assigned" />
+    <class name="com.cbt.entity.Expertise" table="expertise" catalog="computerbasedtest" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
         </id>
+        <many-to-one name="coursedatabase" class="com.cbt.entity.Coursedatabase" fetch="select">
+            <column name="CourseDatabase_id" length="9" not-null="true" />
+        </many-to-one>
         <many-to-one name="user" class="com.cbt.entity.User" fetch="select">
             <column name="User_id" length="9" not-null="true" />
         </many-to-one>
-        <property name="log" type="string">
-            <column name="log" length="200" not-null="true" />
-        </property>
     </class>
 </hibernate-mapping>

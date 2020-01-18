@@ -1,65 +1,64 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Dec 14, 2019 11:23:33 PM by Hibernate Tools 4.3.1 -->
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 18, 2020 5:56:26 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-  <class catalog="computerbasedtest" name="com.cbt.entity.User" optimistic-lock="version" table="user">
-    <id name="id" type="string">
-      <column length="9" name="id"/>
-      <generator class="assigned"/>
-    </id>
-    <many-to-one class="com.cbt.entity.Institute" fetch="select" name="institute">
-      <column name="Institute_id" not-null="true"/>
-    </many-to-one>
-    <many-to-one class="com.cbt.entity.Role" fetch="select" name="role">
-      <column name="Role_id" not-null="true"/>
-    </many-to-one>
-    <property name="username" type="string">
-      <column length="30" name="username" not-null="true"/>
-    </property>
-    <property name="password" type="string">
-      <column length="30" name="password" not-null="true"/>
-    </property>
-    <property name="firstName" type="string">
-      <column length="75" name="first_name" not-null="true"/>
-    </property>
-    <property name="lastName" type="string">
-      <column length="75" name="last_name"/>
-    </property>
-    <property name="phoneNumber" type="string">
-      <column length="13" name="phone_number" not-null="true"/>
-    </property>
-    <property name="email" type="string">
-      <column length="50" name="email" not-null="true"/>
-    </property>
-    <property name="status" type="byte">
-      <column name="status" not-null="true"/>
-    </property>
-    <set fetch="select" inverse="true" lazy="true" name="userlogs" table="userlog">
-      <key>
-        <column length="9" name="User_id" not-null="true"/>
-      </key>
-      <one-to-many class="com.cbt.entity.Userlog"/>
-    </set>
-    <set fetch="select" inverse="false" lazy="true" name="coursedatabases" table="expertise">
-      <key>
-        <column length="9" name="User_id" not-null="true"/>
-      </key>
-      <many-to-many entity-name="com.cbt.entity.Coursedatabase">
-        <column length="9" name="CourseDatabase_id" not-null="true"/>
-      </many-to-many>
-    </set>
-    <set fetch="select" inverse="true" lazy="true" name="tests" table="test">
-      <key>
-        <column length="9" name="User_id" not-null="true"/>
-      </key>
-      <one-to-many class="com.cbt.entity.Test"/>
-    </set>
-    <one-to-one class="com.cbt.entity.Statusdetail" name="statusdetail"/>
-    <set fetch="select" inverse="true" lazy="true" name="questions" table="question">
-      <key>
-        <column length="9" name="User_id" not-null="true"/>
-      </key>
-      <one-to-many class="com.cbt.entity.Question"/>
-    </set>
-  </class>
+    <class name="com.cbt.entity.User" table="user" catalog="computerbasedtest" optimistic-lock="version">
+        <id name="id" type="string">
+            <column name="id" length="9" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="institute" class="com.cbt.entity.Institute" fetch="select">
+            <column name="Institute_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="role" class="com.cbt.entity.Role" fetch="select">
+            <column name="Role_id" not-null="true" />
+        </many-to-one>
+        <property name="username" type="string">
+            <column name="username" length="30" not-null="true" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="30" not-null="true" />
+        </property>
+        <property name="firstName" type="string">
+            <column name="first_name" length="75" not-null="true" />
+        </property>
+        <property name="lastName" type="string">
+            <column name="last_name" length="75" />
+        </property>
+        <property name="phoneNumber" type="string">
+            <column name="phone_number" length="13" not-null="true" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="50" not-null="true" />
+        </property>
+        <property name="status" type="byte">
+            <column name="status" not-null="true" />
+        </property>
+        <set name="userlogs" table="userlog" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="User_id" length="9" not-null="true" />
+            </key>
+            <one-to-many class="com.cbt.entity.Userlog" />
+        </set>
+        <set name="tests" table="test" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="User_id" length="9" not-null="true" />
+            </key>
+            <one-to-many class="com.cbt.entity.Test" />
+        </set>
+        <one-to-one name="statusdetail" class="com.cbt.entity.Statusdetail"></one-to-one>
+        <set name="questions" table="question" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="User_id" length="9" not-null="true" />
+            </key>
+            <one-to-many class="com.cbt.entity.Question" />
+        </set>
+        <set name="expertises" table="expertise" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="User_id" length="9" not-null="true" />
+            </key>
+            <one-to-many class="com.cbt.entity.Expertise" />
+        </set>
+    </class>
 </hibernate-mapping>

@@ -1,5 +1,5 @@
 package com.cbt.entity;
-// Generated Dec 14, 2019 11:23:33 PM by Hibernate Tools 4.3.1
+// Generated Jan 18, 2020 5:56:25 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -9,8 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -37,10 +35,10 @@ public class User  implements java.io.Serializable {
      private String email;
      private byte status;
      private Set<Userlog> userlogs = new HashSet<Userlog>(0);
-     private Set<Coursedatabase> coursedatabases = new HashSet<Coursedatabase>(0);
      private Set<Test> tests = new HashSet<Test>(0);
      private Statusdetail statusdetail;
      private Set<Question> questions = new HashSet<Question>(0);
+     private Set<Expertise> expertises = new HashSet<Expertise>(0);
 
     public User() {
     }
@@ -57,7 +55,7 @@ public class User  implements java.io.Serializable {
         this.email = email;
         this.status = status;
     }
-    public User(String id, Institute institute, Role role, String username, String password, String firstName, String lastName, String phoneNumber, String email, byte status, Set<Userlog> userlogs, Set<Coursedatabase> coursedatabases, Set<Test> tests, Statusdetail statusdetail, Set<Question> questions) {
+    public User(String id, Institute institute, Role role, String username, String password, String firstName, String lastName, String phoneNumber, String email, byte status, Set<Userlog> userlogs, Set<Test> tests, Statusdetail statusdetail, Set<Question> questions, Set<Expertise> expertises) {
        this.id = id;
        this.institute = institute;
        this.role = role;
@@ -69,10 +67,10 @@ public class User  implements java.io.Serializable {
        this.email = email;
        this.status = status;
        this.userlogs = userlogs;
-       this.coursedatabases = coursedatabases;
        this.tests = tests;
        this.statusdetail = statusdetail;
        this.questions = questions;
+       this.expertises = expertises;
     }
    
      @Id 
@@ -186,18 +184,6 @@ public class User  implements java.io.Serializable {
         this.userlogs = userlogs;
     }
 
-@ManyToMany(fetch=FetchType.LAZY)
-    @JoinTable(name="expertise", catalog="computerbasedtest", joinColumns = { 
-        @JoinColumn(name="User_id", nullable=false, updatable=false) }, inverseJoinColumns = { 
-        @JoinColumn(name="CourseDatabase_id", nullable=false, updatable=false) })
-    public Set<Coursedatabase> getCoursedatabases() {
-        return this.coursedatabases;
-    }
-    
-    public void setCoursedatabases(Set<Coursedatabase> coursedatabases) {
-        this.coursedatabases = coursedatabases;
-    }
-
 @OneToMany(fetch=FetchType.LAZY, mappedBy="user")
     public Set<Test> getTests() {
         return this.tests;
@@ -223,6 +209,15 @@ public class User  implements java.io.Serializable {
     
     public void setQuestions(Set<Question> questions) {
         this.questions = questions;
+    }
+
+@OneToMany(fetch=FetchType.LAZY, mappedBy="user")
+    public Set<Expertise> getExpertises() {
+        return this.expertises;
+    }
+    
+    public void setExpertises(Set<Expertise> expertises) {
+        this.expertises = expertises;
     }
 
 

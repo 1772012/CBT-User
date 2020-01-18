@@ -1,35 +1,36 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Dec 14, 2019 11:23:33 PM by Hibernate Tools 4.3.1 -->
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 18, 2020 5:56:26 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-  <class catalog="computerbasedtest" name="com.cbt.entity.Participant" optimistic-lock="version" table="participant">
-    <id name="id" type="string">
-      <column length="11" name="id"/>
-      <generator class="assigned"/>
-    </id>
-    <many-to-one class="com.cbt.entity.Institute" fetch="select" name="institute">
-      <column name="Institute_id" not-null="true"/>
-    </many-to-one>
-    <property name="username" type="string">
-      <column length="24" name="username" not-null="true"/>
-    </property>
-    <property name="password" type="string">
-      <column length="24" name="password" not-null="true"/>
-    </property>
-    <property name="firstName" type="string">
-      <column length="50" name="first_name" not-null="true"/>
-    </property>
-    <property name="lastName" type="string">
-      <column length="50" name="last_name"/>
-    </property>
-    <property name="email" type="string">
-      <column length="30" name="email"/>
-    </property>
-    <set fetch="select" inverse="true" lazy="true" name="scores" table="score">
-      <key>
-        <column length="11" name="Participant_id" not-null="true"/>
-      </key>
-      <one-to-many class="com.cbt.entity.Score"/>
-    </set>
-  </class>
+    <class name="com.cbt.entity.Participant" table="participant" catalog="computerbasedtest" optimistic-lock="version">
+        <id name="id" type="string">
+            <column name="id" length="11" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="institute" class="com.cbt.entity.Institute" fetch="select">
+            <column name="Institute_id" not-null="true" />
+        </many-to-one>
+        <property name="username" type="string">
+            <column name="username" length="24" not-null="true" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="24" not-null="true" />
+        </property>
+        <property name="firstName" type="string">
+            <column name="first_name" length="50" not-null="true" />
+        </property>
+        <property name="lastName" type="string">
+            <column name="last_name" length="50" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="30" />
+        </property>
+        <set name="scores" table="score" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Participant_id" length="11" not-null="true" />
+            </key>
+            <one-to-many class="com.cbt.entity.Score" />
+        </set>
+    </class>
 </hibernate-mapping>

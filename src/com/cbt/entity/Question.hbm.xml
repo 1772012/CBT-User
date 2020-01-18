@@ -1,29 +1,30 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Dec 14, 2019 11:23:33 PM by Hibernate Tools 4.3.1 -->
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 18, 2020 5:56:26 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-  <class catalog="computerbasedtest" name="com.cbt.entity.Question" optimistic-lock="version" table="question">
-    <id name="id" type="string">
-      <column length="12" name="id"/>
-      <generator class="assigned"/>
-    </id>
-    <many-to-one class="com.cbt.entity.Coursedatabase" fetch="select" name="coursedatabase">
-      <column length="9" name="CourseDatabase_id" not-null="true"/>
-    </many-to-one>
-    <many-to-one class="com.cbt.entity.Mediacontent" fetch="select" name="mediacontent">
-      <column length="12" name="MediaContent_id" not-null="true"/>
-    </many-to-one>
-    <many-to-one class="com.cbt.entity.User" fetch="select" name="user">
-      <column length="9" name="User_id" not-null="true"/>
-    </many-to-one>
-    <property name="content" type="string">
-      <column length="16777215" name="content" not-null="true"/>
-    </property>
-    <set fetch="select" inverse="true" lazy="true" name="answers" table="answer">
-      <key>
-        <column length="12" name="Question_id" not-null="true"/>
-      </key>
-      <one-to-many class="com.cbt.entity.Answer"/>
-    </set>
-  </class>
+    <class name="com.cbt.entity.Question" table="question" catalog="computerbasedtest" optimistic-lock="version">
+        <id name="id" type="string">
+            <column name="id" length="12" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="coursedatabase" class="com.cbt.entity.Coursedatabase" fetch="select">
+            <column name="CourseDatabase_id" length="9" not-null="true" />
+        </many-to-one>
+        <many-to-one name="mediacontent" class="com.cbt.entity.Mediacontent" fetch="select">
+            <column name="MediaContent_id" length="12" not-null="true" />
+        </many-to-one>
+        <many-to-one name="user" class="com.cbt.entity.User" fetch="select">
+            <column name="User_id" length="9" not-null="true" />
+        </many-to-one>
+        <property name="content" type="string">
+            <column name="content" length="16777215" not-null="true" />
+        </property>
+        <set name="answers" table="answer" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Question_id" length="12" not-null="true" />
+            </key>
+            <one-to-many class="com.cbt.entity.Answer" />
+        </set>
+    </class>
 </hibernate-mapping>

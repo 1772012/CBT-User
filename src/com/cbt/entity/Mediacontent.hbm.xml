@@ -1,26 +1,27 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Dec 14, 2019 11:23:33 PM by Hibernate Tools 4.3.1 -->
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 18, 2020 5:56:26 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-  <class catalog="computerbasedtest" name="com.cbt.entity.Mediacontent" optimistic-lock="version" table="mediacontent">
-    <id name="id" type="string">
-      <column length="12" name="id"/>
-      <generator class="assigned"/>
-    </id>
-    <many-to-one class="com.cbt.entity.Media" fetch="select" name="media">
-      <column name="Media_id" not-null="true"/>
-    </many-to-one>
-    <property name="mediaAddress" type="string">
-      <column length="200" name="media_address"/>
-    </property>
-    <property name="caption" type="string">
-      <column length="16777215" name="caption"/>
-    </property>
-    <set fetch="select" inverse="true" lazy="true" name="questions" table="question">
-      <key>
-        <column length="12" name="MediaContent_id" not-null="true"/>
-      </key>
-      <one-to-many class="com.cbt.entity.Question"/>
-    </set>
-  </class>
+    <class name="com.cbt.entity.Mediacontent" table="mediacontent" catalog="computerbasedtest" optimistic-lock="version">
+        <id name="id" type="string">
+            <column name="id" length="12" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="media" class="com.cbt.entity.Media" fetch="select">
+            <column name="Media_id" not-null="true" />
+        </many-to-one>
+        <property name="mediaAddress" type="string">
+            <column name="media_address" length="200" />
+        </property>
+        <property name="caption" type="string">
+            <column name="caption" length="16777215" />
+        </property>
+        <set name="questions" table="question" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="MediaContent_id" length="12" not-null="true" />
+            </key>
+            <one-to-many class="com.cbt.entity.Question" />
+        </set>
+    </class>
 </hibernate-mapping>
